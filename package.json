@@ -1,25 +1,28 @@
 {
-    "name": "src",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "dev": "next",
-        "build": "next build",
-        "start": "next start"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "isomorphic-unfetch": "^3.0.0",
-        "next": "^9.2.0",
-        "react": "^16.12.0",
-        "react-dom": "^16.12.0"
-    },
-    "devDependencies": {
-        "@types/node": "^13.1.8",
-        "@types/react": "^16.9.17",
-        "typescript": "^3.7.5"
-    }
+  "name": "src",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "^9.2.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "styled-components": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/styled-components": "^4.4.2",
+    "@types/node": "^13.1.8",
+    "@types/react": "^16.9.17",
+    "babel-plugin-styled-components": "^1.10.6",
+    "typescript": "^3.7.5"
+  }
 }
