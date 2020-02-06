@@ -1,73 +1,111 @@
 import styled from 'styled-components';
 
 export const Header = styled.div`
-  height: 15rem;
-  background-color: white;
+  width: 136.6rem;
+  height: 16rem;
+
+  padding-top: 4rem;
+`;
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+`;
+
+export const LogoContainer = styled.div`
+  width: 26rem;
+  height: 8rem;
+
+  margin-left: 6rem;
 
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-between;
 `;
 
-export const LogoCharacter = styled.div`
-  height: 12rem;
-  width: 12rem;
-  margin-left: 8rem;
-
-  border: 1px solid #707070;
+export const LogoCat = styled.img`
+  width: 8rem;
+  height: 8rem;
 `;
 
-export const LogoMessage = styled.div`
-  height: 6rem;
-  width: 12rem;
-  margin-left: 3rem;
-  margin-right: 5.3rem;
-
-  border: 1px solid #707070;
+export const LogoWord = styled.img`
+  width: 16rem;
+  height: 8rem;
 `;
 
-export const MenuItem = styled.div`
-  font-size: 3rem;
-  letter-spacing: 0.3rem;
-  margin-left: 5.1rem;
-  margin-right: 5.1rem;
-`;
+export const ButtonsContainer = styled.div`
+  width: 60rem;
 
-export const MenuDivider = styled.div`
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-`;
-
-export const Profile = styled.div`
-  width: 14rem;
-  height: 8.5rem;
-  margin-left: 15rem;
-  background-color: white;
+  margin: 0rem 4rem;
 
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  align-items: center;
 `;
 
-export const ProfileButtons = styled.div`
+export const Button = styled.button`
+  width: 12rem;
+  height: 3rem;
+
+  border: none;
+  border-right: 2px solid black;
+
+  background-color: white;
+  font-size: 1.8rem;
+  color: black;
+
+  &:hover {
+    background-color: whitesmoke;
+  }
+`;
+
+export const ProfileContainer = styled.div`
+  width: 15rem;
+
+  margin-left: 5rem;
+
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
 `;
 
-export const ProfileButton = styled.div`
-  width: 3.8rem;
-  height: 3.8rem;
-  border-radius: 1rem;
+export const ProfileIcon = styled.div`
+  width: 5rem;
+  height: 5rem;
 
-  border: 1px solid #707070;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .circle {
+    width: 3rem;
+    height: 3rem;
+
+    border-radius: 50%;
+    border: 0.15rem solid #aaaaaa;
+    background-color: white;
+  }
 `;
 
-export const ProfileImage = styled.div`
-  width: 8.5rem;
-  height: 8.5rem;
-  border-radius: 50%;
+export const ProfileAvatar = styled.div`
+  width: 5rem;
+  height: 5rem;
 
-  border: 1px solid #707070;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 4rem;
+    height: 4rem;
+  }
 `;
