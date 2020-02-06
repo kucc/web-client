@@ -18,13 +18,19 @@ const GlobalStyles = createGlobalStyle`
     background-color: white;
     /* user-select : none; 드래그 못하게 하기 */
     margin: 0;
-    
+    display :flex;
+    align-items : center;
+    justify-content : center;
   }::-webkit-scrollbar { /* 스크롤바 제거 */
     display: none;
   }
 
   #__next {
+    width : 136.6rem;
     height: 100%;
+    display : flex;
+    flex-direction : column;
+    align-items : center;
   }
 
   button {
