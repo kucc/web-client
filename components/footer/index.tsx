@@ -3,21 +3,20 @@ import * as S from './styles';
 const Footer: React.FC = () => {
   return (
     <S.Footer>
-      <S.Messages>
-        <S.MessagePair>
-          <S.MessageKey></S.MessageKey>
-          <S.MessageValue></S.MessageValue>
-        </S.MessagePair>
-        <S.MessagePair>
-          <S.MessageKey
-            style={{
-              width: '15rem',
-            }}
-          ></S.MessageKey>
-          <S.MessageValue></S.MessageValue>
-        </S.MessagePair>
-      </S.Messages>
-      <S.Logos></S.Logos>
+      <S.Container>
+        <S.DescriptionContainer>
+          <S.DescriptionLineContainer>
+            이부분 너무 어려워
+          </S.DescriptionLineContainer>
+          <S.DescriptionLineContainer>
+            디자인 고민좀 해봅시다
+          </S.DescriptionLineContainer>
+        </S.DescriptionContainer>
+        <S.LogoContainer>
+          <S.LogoCat src="images/Footer-Cat-Black-Big.png" />
+          <S.LogoWord src="images/Logo-Word-White-Big.png" />
+        </S.LogoContainer>
+      </S.Container>
     </S.Footer>
   );
 };

@@ -3,24 +3,30 @@ import * as S from './styles';
 const Header: React.FC = () => {
   return (
     <S.Header>
-      <S.LogoCharacter />
-      <S.LogoMessage />
-      <S.MenuItem>About</S.MenuItem>
-      <S.MenuDivider>|</S.MenuDivider>
-      <S.MenuItem>Portfolio</S.MenuItem>
-      <S.MenuDivider>|</S.MenuDivider>
-      <S.MenuItem>Recrult</S.MenuItem>
-      <S.MenuDivider>|</S.MenuDivider>
-      <S.MenuItem>Board</S.MenuItem>
-      <S.MenuDivider>|</S.MenuDivider>
-      <S.MenuItem>Gallery</S.MenuItem>
-      <S.Profile>
-        <S.ProfileButtons>
-          <S.ProfileButton />
-          <S.ProfileButton />
-        </S.ProfileButtons>
-        <S.ProfileImage />
-      </S.Profile>
+      <S.Container>
+        <S.LogoContainer>
+          <S.LogoCat src="images/Logo-Cat-Black-Big.png" />
+          <S.LogoWord src="images/Logo-Word-Black-Big.png" />
+        </S.LogoContainer>
+        <S.ButtonsContainer>
+          <S.Button>About</S.Button>
+          <S.Button>Portfolio</S.Button>
+          <S.Button>Recrult</S.Button>
+          <S.Button>Board</S.Button>
+          <S.Button>Gallery</S.Button>
+        </S.ButtonsContainer>
+        <S.ProfileContainer>
+          <S.ProfileIcon>
+            <div className="circle" />
+          </S.ProfileIcon>
+          <S.ProfileIcon>
+            <div className="circle" />
+          </S.ProfileIcon>
+          <S.ProfileAvatar>
+            <img src="images/Avatar-Black-Dummy.png" />
+          </S.ProfileAvatar>
+        </S.ProfileContainer>
+      </S.Container>
     </S.Header>
   );
 };
