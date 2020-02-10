@@ -36,6 +36,10 @@ const GlobalStyles = createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+  input[type=password] {
+    font-family: "Arial";
+  }
 `;
 
 export default GlobalStyles;

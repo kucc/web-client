@@ -160,6 +160,10 @@ export const FormInput = styled.input`
 
   margin-bottom: 1.6rem;
   padding: 0.8rem 3rem;
+
+  &::placeholder {
+    font-family: 'NanumSquare';
+  }
 `;
 
 export const FormCheckInputContainer = styled.div`
@@ -190,6 +194,10 @@ export const FormSendButton = styled.button`
   border-radius: 1.7rem;
 
   margin-top: 4.3rem;
+
+  &:disabled {
+    background-color: gray;
+  }
 `;
 
 export const SignUpFormSendButton = styled.button`
@@ -205,6 +213,10 @@ export const SignUpFormSendButton = styled.button`
   border-radius: 1.7rem;
 
   margin-top: 1.7rem;
+
+  &:disabled {
+    background-color: gray;
+  }
 `;
 
 export const FormButtonContainer = styled.div`
