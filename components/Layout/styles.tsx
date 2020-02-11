@@ -5,4 +5,14 @@ export const Layout = styled.div`
   background-color: white;
 `;
 
-export const Content = styled.div``;
+export const Content = styled.div`
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+`;
+
+export const Container = styled.div`
+  width: 100%;
+  max-width: 136.6rem;
+`;
