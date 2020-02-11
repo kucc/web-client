@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Layout = styled.div`
-  max-width: 136.6rem;
+  width: 100%;
   background-color: white;
 `;
 
