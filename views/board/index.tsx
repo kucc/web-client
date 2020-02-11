@@ -9,35 +9,55 @@ const Board: React.FC = () => {
         <Grid>
           <Row>
             <Col span={3}>
-              <S.Col1>이건 3짜리 column</S.Col1>
+              <S.Col1>
+                <h2>이건 3짜리 column</h2>
+              </S.Col1>
             </Col>
             <Col span={3}>
-              <S.Col1>이건 3짜리 column</S.Col1>
+              <S.Col1>
+                <h2>이건 3짜리 column</h2>
+              </S.Col1>
             </Col>
             <Col span={3}>
-              <S.Col1>이건 3짜리 column</S.Col1>
+              <S.Col1>
+                <h2>이건 3짜리 column</h2>
+              </S.Col1>
             </Col>
             <Col span={3}>
-              <S.Col1>이건 3짜리 column</S.Col1>
+              <S.Col1>
+                <h2>이건 3짜리 column</h2>
+              </S.Col1>
             </Col>
           </Row>
           <Row>
             <Col span={6}>
-              <S.Col2>이건 6짜리 column</S.Col2>
+              <S.Col2>
+                <h2>이건 6짜리 column</h2>
+              </S.Col2>
             </Col>
             <Col span={6}>
-              <S.Col2>이건 6짜리 column</S.Col2>
+              <S.Col2>
+                <h2>이건 6짜리 column</h2>
+              </S.Col2>
             </Col>
           </Row>
           <Row>
-            <Col span={12}>
-              <S.Col3>이건 12짜리 column</S.Col3>
-            </Col>
             <Col span={3}>
-              <S.Col3>이건 3짜리 column</S.Col3>
+              <S.Col3>
+                <h2>이건 3짜리 column</h2>
+              </S.Col3>
             </Col>
             <Col span={10}>
-              <S.Col3>이건 10짜리 column</S.Col3>
+              <S.Col3>
+                <h2>이건 10짜리 column</h2>
+              </S.Col3>
+            </Col>
+          </Row>
+          <Row>
+            <Col span={4} offset={4}>
+              <S.Col1>
+                <h2>4짜리 column을 4만큼 당기기</h2>
+              </S.Col1>
             </Col>
           </Row>
         </Grid>
