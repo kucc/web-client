@@ -1,13 +1,18 @@
 import styled from 'styled-components';
 
 export const Header = styled.div`
-  width: 136.6rem;
+  width: 100%;
   height: 16rem;
 
-  padding-top: 4rem;
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
 `;
 
 export const Container = styled.div`
+  max-width: 136.6rem;
+
   display: flex;
   flex-direction: row;
 

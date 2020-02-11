@@ -1,12 +1,8 @@
 import styled from 'styled-components';
 
 export const Footer = styled.div`
-  width: 136.6rem;
-  height: 8rem;
-
+  width: 100%;
   margin-top: 4rem;
-
-  background-color: #666666;
 
   display: flex;
   justify-content: center;
@@ -14,11 +10,17 @@ export const Footer = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 90.4rem;
-  display: flex;
+  width: 100%;
+  padding: 0rem 23rem;
 
-  align-items: center;
+  max-width: 136.6rem;
+  height: 8rem;
+
+  display: flex;
   justify-content: space-between;
+  align-items: center;
+
+  background-color: #666666;
 `;
 
 export const DescriptionContainer = styled.div`
