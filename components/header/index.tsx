@@ -10,7 +10,7 @@ const Header: React.FC = () => {
           <Row height="6rem">
             <Col span={2}>
               <S.LogoContainer>
-                <S.LogoImg src="images/main_logo.png" alt="HeaderLogo" />
+                <S.LogoImg src="images/Main-Logo.png" alt="HeaderLogo" />
               </S.LogoContainer>
             </Col>
             <Col span={6} offset={1}>
