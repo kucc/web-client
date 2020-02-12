@@ -1,5 +1,5 @@
 import { createContext, useReducer, useContext } from 'react';
-import { User } from '../views/App/interface/User';
+import { User } from '../views/App/model/user';
 
 export const UserStateContext = createContext(null);
 export const UserDispatchContext = createContext(null);

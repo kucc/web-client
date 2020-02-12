@@ -1,6 +1,7 @@
-import * as S from './styles';
-import { Grid, Row, Col } from '../../components/grid/styles';
 import Link from 'next/link';
+import * as S from './styles';
+
+import { Grid, Row, Col } from '../../components/grid/styles';
 
 const Header: React.FC = () => {
   return (

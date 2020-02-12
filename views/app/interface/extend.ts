@@ -1,4 +1,4 @@
-import { User } from './User';
+import { User } from '../model/user';
 
 declare module 'next' {
   export interface NextPageContext {
