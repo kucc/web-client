@@ -26,9 +26,9 @@ class MyApp extends App<AppProps> {
           throw new Error();
         }
 
-        const user = jwt.sign(accessToken, process.env.JWT_SECRET);
+        const { data }: any = jwt.verify(accessToken, process.env.JWT_SECRET);
 
-        props.user = user;
+        props.user = data;
         appContext.ctx.isLoggedIn = true;
       } catch (err) {
         appContext.ctx.isLoggedIn = false;
