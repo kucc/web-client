@@ -14,16 +14,21 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "isomorphic-unfetch": "^3.0.0",
+    "jsonwebtoken": "^8.5.1",
     "next": "^9.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "styled-components": "^5.0.0"
+    "styled-components": "^5.0.0",
+    "universal-cookie": "^4.0.3"
   },
   "devDependencies": {
-    "@types/styled-components": "^4.4.2",
+    "@types/jsonwebtoken": "^8.3.7",
     "@types/node": "^13.1.8",
     "@types/react": "^16.9.17",
+    "@types/styled-components": "^4.4.2",
+    "@types/universal-cookie": "^2.2.0",
     "babel-plugin-styled-components": "^1.10.6",
     "typescript": "^3.7.5"
   }
