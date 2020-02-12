@@ -2,39 +2,20 @@ import * as S from './styles';
 import Layout from '../../components/layout';
 import { Grid, Row, Col } from '../../components/grid/styles';
 import Link from 'next/link';
+import axios, { AxiosResponse } from 'axios';
+import { useState, useEffect } from 'react';
+
+const baseURL = 'http://localhost:4000/post';
+
+const getPage = page => {
+  const request = axios.get(`${baseURL}/?page=${page}`);
+  return request
+    .then(response => response.data)
+    .then(responseData => responseData.data);
+};
 
 // dummies
 const BoardMenuList = ['공지', '자유게시판', '교우게시판'];
-const BoardPostList = [
-  {
-    id: 1,
-    author: 'Author1',
-    title: 'Post1',
-    likes: 100,
-    date: new Date(),
-    views: 1000,
-  },
-  {
-    id: 2,
-    author: 'Author2',
-    title: 'Post2',
-    likes: 200,
-    date: new Date(),
-    views: 2000,
-  },
-  {
-    id: 3,
-    author: 'Author3',
-    title: 'Post3',
-    likes: 300,
-    date: new Date(),
-    views: 3000,
-  },
-];
-
-const BoardPost = BoardPostList.map(Post => {
-  return <div>{Post.id + Post.author + Post.title}</div>;
-});
 
 const BoardNavItems = BoardMenuList.map((Item, i) => (
   <li key={i}>
@@ -44,13 +25,29 @@ const BoardNavItems = BoardMenuList.map((Item, i) => (
     </S.BoardNavItem>
   </li>
 ));
+
 const Board: React.FC = () => {
+  const [posts, setPosts] = useState<Array<any> | null>([]);
+  const showPost = posts.map(post => {
+    return (
+      <S.BoardPost>
+        <S.BoardIndexAuthor>{post.userId}</S.BoardIndexAuthor>
+        <S.BoardIndexTitle>{post.title}</S.BoardIndexTitle>
+        <S.BoardIndexLikes>{post.likes}</S.BoardIndexLikes>
+        <S.BoardIndexDate>{post.createdAt.substring(0, 10)}</S.BoardIndexDate>
+        <S.BoardIndexViews>{post.views}</S.BoardIndexViews>
+      </S.BoardPost>
+    );
+  });
+  useEffect(() => {
+    getPage(1).then(returnedData => setPosts(returnedData));
+  }, []);
   return (
     <Layout>
       <S.Board>
         <S.BoardContainer>
           <Grid>
-            <Row>
+            <Row height="60vh">
               <Col span={2}>
                 <S.BoardNavbar>
                   <h2>{BoardNavItems}</h2>
@@ -63,7 +60,17 @@ const Board: React.FC = () => {
                     Home > Board > NoticeBoard
                   </S.BoardMenuHistory>
                 </S.BoardMenu>
-                <S.BoardContent>{BoardPost}</S.BoardContent>
+                <S.BoardContent>
+                  <S.BoardIndex>
+                    <S.BoardIndexAuthor>작성자</S.BoardIndexAuthor>
+                    <S.BoardIndexTitle>제목</S.BoardIndexTitle>
+                    <S.BoardIndexLikes>좋아요</S.BoardIndexLikes>
+                    <S.BoardIndexDate>작성일</S.BoardIndexDate>
+                    <S.BoardIndexViews>조회수</S.BoardIndexViews>
+                  </S.BoardIndex>
+                  {posts && showPost}
+                </S.BoardContent>
+                <S.BoardPagination>1 | 2 | 3 | 4</S.BoardPagination>
               </Col>
             </Row>
           </Grid>
