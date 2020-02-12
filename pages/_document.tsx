@@ -42,7 +42,7 @@ export default class MyDocument extends Document {
           <link
             rel="stylesheet"
             type="text/css"
-            href="/public/fonts/styles.css"
+            href="/static/fonts/styles.css"
           />
         </Head>
         <body>
