@@ -1,5 +1,6 @@
 import * as S from './styles';
 import { Grid, Row, Col } from '../../components/grid/styles';
+import Link from 'next/link';
 
 const Header: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ const Header: React.FC = () => {
           <Row height="6rem">
             <Col span={2}>
               <S.LogoContainer>
-                <S.LogoImg src="images/main_logo.png" alt="Logo" />
+                <S.LogoImg src="images/main_logo.png" alt="HeaderLogo" />
               </S.LogoContainer>
             </Col>
             <Col span={6} offset={1}>
@@ -17,7 +18,9 @@ const Header: React.FC = () => {
                 <S.MenuItem>About</S.MenuItem>
                 <S.MenuItem>Portfolio</S.MenuItem>
                 <S.MenuItem>Recrult</S.MenuItem>
-                <S.MenuItem>Board</S.MenuItem>
+                <Link href="/board">
+                  <S.MenuItem>Board</S.MenuItem>
+                </Link>
                 <S.MenuItem>Gallery</S.MenuItem>
               </S.MenuContainer>
             </Col>
@@ -35,19 +38,6 @@ const Header: React.FC = () => {
               </S.ProfileContainer>
             </Col>
           </Row>
-          {/* 
-
-        <S.ProfileContainer>
-          <S.ProfileIcon>
-            <div className="circle" />
-          </S.ProfileIcon>
-          <S.ProfileIcon>
-            <div className="circle" />
-          </S.ProfileIcon>
-          <S.ProfileAvatar>
-            <img src="images/Avatar-Black-Dummy.png" />
-          </S.ProfileAvatar>
-        </S.ProfileContainer> */}
         </Grid>
       </S.HeaderContainer>
     </S.Header>
