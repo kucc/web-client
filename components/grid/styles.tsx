@@ -5,13 +5,23 @@ interface ColPropsType {
   offset?: number;
 }
 
-export const Grid = styled.div``;
+interface RowPropsType {
+  height?: string;
+}
+
+export const Grid = styled.div`
+  width: 100%;
+`;
+
 export const Row = styled.div`
   &::after {
     content: '';
     clear: both;
     display: table;
   }
+  ${(props: RowPropsType) => (props.height ? `height:${props.height};` : null)}
+  display: flex;
+  align-items: center;
 `;
 
 const getWidthString = (span: number) => {
@@ -27,7 +37,8 @@ const getOffsetString = (offset: number) => {
 export const Col = styled.div`
   float: left;
   ${(props: ColPropsType) =>
-    props.span ? getWidthString(props.span) : 'width:100%'};
+    props.span ? getWidthString(props.span) : 'width:100%;'};
   ${(props: ColPropsType) =>
     props.offset ? getOffsetString(props.offset) : null};
+  padding: 0 1rem;
 `;
