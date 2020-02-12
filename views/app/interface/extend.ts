@@ -8,7 +8,7 @@ declare module 'next' {
 
 declare module 'next/app' {
   export interface AppProps {
-    user: User | string;
+    user: User;
     pathname: string;
   }
 }
