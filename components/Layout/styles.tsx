@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Layout = styled.div`
   width: 100%;
+  min-width: 960px;
   background-color: white;
 `;
 
@@ -12,6 +13,6 @@ export const Content = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 128rem;
+  max-width: 128rem;
   margin: auto;
 `;

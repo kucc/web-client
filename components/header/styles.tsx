@@ -10,7 +10,6 @@ export const Header = styled.div`
 `;
 
 export const HeaderContainer = styled.div`
-  width: 128rem;
   min-width: 96rem;
   display: flex;
   flex-direction: row;
