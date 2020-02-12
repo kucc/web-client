@@ -1,20 +1,24 @@
 import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 const GlobalStyles = createGlobalStyle`
-    @font-face {
-    font-family: 'NanumSquare';
-    src: url('../../static/fonts/NanumSquareEB.ttf') format('truetype');
-    font-weight: bolder;
-    }
-    @font-face {
-    font-family: 'NanumSquare';
-    src: url('../../static/fonts/NanumSquareB.ttf') format('truetype');
-    font-weight: bold;
-    }
-    @font-face {
-    font-family: 'NanumSquare';
-    src: url('../../static/fonts/NanumSquareR.ttf') format('truetype');
-    }
+  ${reset};
+
+  @font-face {
+  font-family: 'NanumSquare';
+  src: url('../../static/fonts/NanumSquareEB.ttf') format('truetype');
+  font-weight: bolder;
+  }
+  @font-face {
+  font-family: 'NanumSquare';
+  src: url('../../static/fonts/NanumSquareB.ttf') format('truetype');
+  font-weight: bold;
+  }
+  @font-face {
+  font-family: 'NanumSquare';
+  src: url('../../static/fonts/NanumSquareR.ttf') format('truetype');
+  }
+
   * {
     font-family: 'NanumSquare', sans-serif;
     font-display: 'block';
@@ -25,7 +29,7 @@ const GlobalStyles = createGlobalStyle`
 
   html,
   body {
-    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'NanumSquare', sans-serif;
     width : 100%;
     height: 100%;
     font-size: 10px;
