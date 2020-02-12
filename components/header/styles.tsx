@@ -9,6 +9,7 @@ export const Header = styled.div`
 `;
 
 export const HeaderContainer = styled.div`
+  width: 100%;
   min-width: 96rem;
   padding: 0 4rem;
   display: flex;
