@@ -1,9 +1,11 @@
 import * as S from './styles';
+import { NextPage } from 'next';
 
-import Layout from '../../components/layout';
+import { redirect } from '../../lib/auth';
 import { useFlip, useLogin } from './hooks';
+import Layout from '../../components/layout';
 
-const Login: React.FC = () => {
+const Login: NextPage = () => {
   const { flip, handleFlip } = useFlip();
   const {
     loginForm,
@@ -99,6 +101,15 @@ const Login: React.FC = () => {
       </S.Login>
     </Layout>
   );
+};
+
+Login.getInitialProps = ({ req, res, isLoggedIn, ...rest }) => {
+  if (isLoggedIn) {
+    redirect(res, '/');
+  }
+  return {
+    rest,
+  };
 };
 
 export default Login;
