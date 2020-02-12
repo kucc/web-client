@@ -19,7 +19,7 @@ export const UserProvider = ({ children, user }) => {
   return (
     <UserDispatchContext.Provider value={dispatch}>
       <UserStateContext.Provider value={state}>
-        <UserStateContext.Consumer>{children}</UserStateContext.Consumer>
+        {children}
       </UserStateContext.Provider>
     </UserDispatchContext.Provider>
   );
