@@ -7,12 +7,11 @@ export const Layout = styled.div`
 
 export const Content = styled.div`
   width: 100%;
-
   display: flex;
   justify-content: center;
 `;
 
 export const Container = styled.div`
-  width: 100%;
-  max-width: 136.6rem;
+  width: 128rem;
+  margin: auto;
 `;

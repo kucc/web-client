@@ -1,20 +1,42 @@
 import * as S from './styles';
+import { Grid, Row, Col } from '../../components/grid/styles';
 
 const Header: React.FC = () => {
   return (
     <S.Header>
-      <S.Container>
-        <S.LogoContainer>
-          <S.LogoCat src="images/Logo-Cat-Black-Big.png" />
-          <S.LogoWord src="images/Logo-Word-Black-Big.png" />
-        </S.LogoContainer>
-        <S.ButtonsContainer>
-          <S.Button>About</S.Button>
-          <S.Button>Portfolio</S.Button>
-          <S.Button>Recrult</S.Button>
-          <S.Button>Board</S.Button>
-          <S.Button>Gallery</S.Button>
-        </S.ButtonsContainer>
+      <S.HeaderContainer>
+        <Grid>
+          <Row height="6rem">
+            <Col span={2}>
+              <S.LogoContainer>
+                <S.LogoImg src="images/main_logo.png" alt="Logo" />
+              </S.LogoContainer>
+            </Col>
+            <Col span={6} offset={1}>
+              <S.MenuContainer>
+                <S.MenuItem>About</S.MenuItem>
+                <S.MenuItem>Portfolio</S.MenuItem>
+                <S.MenuItem>Recrult</S.MenuItem>
+                <S.MenuItem>Board</S.MenuItem>
+                <S.MenuItem>Gallery</S.MenuItem>
+              </S.MenuContainer>
+            </Col>
+            <Col span={2} offset={1}>
+              <S.ProfileContainer>
+                <S.ProfileIcon>
+                  <div className="circle" />
+                </S.ProfileIcon>
+                <S.ProfileIcon>
+                  <div className="circle" />
+                </S.ProfileIcon>
+                <S.ProfileAvatar>
+                  <img src="images/Avatar-Black-Dummy.png" />
+                </S.ProfileAvatar>
+              </S.ProfileContainer>
+            </Col>
+          </Row>
+          {/* 
+
         <S.ProfileContainer>
           <S.ProfileIcon>
             <div className="circle" />
@@ -25,8 +47,9 @@ const Header: React.FC = () => {
           <S.ProfileAvatar>
             <img src="images/Avatar-Black-Dummy.png" />
           </S.ProfileAvatar>
-        </S.ProfileContainer>
-      </S.Container>
+        </S.ProfileContainer> */}
+        </Grid>
+      </S.HeaderContainer>
     </S.Header>
   );
 };

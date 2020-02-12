@@ -3,61 +3,43 @@ import styled from 'styled-components';
 export const Header = styled.div`
   width: 100%;
   height: 16rem;
-
   display: flex;
   flex-direction: row;
 
   justify-content: center;
 `;
 
-export const Container = styled.div`
-  max-width: 136.6rem;
-
+export const HeaderContainer = styled.div`
+  width: 128rem;
+  min-width: 96rem;
   display: flex;
   flex-direction: row;
-
   align-items: center;
 `;
 
 export const LogoContainer = styled.div`
-  width: 26rem;
-  height: 8rem;
-
-  margin-left: 6rem;
-
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 `;
 
-export const LogoCat = styled.img`
-  width: 8rem;
-  height: 8rem;
+export const LogoImg = styled.img`
+  width: 100%;
 `;
 
-export const LogoWord = styled.img`
-  width: 16rem;
-  height: 8rem;
-`;
-
-export const ButtonsContainer = styled.div`
-  width: 60rem;
-
-  margin: 0rem 4rem;
-
+export const MenuContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
 `;
 
-export const Button = styled.button`
+export const MenuItem = styled.button`
   width: 12rem;
   height: 3rem;
-
   border: none;
   border-right: 2px solid black;
-
   background-color: white;
   font-size: 1.8rem;
   color: black;
@@ -65,22 +47,21 @@ export const Button = styled.button`
   &:hover {
     background-color: whitesmoke;
   }
+  &:last-child {
+    border: none;
+  }
 `;
 
 export const ProfileContainer = styled.div`
-  width: 15rem;
-
-  margin-left: 5rem;
-
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
 `;
 
 export const ProfileIcon = styled.div`
   width: 5rem;
   height: 5rem;
-
   display: flex;
   flex-direction: row;
   align-items: center;
