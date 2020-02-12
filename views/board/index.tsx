@@ -28,26 +28,28 @@ const BoardNavItems = BoardMenuList.map((Item, i) => (
 
 const Board: React.FC = () => {
   const [posts, setPosts] = useState<Array<any> | null>([]);
-  const showPost = posts.map(post => {
-    return (
-      <S.BoardPost>
-        <S.BoardIndexAuthor>{post.userId}</S.BoardIndexAuthor>
-        <S.BoardIndexTitle>{post.title}</S.BoardIndexTitle>
-        <S.BoardIndexLikes>{post.likes}</S.BoardIndexLikes>
-        <S.BoardIndexDate>{post.createdAt.substring(0, 10)}</S.BoardIndexDate>
-        <S.BoardIndexViews>{post.views}</S.BoardIndexViews>
-      </S.BoardPost>
-    );
-  });
+  const showPost =
+    posts &&
+    posts.map(post => {
+      return (
+        <S.BoardPost>
+          <S.BoardIndexAuthor>{post.userId}</S.BoardIndexAuthor>
+          <S.BoardIndexTitle>{post.title}</S.BoardIndexTitle>
+          <S.BoardIndexLikes>{post.likes}</S.BoardIndexLikes>
+          <S.BoardIndexDate>{post.createdAt.substring(0, 10)}</S.BoardIndexDate>
+          <S.BoardIndexViews>{post.views}</S.BoardIndexViews>
+        </S.BoardPost>
+      );
+    });
   useEffect(() => {
     getPage(1).then(returnedData => setPosts(returnedData));
   }, []);
   return (
     <Layout>
       <S.Board>
-        <S.BoardContainer>
-          <Grid>
-            <Row height="60vh">
+        <Grid>
+          <Row>
+            <S.BoardContainer>
               <Col span={2}>
                 <S.BoardNavbar>
                   <h2>{BoardNavItems}</h2>
@@ -68,13 +70,13 @@ const Board: React.FC = () => {
                     <S.BoardIndexDate>작성일</S.BoardIndexDate>
                     <S.BoardIndexViews>조회수</S.BoardIndexViews>
                   </S.BoardIndex>
-                  {posts && showPost}
+                  {showPost}
                 </S.BoardContent>
                 <S.BoardPagination>1 | 2 | 3 | 4</S.BoardPagination>
               </Col>
-            </Row>
-          </Grid>
-        </S.BoardContainer>
+            </S.BoardContainer>
+          </Row>
+        </Grid>
       </S.Board>
     </Layout>
   );

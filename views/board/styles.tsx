@@ -4,15 +4,18 @@ export const Board = styled.div``;
 
 export const BoardContainer = styled.div`
   /* border: 1px solid #d6d6d6; */
-  max-width: 108rem;
+  width: 100%;
+  max-width: 136.6rem;
   min-width: 96rem;
   margin: 0 auto;
+  min-height: 49.5rem;
 `;
 
 // for grid test purpose
 
 export const BoardNavbar = styled.ul`
   font-size: 1.8rem;
+  margin-top: 8rem;
 `;
 
 export const BoardNavItem = styled.div`
@@ -36,7 +39,7 @@ export const BoardMenu = styled.div`
   flex-direction: row;
   align-items: center;
   padding: 0 2rem;
-  margin: 4rem 0;
+  margin: 2rem 0 4rem 0;
 `;
 
 export const BoardMenuTitle = styled.div`
