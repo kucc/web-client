@@ -7,7 +7,7 @@ const Header: React.FC = () => {
     <S.Header>
       <S.HeaderContainer>
         <Grid>
-          <Row height="6rem">
+          <Row>
             <Col span={2}>
               <S.LogoContainer>
                 <S.LogoImg src="images/Main-Logo.png" alt="HeaderLogo" />
