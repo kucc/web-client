@@ -6,16 +6,15 @@ export const Footer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #666666;
 `;
 
 export const FooterContainer = styled.div`
-  width: 128rem;
   min-width: 96rem;
   height: 8rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #666666;
 `;
 
 export const DescriptionContainer = styled.div`

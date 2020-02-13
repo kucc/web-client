@@ -11,7 +11,7 @@ const Header: React.FC = () => {
     <S.Header>
       <S.HeaderContainer>
         <Grid>
-          <Row height="6rem">
+          <Row>
             <Col span={2}>
               <Link href="/">
                 <S.LogoContainer>

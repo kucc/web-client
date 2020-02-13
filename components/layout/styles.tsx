@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 export const Layout = styled.div`
   width: 100%;
-  min-width: 960px;
+  min-width: 96rem;
+  max-width: 136.6rem;
+  margin: 0 auto;
   background-color: white;
 `;
 
@@ -13,6 +15,7 @@ export const Content = styled.div`
 `;
 
 export const Container = styled.div`
-  max-width: 128rem;
-  margin: auto;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 4rem;
 `;

@@ -5,12 +5,13 @@ export const Header = styled.div`
   height: 16rem;
   display: flex;
   flex-direction: row;
-
   justify-content: center;
 `;
 
 export const HeaderContainer = styled.div`
+  width: 100%;
   min-width: 96rem;
+  padding: 0 4rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -57,7 +58,7 @@ export const ProfileContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 `;
 
 export const ProfileIcon = styled.div`
