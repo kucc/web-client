@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Board = styled.div``;
 
 export const BoardContainer = styled.div`
-  border: 1px solid #d6d6d6;
   width: 100%;
   max-width: 136.6rem;
   min-width: 96rem;

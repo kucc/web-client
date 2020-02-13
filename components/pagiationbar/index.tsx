@@ -27,6 +27,11 @@ const Pagination: React.FC<PaginationProps> = ({
       onClick={() => {
         setPage({ ...page, current: button });
       }}
+      style={
+        button == page.current
+          ? { fontWeight: 'bold', backgroundColor: '#c93333', color: 'white' }
+          : null
+      }
     >
       {button}
     </S.PageButton>
@@ -40,7 +45,12 @@ const Pagination: React.FC<PaginationProps> = ({
       <S.PageButton
         onClick={() => {
           if (page.start === 1) return alert('이전 페이지가 존재하지 않습니다');
-          else {
+          if (page.current > page.start) {
+            setPage({
+              ...page,
+              current: page.current - 1,
+            });
+          } else {
             setPage({
               ...page,
               start: page.start - 1,

@@ -14,7 +14,6 @@ export const PageButton = styled.button`
   padding: 8px 16px;
   font-weight: bold;
   &:hover {
-    background-color: #4caf50;
-    color: white;
+    color: #c93333;
   }
 `;
