@@ -23,6 +23,8 @@ export const LogoContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  cursor: pointer;
 `;
 
 export const LogoImg = styled.img`
@@ -93,5 +95,26 @@ export const ProfileAvatar = styled.div`
   img {
     width: 4rem;
     height: 4rem;
+  }
+`;
+
+export const LoginContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const LoginButton = styled.button`
+  border: none;
+
+  background-color: #666666;
+  color: white;
+  font-size: 2rem;
+  padding: 0.5rem;
+
+  &:hover {
+    background-color: #e1e1e1;
+    color: black;
   }
 `;

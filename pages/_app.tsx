@@ -1,1 +1,1 @@
-export { default } from '../views/App';
+export { default } from '../views/app';
