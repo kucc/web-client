@@ -21,13 +21,21 @@ const Header: React.FC = () => {
             </Col>
             <Col span={6} offset={1}>
               <S.MenuContainer>
-                <S.MenuItem>About</S.MenuItem>
-                <S.MenuItem>Portfolio</S.MenuItem>
-                <S.MenuItem>Recruit</S.MenuItem>
+                <Link href="about">
+                  <S.MenuItem>About</S.MenuItem>
+                </Link>
+                <Link href="/portfolio">
+                  <S.MenuItem>Portfolio</S.MenuItem>
+                </Link>
+                <Link href="/recruit">
+                  <S.MenuItem>Recruit</S.MenuItem>
+                </Link>
                 <Link href="/board">
                   <S.MenuItem>Board</S.MenuItem>
                 </Link>
-                <S.MenuItem>Gallery</S.MenuItem>
+                <Link href="/gallery">
+                  <S.MenuItem>Gallery</S.MenuItem>
+                </Link>
               </S.MenuContainer>
             </Col>
             <Col span={2} offset={1}>
