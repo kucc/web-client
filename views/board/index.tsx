@@ -4,6 +4,7 @@ import { Grid, Row, Col } from '../../components/grid/styles';
 import Link from 'next/link';
 import axios, { AxiosResponse } from 'axios';
 import { useState, useEffect } from 'react';
+import Pagination from '../../components/pagiationbar';
 
 const baseURL = 'http://localhost:4000/post';
 
@@ -16,7 +17,6 @@ const getPage = page => {
 
 // dummies
 const BoardMenuList = ['공지', '자유게시판', '교우게시판'];
-
 const BoardNavItems = BoardMenuList.map((Item, i) => (
   <li key={i}>
     <S.BoardNavItem>
@@ -28,11 +28,14 @@ const BoardNavItems = BoardMenuList.map((Item, i) => (
 
 const Board: React.FC = () => {
   const [posts, setPosts] = useState<Array<any> | null>([]);
+  const updatePage = id => {
+    getPage(id).then(returnedData => setPosts(returnedData));
+  };
   const showPost =
     posts &&
-    posts.map(post => {
+    posts.map((post, i) => {
       return (
-        <S.BoardPost>
+        <S.BoardPost key={i}>
           <S.BoardIndexAuthor>{post.userId}</S.BoardIndexAuthor>
           <S.BoardIndexTitle>{post.title}</S.BoardIndexTitle>
           <S.BoardIndexLikes>{post.likes}</S.BoardIndexLikes>
@@ -72,11 +75,11 @@ const Board: React.FC = () => {
                   </S.BoardIndex>
                   {showPost}
                 </S.BoardContent>
-                <S.BoardPagination>1 | 2 | 3 | 4</S.BoardPagination>
               </Col>
             </S.BoardContainer>
           </Row>
         </Grid>
+        <Pagination numberOfPosts={34} updatePage={updatePage} />
       </S.Board>
     </Layout>
   );

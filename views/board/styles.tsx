@@ -3,15 +3,13 @@ import styled from 'styled-components';
 export const Board = styled.div``;
 
 export const BoardContainer = styled.div`
-  /* border: 1px solid #d6d6d6; */
+  border: 1px solid #d6d6d6;
   width: 100%;
   max-width: 136.6rem;
   min-width: 96rem;
   margin: 0 auto;
-  min-height: 49.5rem;
+  min-height: 45rem;
 `;
-
-// for grid test purpose
 
 export const BoardNavbar = styled.ul`
   font-size: 1.8rem;
@@ -94,11 +92,4 @@ export const BoardPost = styled.div`
   align-items: center;
   font-size: 1.2rem;
   border-bottom: 1px solid #d6d6d6;
-`;
-
-export const BoardPagination = styled.div`
-  display: flex;
-  margin: 2rem 0;
-  font-size: 1.4rem;
-  justify-content: center;
 `;
