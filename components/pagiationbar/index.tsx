@@ -11,12 +11,12 @@ const Pagination: React.FC<PaginationProps> = ({
   numberOfPosts,
   updatePage,
 }) => {
-  const numberOfPages = Math.ceil(numberOfPosts / 10);
   const pagesArray = Array();
+  const numberOfPages = Math.ceil(numberOfPosts / 10);
   const [page, setPage] = useState({
     start: 1,
     current: 1,
-    end: numberOfPages < 3 ? numberOfPages : 3,
+    end: 1,
   });
   for (let i = page.start; i < page.end + 1; i++) {
     pagesArray.push(i);
@@ -36,7 +36,10 @@ const Pagination: React.FC<PaginationProps> = ({
       {button}
     </S.PageButton>
   ));
-  console.log(page);
+  console.log('page', page);
+  useEffect(() => {
+    setPage({ ...page, end: numberOfPages < 5 ? numberOfPages : 5 });
+  }, [numberOfPosts]);
   useEffect(() => {
     updatePage(page.current);
   }, [page.current]);
@@ -44,7 +47,8 @@ const Pagination: React.FC<PaginationProps> = ({
     <S.PaginationBar>
       <S.PageButton
         onClick={() => {
-          if (page.start === 1) return alert('이전 페이지가 존재하지 않습니다');
+          if (page.start === 1 && page.current === 1)
+            return alert('이전 페이지가 존재하지 않습니다');
           if (page.current > page.start) {
             setPage({
               ...page,
@@ -65,7 +69,7 @@ const Pagination: React.FC<PaginationProps> = ({
       {PageButtons}
       <S.PageButton
         onClick={() => {
-          if (page.end === numberOfPages)
+          if (page.end === numberOfPages && page.current === page.end)
             return alert('다음 페이지가 존재하지 않습니다');
           if (page.current < page.end) {
             setPage({

@@ -1,19 +1,10 @@
 import * as S from './styles';
+import { useState, useEffect } from 'react';
 import Layout from '../../components/layout';
 import { Grid, Row, Col } from '../../components/grid/styles';
-import Link from 'next/link';
-import axios, { AxiosResponse } from 'axios';
-import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import axios from 'axios';
 import Pagination from '../../components/pagiationbar';
-
-const baseURL = 'http://localhost:4000/post';
-
-const getPage = page => {
-  const request = axios.get(`${baseURL}/?page=${page}`);
-  return request
-    .then(response => response.data)
-    .then(responseData => responseData.data);
-};
 
 // dummies
 const BoardMenuList = ['공지', '자유게시판', '교우게시판'];
@@ -26,16 +17,28 @@ const BoardNavItems = BoardMenuList.map((Item, i) => (
   </li>
 ));
 
+// for fetching data
+const baseURL = 'http://localhost:4000/post';
+const getPage = page => {
+  const request = axios.get(`${baseURL}/?page=${page}`);
+  return request.then(response => response.data);
+};
+
 const Board: React.FC = () => {
+  const router = useRouter();
   const [posts, setPosts] = useState<Array<any> | null>([]);
+  const [numberOfPosts, setNumberOfPosts] = useState(null);
   const updatePage = id => {
-    getPage(id).then(returnedData => setPosts(returnedData));
+    getPage(id).then(returnedData => {
+      setPosts(returnedData.data);
+      setNumberOfPosts(returnedData.count);
+    });
   };
   const showPost =
     posts &&
     posts.map((post, i) => {
       return (
-        <S.BoardPost key={i}>
+        <S.BoardPost key={i} onClick={() => getPage(post.id)}>
           <S.BoardIndexAuthor>{post.userId}</S.BoardIndexAuthor>
           <S.BoardIndexTitle>{post.title}</S.BoardIndexTitle>
           <S.BoardIndexLikes>{post.likes}</S.BoardIndexLikes>
@@ -45,7 +48,7 @@ const Board: React.FC = () => {
       );
     });
   useEffect(() => {
-    getPage(1).then(returnedData => setPosts(returnedData));
+    getPage(1).then(returnedData => setPosts(returnedData.data));
   }, []);
   return (
     <Layout>
@@ -79,7 +82,7 @@ const Board: React.FC = () => {
             </S.BoardContainer>
           </Row>
         </Grid>
-        <Pagination numberOfPosts={34} updatePage={updatePage} />
+        <Pagination numberOfPosts={numberOfPosts} updatePage={updatePage} />
       </S.Board>
     </Layout>
   );
