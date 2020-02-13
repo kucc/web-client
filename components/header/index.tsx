@@ -23,7 +23,7 @@ const Header: React.FC = () => {
               <S.MenuContainer>
                 <S.MenuItem>About</S.MenuItem>
                 <S.MenuItem>Portfolio</S.MenuItem>
-                <S.MenuItem>Recrult</S.MenuItem>
+                <S.MenuItem>Recruit</S.MenuItem>
                 <Link href="/board">
                   <S.MenuItem>Board</S.MenuItem>
                 </Link>
