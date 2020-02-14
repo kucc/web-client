@@ -2,9 +2,9 @@ import * as S from './styles';
 import { useState, useEffect } from 'react';
 import Layout from '../../components/layout';
 import { Grid, Row, Col } from '../../components/grid/styles';
-import { useRouter } from 'next/router';
-import axios from 'axios';
 import Pagination from '../../components/pagiationbar';
+import Post from '../../components/post';
+import { getPage, getPost } from './hook';
 
 // dummies
 const BoardMenuList = ['공지', '자유게시판', '교우게시판'];
@@ -17,15 +17,7 @@ const BoardNavItems = BoardMenuList.map((Item, i) => (
   </li>
 ));
 
-// for fetching data
-const baseURL = 'http://localhost:4000/post';
-const getPage = page => {
-  const request = axios.get(`${baseURL}/?page=${page}`);
-  return request.then(response => response.data);
-};
-
 const Board: React.FC = () => {
-  const router = useRouter();
   const [posts, setPosts] = useState<Array<any> | null>([]);
   const [numberOfPosts, setNumberOfPosts] = useState(null);
   const updatePage = id => {
@@ -37,15 +29,7 @@ const Board: React.FC = () => {
   const showPost =
     posts &&
     posts.map((post, i) => {
-      return (
-        <S.BoardPost key={i} onClick={() => getPage(post.id)}>
-          <S.BoardIndexAuthor>{post.userId}</S.BoardIndexAuthor>
-          <S.BoardIndexTitle>{post.title}</S.BoardIndexTitle>
-          <S.BoardIndexLikes>{post.likes}</S.BoardIndexLikes>
-          <S.BoardIndexDate>{post.createdAt.substring(0, 10)}</S.BoardIndexDate>
-          <S.BoardIndexViews>{post.views}</S.BoardIndexViews>
-        </S.BoardPost>
-      );
+      return <Post getPost={getPost} post={post} key={i} />;
     });
   useEffect(() => {
     getPage(1).then(returnedData => setPosts(returnedData.data));
