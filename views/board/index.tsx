@@ -1,22 +1,13 @@
 import * as S from './styles';
+import { useState, useEffect } from 'react';
 import Layout from '../../components/layout';
 import { Grid, Row, Col } from '../../components/grid/styles';
-import Link from 'next/link';
-import axios, { AxiosResponse } from 'axios';
-import { useState, useEffect } from 'react';
-
-const baseURL = 'http://localhost:4000/post';
-
-const getPage = page => {
-  const request = axios.get(`${baseURL}/?page=${page}`);
-  return request
-    .then(response => response.data)
-    .then(responseData => responseData.data);
-};
+import Pagination from '../../components/pagiationbar';
+import Post from '../../components/post';
+import { getPage, getPost } from './hook';
 
 // dummies
 const BoardMenuList = ['공지', '자유게시판', '교우게시판'];
-
 const BoardNavItems = BoardMenuList.map((Item, i) => (
   <li key={i}>
     <S.BoardNavItem>
@@ -28,21 +19,20 @@ const BoardNavItems = BoardMenuList.map((Item, i) => (
 
 const Board: React.FC = () => {
   const [posts, setPosts] = useState<Array<any> | null>([]);
+  const [numberOfPosts, setNumberOfPosts] = useState(null);
+  const updatePage = id => {
+    getPage(id).then(returnedData => {
+      setPosts(returnedData.data);
+      setNumberOfPosts(returnedData.count);
+    });
+  };
   const showPost =
     posts &&
-    posts.map(post => {
-      return (
-        <S.BoardPost>
-          <S.BoardIndexAuthor>{post.userId}</S.BoardIndexAuthor>
-          <S.BoardIndexTitle>{post.title}</S.BoardIndexTitle>
-          <S.BoardIndexLikes>{post.likes}</S.BoardIndexLikes>
-          <S.BoardIndexDate>{post.createdAt.substring(0, 10)}</S.BoardIndexDate>
-          <S.BoardIndexViews>{post.views}</S.BoardIndexViews>
-        </S.BoardPost>
-      );
+    posts.map((post, i) => {
+      return <Post getPost={getPost} post={post} key={i} />;
     });
   useEffect(() => {
-    getPage(1).then(returnedData => setPosts(returnedData));
+    getPage(1).then(returnedData => setPosts(returnedData.data));
   }, []);
   return (
     <Layout>
@@ -72,11 +62,11 @@ const Board: React.FC = () => {
                   </S.BoardIndex>
                   {showPost}
                 </S.BoardContent>
-                <S.BoardPagination>1 | 2 | 3 | 4</S.BoardPagination>
               </Col>
             </S.BoardContainer>
           </Row>
         </Grid>
+        <Pagination numberOfPosts={numberOfPosts} updatePage={updatePage} />
       </S.Board>
     </Layout>
   );

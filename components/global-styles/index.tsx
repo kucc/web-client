@@ -52,6 +52,18 @@ const GlobalStyles = createGlobalStyle`
   input[type=password] {
     font-family: "Arial";
   }
+
+  textarea:focus {
+  outline: none;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+
+  input:focus {
+    outline: none;
+  }
 `;
 
 export default GlobalStyles;
