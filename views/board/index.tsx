@@ -1,7 +1,7 @@
 import * as S from './styles';
-import { useState, useEffect } from 'react';
 import Layout from '../../components/layout';
 import { Grid, Row, Col } from '../../components/grid/styles';
+<<<<<<< HEAD
 import Pagination from '../../components/pagiationbar';
 import { getPage, getPost } from './hook';
 
@@ -29,6 +29,14 @@ const Board: React.FC = () => {
   useEffect(() => {
     getPage(1).then(returnedData => setPosts(returnedData.data));
   }, []);
+=======
+import { usePost } from './hooks';
+import Pagination from '../../components/board/pagiationbar';
+import BoardNavigation from '../../components/board/boardnavigation';
+
+const Board: React.FC = () => {
+  const { totalPostsCount, updatePage, postsPerPage } = usePost();
+>>>>>>> <refactor> refactor board view page - modulize custom hooks
   return (
     <Layout>
       <S.Board>
@@ -37,7 +45,7 @@ const Board: React.FC = () => {
             <S.BoardContainer>
               <Col span={2}>
                 <S.BoardNavbar>
-                  <h2>{BoardNavItems}</h2>
+                  <BoardNavigation />
                 </S.BoardNavbar>
               </Col>
               <Col span={10}>
@@ -55,13 +63,13 @@ const Board: React.FC = () => {
                     <S.BoardIndexDate>작성일</S.BoardIndexDate>
                     <S.BoardIndexViews>조회수</S.BoardIndexViews>
                   </S.BoardIndex>
-                  {showPost}
+                  {postsPerPage}
                 </S.BoardContent>
               </Col>
             </S.BoardContainer>
           </Row>
         </Grid>
-        <Pagination numberOfPosts={numberOfPosts} updatePage={updatePage} />
+        <Pagination numberOfPosts={totalPostsCount} updatePage={updatePage} />
       </S.Board>
     </Layout>
   );

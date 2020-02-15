@@ -1,5 +1,4 @@
 import * as S from './styles';
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 interface PostProps {
@@ -15,7 +14,7 @@ const Post: React.FC<PostProps> = ({ post, getPost }) => {
         <S.BoardIndexTitle>{post.title}</S.BoardIndexTitle>
         <S.BoardIndexLikes>{post.likes}</S.BoardIndexLikes>
         <S.BoardIndexDate>{post.createdAt.substring(0, 10)}</S.BoardIndexDate>
-        <S.BoardIndexViews>{post.views}</S.BoardIndexViews>
+        <S.BoardIndexViews>{post.view}</S.BoardIndexViews>
       </S.BoardPost>
     </Link>
   );
