@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
             </Col>
             <Col span={2}>
               <S.LogoContainer>
-                <S.LogoImg src="images/Main-Logo-White.png" alt="FooterLogo" />
+                <S.LogoImg src="/images/Main-Logo-White.png" alt="FooterLogo" />
               </S.LogoContainer>
             </Col>
           </Row>

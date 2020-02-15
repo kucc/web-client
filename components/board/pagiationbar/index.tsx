@@ -1,5 +1,4 @@
 import * as S from './styles';
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 interface PaginationProps {
@@ -36,7 +35,6 @@ const Pagination: React.FC<PaginationProps> = ({
       {button}
     </S.PageButton>
   ));
-  console.log('page', page);
   useEffect(() => {
     setPage({ ...page, end: numberOfPages < 5 ? numberOfPages : 5 });
   }, [numberOfPosts]);
