@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import Layout from '../../components/layout';
 import { Grid, Row, Col } from '../../components/grid/styles';
 import Pagination from '../../components/pagiationbar';
-import Post from '../../components/post';
 import { getPage, getPost } from './hook';
 
 // dummies
@@ -26,11 +25,7 @@ const Board: React.FC = () => {
       setNumberOfPosts(returnedData.count);
     });
   };
-  const showPost =
-    posts &&
-    posts.map((post, i) => {
-      return <Post getPost={getPost} post={post} key={i} />;
-    });
+  const showPost = true;
   useEffect(() => {
     getPage(1).then(returnedData => setPosts(returnedData.data));
   }, []);
