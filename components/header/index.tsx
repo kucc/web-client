@@ -15,13 +15,13 @@ const Header: React.FC = () => {
             <Col span={2}>
               <Link href="/">
                 <S.LogoContainer>
-                  <S.LogoImg src="images/Main-Logo.png" alt="HeaderLogo" />
+                  <S.LogoImg src="/images/Main-Logo.png" alt="HeaderLogo" />
                 </S.LogoContainer>
               </Link>
             </Col>
             <Col span={6} offset={1}>
               <S.MenuContainer>
-                <Link href="about">
+                <Link href="/about">
                   <S.MenuItem>About</S.MenuItem>
                 </Link>
                 <Link href="/portfolio">
@@ -48,11 +48,11 @@ const Header: React.FC = () => {
                     <div className="circle" />
                   </S.ProfileIcon>
                   <S.ProfileAvatar>
-                    <img src="images/Avatar-Black-Dummy.png" />
+                    <img src="/images/Avatar-Black-Dummy.png" />
                   </S.ProfileAvatar>
                 </S.ProfileContainer>
               ) : (
-                <Link href="login">
+                <Link href="/login">
                   <S.LoginButton>로그인</S.LoginButton>
                 </Link>
               )}
