@@ -8,23 +8,22 @@ import {
 
 const baseURL = 'http://localhost:4000/post';
 
-const getPost = id => {
-  const request = axios.get(`${baseURL}/${id}`);
+const getPost = postId => {
+  const request = axios.get(`${baseURL}/${postId}`);
   return request.then(response => response.data);
 };
 
 export const usePost = () => {
   const router = useRouter();
   const { id } = router.query;
-  const [post, setPosts] = useState(null);
+  const [post, setPost] = useState(null);
   const [createdAt, setCreatedAt] = useState({
     YYYYMMDD: null,
     HHMM: null,
   });
-  console.log(post, 'post');
   useEffect(() => {
     getPost(id).then(returnedData => {
-      setPosts(returnedData);
+      setPost(returnedData);
     });
   }, []);
   useEffect(() => {
@@ -35,5 +34,10 @@ export const usePost = () => {
       });
     }
   }, [post]);
-  return { post, createdAt };
+  const updatePost = postId => {
+    getPost(postId).then(returnedData => {
+      setPost(returnedData);
+    });
+  };
+  return { post, createdAt, updatePost };
 };
