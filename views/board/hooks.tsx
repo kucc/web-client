@@ -9,7 +9,7 @@ const getPage = page => {
   return request.then(response => response.data);
 };
 
-export const usePost = () => {
+export const usePosts = () => {
   const [posts, setPosts] = useState(null);
   const [totalPostsCount, setTotalPostsCount] = useState(null);
   useEffect(() => {

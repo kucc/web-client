@@ -1,12 +1,12 @@
 import * as S from './styles';
 import Layout from '../../components/layout';
 import { Grid, Row, Col } from '../../components/grid/styles';
-import { usePost } from './hooks';
+import { usePosts } from './hooks';
 import Pagination from '../../components/board/pagiationbar';
 import BoardNavigation from '../../components/board/boardnavigation';
 
 const Board: React.FC = () => {
-  const { totalPostsCount, updatePage, postsPerPage } = usePost();
+  const { totalPostsCount, updatePage, postsPerPage } = usePosts();
   return (
     <Layout>
       <S.Board>
