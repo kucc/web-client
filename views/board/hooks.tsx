@@ -12,12 +12,6 @@ const getPage = page => {
 export const usePosts = () => {
   const [posts, setPosts] = useState(null);
   const [totalPostsCount, setTotalPostsCount] = useState(null);
-  useEffect(() => {
-    getPage(1).then(returnedData => {
-      setPosts(returnedData.data);
-      setTotalPostsCount(returnedData.count);
-    });
-  }, []);
   const updatePage = id => {
     getPage(id).then(returnedData => {
       setPosts(returnedData.data);
