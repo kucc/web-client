@@ -1,25 +1,50 @@
 import * as S from './styles';
 import Layout from '../../components/layout';
 import { Grid, Row, Col } from '../../components/grid/styles';
-import Router, { useRouter } from 'next/router';
 import BoardNavigation from '../../components/board/boardnavigation';
 import { usePost } from './hooks';
 import Link from 'next/link';
+import { NextPage } from 'next';
 import {
   faChevronDown,
   faChevronUp,
   faEye,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import fetch from 'isomorphic-unfetch';
+import {
+  dateStringParserInYYYYMMDD,
+  dateStringParserInHHMM,
+} from '../../lib/dateStringParser';
 
-const Post: React.FC = () => {
-  const router = useRouter();
-  const { post, createdAt, updatePost } = usePost();
-  const id = router.query.id;
-  let numId: number = 0;
-  if (typeof id === 'string') {
-    numId = parseInt(id);
+interface PostProps {
+  Id?: number;
+  title?: string;
+  content?: string;
+  userId?: number;
+  createdAt?: string;
+  views?: number;
+  statusCode?;
+}
+
+const Post: NextPage<PostProps> = props => {
+  let postObject = null;
+  let { Id, title, content, userId, createdAt, views } = props;
+  if (props.statusCode === 400) {
+    postObject = usePost().postObject;
   }
+  if (postObject) {
+    Id = postObject.Id;
+    title = postObject.title;
+    content = postObject.content;
+    userId = postObject.userId;
+    createdAt = postObject.createdAt;
+    views = postObject.views;
+  }
+  const createdAtInYYYYMMDD = createdAt
+    ? dateStringParserInYYYYMMDD(createdAt)
+    : null;
+  const createdAtInHHMM = createdAt ? dateStringParserInHHMM(createdAt) : null;
   return (
     // 개별 POST 페이지
     <Layout>
@@ -35,7 +60,13 @@ const Post: React.FC = () => {
               <Col span={10}>
                 <S.BoardContent>
                   <S.PostNavigation>
-                    <Link href="/board/[id-1]" as={`/board/${numId - 1}`}>
+                    <Link
+                      href={{
+                        pathname: '/board/[id]',
+                        query: { postId: Id - 1 },
+                      }}
+                      as={`/board/${Id - 1}`}
+                    >
                       <S.PostNavigationButton>
                         <S.PostNavigationIcon>
                           <FontAwesomeIcon icon={faChevronUp} />{' '}
@@ -43,7 +74,13 @@ const Post: React.FC = () => {
                         이전글
                       </S.PostNavigationButton>
                     </Link>
-                    <Link href="/board/[id+1]" as={`/board/${numId + 1}`}>
+                    <Link
+                      href={{
+                        pathname: '/board/[id]',
+                        query: { postId: Id + 1 },
+                      }}
+                      as={`/board/${Id + 1}`}
+                    >
                       <S.PostNavigationButton>
                         <S.PostNavigationIcon>
                           <FontAwesomeIcon icon={faChevronDown} />{' '}
@@ -56,27 +93,27 @@ const Post: React.FC = () => {
                     </Link>
                   </S.PostNavigation>
                   <S.PostInfo>
-                    <S.PostTitle>{post && post.title} [댓글 수]</S.PostTitle>
+                    <S.PostTitle>{title} [댓글 수]</S.PostTitle>
                     <S.PostCreatedTime>
                       <S.PostCreatedTimeYYYYMMDD>
-                        {createdAt.YYYYMMDD}
+                        {createdAtInYYYYMMDD}
                       </S.PostCreatedTimeYYYYMMDD>
                       <S.PostCreatedTimeHHMM>
-                        {createdAt.HHMM}
+                        {createdAtInHHMM}
                       </S.PostCreatedTimeHHMM>
                     </S.PostCreatedTime>
                   </S.PostInfo>
                   <S.PostDivider />
                   <S.PostSubInfo>
-                    <S.PostAuthor>작성자: {post && post.userId}</S.PostAuthor>
+                    <S.PostAuthor>작성자: {userId}</S.PostAuthor>
                     <S.PostViews>
-                      <FontAwesomeIcon icon={faEye} /> {post && post.views}
+                      <FontAwesomeIcon icon={faEye} /> {views}
                     </S.PostViews>
                   </S.PostSubInfo>
                   <S.PostContent>
-                    <p>{post && post.content}</p>
+                    <p>{content}</p>
                     {/* 이전글/다음글 기능 체크용 */}
-                    <h1 style={{ color: 'red' }}>ID: {post && post.Id}</h1>
+                    <h1 style={{ color: 'red' }}>ID: {Id}</h1>
                   </S.PostContent>
                 </S.BoardContent>
               </Col>
@@ -86,6 +123,12 @@ const Post: React.FC = () => {
       </S.Board>
     </Layout>
   );
+};
+
+Post.getInitialProps = async ({ query }) => {
+  const res = await fetch(`http://localhost:4000/post/${query.postId}`);
+  const data = await res.json();
+  return data;
 };
 
 export default Post;

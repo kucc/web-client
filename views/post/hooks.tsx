@@ -16,28 +16,23 @@ const getPost = postId => {
 export const usePost = () => {
   const router = useRouter();
   const { id } = router.query;
-  const [post, setPost] = useState(null);
-  const [createdAt, setCreatedAt] = useState({
+  const [postObject, setPostObject] = useState(null);
+  const [createdAtObject, setCreatedAtObject] = useState({
     YYYYMMDD: null,
     HHMM: null,
   });
   useEffect(() => {
     getPost(id).then(returnedData => {
-      setPost(returnedData);
+      setPostObject(returnedData);
     });
   }, []);
   useEffect(() => {
-    if (post) {
-      setCreatedAt({
-        YYYYMMDD: dateStringParserInYYYYMMDD(post.createdAt),
-        HHMM: dateStringParserInHHMM(post.createdAt),
+    if (postObject) {
+      setCreatedAtObject({
+        YYYYMMDD: dateStringParserInYYYYMMDD(postObject.createdAtObject),
+        HHMM: dateStringParserInHHMM(postObject.createdAtObject),
       });
     }
-  }, [post]);
-  const updatePost = postId => {
-    getPost(postId).then(returnedData => {
-      setPost(returnedData);
-    });
-  };
-  return { post, createdAt, updatePost };
+  }, [postObject]);
+  return { postObject, createdAtObject };
 };

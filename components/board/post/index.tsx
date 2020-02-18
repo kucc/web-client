@@ -8,7 +8,10 @@ interface PostProps {
 
 const Post: React.FC<PostProps> = ({ post, getPost }) => {
   return (
-    <Link href="/board/[id]" as={`/board/${post.Id}`}>
+    <Link
+      href={{ pathname: '/board/[id]', query: { postId: post.Id } }}
+      as={`/board/${post.Id}`}
+    >
       <S.BoardPost onClick={() => getPost(post.Id)}>
         <S.BoardIndexAuthor>{post.userId}</S.BoardIndexAuthor>
         <S.BoardIndexTitle>{post.title}</S.BoardIndexTitle>
