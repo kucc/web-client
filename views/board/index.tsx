@@ -1,12 +1,11 @@
 import * as S from './styles';
 import Layout from '../../components/layout';
 import { Grid, Row, Col } from '../../components/grid/styles';
-import { usePosts } from './hooks';
-import Pagination from '../../components/board/pagiationbar';
 import BoardNavigation from '../../components/board/boardnavigation';
+import { NextPage } from 'next';
+import PostsPerPage from '../../components/board/postsperpage';
 
-const Board: React.FC = () => {
-  const { totalPostsCount, updatePage, postsPerPage } = usePosts();
+const Board: NextPage = props => {
   return (
     <Layout>
       <S.Board>
@@ -33,16 +32,21 @@ const Board: React.FC = () => {
                     <S.BoardIndexDate>작성일</S.BoardIndexDate>
                     <S.BoardIndexViews>조회수</S.BoardIndexViews>
                   </S.BoardIndex>
-                  {postsPerPage}
+                  <PostsPerPage initialPosts={props} />
                 </S.BoardContent>
               </Col>
             </S.BoardContainer>
           </Row>
         </Grid>
-        <Pagination numberOfPosts={totalPostsCount} updatePage={updatePage} />
       </S.Board>
     </Layout>
   );
+};
+
+Board.getInitialProps = async ({ req }) => {
+  const res = await fetch(`http://localhost:4000/post/?page=1`);
+  const data = await res.json();
+  return data;
 };
 
 export default Board;

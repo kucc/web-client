@@ -26,7 +26,6 @@ export const BoardIndex = styled.div`
 
 export const BoardContent = styled.div``;
 export const PostNavigation = styled.div`
-  /* border: 1px solid #d6d6d6; */
   width: 100%;
   display: flex;
   margin-bottom: 2rem;
