@@ -4,7 +4,7 @@ import { Grid, Row, Col } from '../../components/grid/styles';
 import BoardNavigation from '../../components/board/boardnavigation';
 import { NextPage } from 'next';
 import PostsPerPage from '../../components/board/postsperpage';
-
+import fetch from 'isomorphic-unfetch';
 const Board: NextPage = props => {
   return (
     <Layout>
@@ -44,7 +44,7 @@ const Board: NextPage = props => {
 };
 
 Board.getInitialProps = async ({ req }) => {
-  const res = await fetch(`http://localhost:4000/post/?page=1`);
+  const res = await fetch(`http://localhost:4000/post?page=1`);
   const data = await res.json();
   return data;
 };
