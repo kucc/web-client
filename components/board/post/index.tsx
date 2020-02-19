@@ -12,7 +12,7 @@ const Post: React.FC<PostProps> = ({ post, getPost }) => {
       href={{ pathname: '/board/[id]', query: { postId: post.Id } }}
       as={`/board/${post.Id}`}
     >
-      <S.BoardPost onClick={() => getPost(post.Id)}>
+      <S.BoardPost>
         <S.BoardIndexAuthor>{post.userId}</S.BoardIndexAuthor>
         <S.BoardIndexTitle>{post.title}</S.BoardIndexTitle>
         <S.BoardIndexLikes>{post.likes}</S.BoardIndexLikes>

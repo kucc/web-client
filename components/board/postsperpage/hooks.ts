@@ -13,7 +13,7 @@ const usePosts = initialPosts => {
     });
   };
   const getPage = page => {
-    const request = axios.get(`${baseURL}/?page=${page}`);
+    const request = axios.get(`${baseURL}?page=${page}`);
     return request.then(response => response);
   };
   const updatePage = id => {
