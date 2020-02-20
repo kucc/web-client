@@ -11,7 +11,25 @@ const newPost: NextPage = () => {
       <S.NewPost>
         <Grid>
           <Row>
-            <Col span={12}>이 얍</Col>
+            <S.BoardContainer>
+              <Col span={2}>
+                <S.BoardNavbar>
+                  <BoardNavigation />
+                </S.BoardNavbar>
+              </Col>
+              <Col span={10}>
+                <S.BoardMenu>
+                  <S.BoardMenuHistory>
+                    Home > Board > NoticeBoard >{' '}
+                    <span style={{ fontWeight: 'bold' }}>New</span>
+                  </S.BoardMenuHistory>
+                </S.BoardMenu>
+                <S.NewPostTitleContainer>
+                  <S.NewPostTitleLabel>제목</S.NewPostTitleLabel>
+                  <S.NewPostTitleInput placeholder="제목을 입력해주세요" />
+                </S.NewPostTitleContainer>
+              </Col>
+            </S.BoardContainer>
           </Row>
         </Grid>
       </S.NewPost>
