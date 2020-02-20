@@ -1,19 +1,19 @@
+import { NextPage } from 'next';
+import fetch from 'isomorphic-unfetch';
+
 import * as S from './styles';
 import Layout from '../../components/layout';
 import { Grid, Row, Col } from '../../components/grid/styles';
 import BoardNavigation from '../../components/board/board-navigation';
-import { NextPage } from 'next';
 import Posts from '../../components/board/posts';
-import fetch from 'isomorphic-unfetch';
+import { redirect } from '../../lib/auth';
 
 interface BoardProps {
   data?: Object;
   rest?: Object;
-  isLoggedIn?: any;
 }
 
-const Board: NextPage<BoardProps> = ({ data, isLoggedIn, rest }) => {
-  console.log(data);
+const Board: NextPage<BoardProps> = ({ data, rest }) => {
   return (
     <Layout>
       <S.Board>
@@ -52,10 +52,12 @@ const Board: NextPage<BoardProps> = ({ data, isLoggedIn, rest }) => {
 };
 
 Board.getInitialProps = async ({ req, res, isLoggedIn, ...rest }) => {
-  console.log('initialprops');
   const response = await fetch(`http://localhost:4000/post?page=1`);
   const data = await response.json();
-  return { data, isLoggedIn, rest };
+  // if (!isLoggedIn) {
+  //   redirect(res, '/');
+  // }
+  return { data, rest };
 };
 
 export default Board;

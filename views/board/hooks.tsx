@@ -1,6 +1,6 @@
 // for fetching data
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Post from '../../components/board/post';
 
 const baseURL = 'http://localhost:4000/post';
