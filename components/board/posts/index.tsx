@@ -1,5 +1,5 @@
 import Post from '../post';
-import Pagination from '../pagiationbar';
+import Pagination from '../pagiation-bar';
 import usePosts from './hooks';
 
 interface PostsPerPageProps {

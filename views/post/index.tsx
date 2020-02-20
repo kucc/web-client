@@ -1,7 +1,7 @@
 import * as S from './styles';
 import Layout from '../../components/layout';
 import { Grid, Row, Col } from '../../components/grid/styles';
-import BoardNavigation from '../../components/board/boardnavigation';
+import BoardNavigation from '../../components/board/board-navigation';
 import { usePost } from './hooks';
 import Link from 'next/link';
 import { NextPage } from 'next';

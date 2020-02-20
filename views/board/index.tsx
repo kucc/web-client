@@ -1,9 +1,9 @@
 import * as S from './styles';
 import Layout from '../../components/layout';
 import { Grid, Row, Col } from '../../components/grid/styles';
-import BoardNavigation from '../../components/board/boardnavigation';
+import BoardNavigation from '../../components/board/board-navigation';
 import { NextPage } from 'next';
-import PostsPerPage from '../../components/board/postsperpage';
+import PostsPerPage from '../../components/board/posts';
 import fetch from 'isomorphic-unfetch';
 const Board: NextPage = props => {
   return (
@@ -43,8 +43,8 @@ const Board: NextPage = props => {
   );
 };
 
-Board.getInitialProps = async ({ req }) => {
-  const res = await fetch(`http://localhost:4000/post?page=1`);
+Board.getInitialProps = async ({ req, res, isLoggedIn, ...rest }) => {
+  res = await fetch(`http://localhost:4000/post?page=1`);
   const data = await res.json();
   return data;
 };
