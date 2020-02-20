@@ -1,12 +1,19 @@
+import { NextPage } from 'next';
+import fetch from 'isomorphic-unfetch';
+
 import * as S from './styles';
 import Layout from '../../components/layout';
 import { Grid, Row, Col } from '../../components/grid/styles';
-import { usePost } from './hooks';
-import Pagination from '../../components/board/pagiationbar';
-import BoardNavigation from '../../components/board/boardnavigation';
+import BoardNavigation from '../../components/board/board-navigation';
+import Posts from '../../components/board/posts';
+import { redirect } from '../../lib/auth';
 
-const Board: React.FC = () => {
-  const { totalPostsCount, updatePage, postsPerPage } = usePost();
+interface BoardProps {
+  data?: Object;
+  rest?: Object;
+}
+
+const Board: NextPage<BoardProps> = ({ data, rest }) => {
   return (
     <Layout>
       <S.Board>
@@ -33,16 +40,24 @@ const Board: React.FC = () => {
                     <S.BoardIndexDate>작성일</S.BoardIndexDate>
                     <S.BoardIndexViews>조회수</S.BoardIndexViews>
                   </S.BoardIndex>
-                  {postsPerPage}
+                  <Posts initialPosts={data} />
                 </S.BoardContent>
               </Col>
             </S.BoardContainer>
           </Row>
         </Grid>
-        <Pagination numberOfPosts={totalPostsCount} updatePage={updatePage} />
       </S.Board>
     </Layout>
   );
+};
+
+Board.getInitialProps = async ({ req, res, isLoggedIn, ...rest }) => {
+  const response = await fetch(`http://localhost:4000/post?page=1`);
+  const data = await response.json();
+  // if (!isLoggedIn) {
+  //   redirect(res, '/');
+  // }
+  return { data, rest };
 };
 
 export default Board;

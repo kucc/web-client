@@ -31,4 +31,8 @@ export const BoardPost = styled.div`
   align-items: center;
   font-size: 1.2rem;
   border-bottom: 1px solid #d6d6d6;
+  &:hover {
+    cursor: pointer;
+    background-color: #fafafa;
+  }
 `;
