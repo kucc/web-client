@@ -41,6 +41,7 @@ export const PostNavigationIcon = styled.i`
 `;
 export const BackButton = styled.button`
   margin-left: auto;
+  border: 1px solid #d6d6d6;
   border-radius: 0.5rem;
 `;
 

@@ -15,7 +15,6 @@ export const GalleryContainer = styled.div`
 `;
 
 export const GalleryMenu = styled.div`
-  /* border: 1px solid #d6d6d6; */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -33,10 +32,54 @@ export const GalleryMenuHistory = styled.div`
   margin-left: auto;
   margin-right: 1rem;
 `;
+
 export const ImageContainer = styled.div`
   height: 30rem;
   border: 1px solid #d6d6d6;
   border-radius: 2rem;
   background-color: #fcfcfc;
   margin-bottom: 2rem;
+`;
+
+export const GallerySearchContainer = styled.div`
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+`;
+export const GallerySearchInputContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #d6d6d6;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  width: 80%;
+`;
+
+export const GallerySearchInput = styled.input`
+  border: none;
+  font-size: 1.2rem;
+  margin-left: 1rem;
+  width: 100%;
+`;
+
+export const GallerySearchButton = styled.button`
+  border: 1px solid #d6d6d6;
+  border-radius: 2rem;
+  color: #707070;
+  height: 3.2rem;
+  padding: 0.5rem 1rem;
+`;
+
+export const GalleryNewPostButton = styled.button`
+  border: 1px solid #d6d6d6;
+  border-radius: 2rem;
+  background-color: #c93333;
+  color: #ffffff;
+  height: 3.2rem;
+  padding: 0.5rem 1rem;
+  margin-top: 2rem;
+  float: right;
 `;
