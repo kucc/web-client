@@ -1,36 +1,41 @@
-import * as S from './styles';
-import Layout from '../../components/layout';
-import { Grid, Row, Col } from '../../components/grid/styles';
-import BoardNavigation from '../../components/board/board-navigation';
-import { usePost } from './hooks';
 import Link from 'next/link';
 import { NextPage } from 'next';
+import fetch from 'isomorphic-unfetch';
 import {
   faChevronDown,
   faChevronUp,
   faEye,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import fetch from 'isomorphic-unfetch';
+
+import * as S from './styles';
+import Layout from '../../components/layout';
+import BoardNavigation from '../../components/board/board-navigation';
+import { Grid, Row, Col } from '../../components/grid/styles';
+
+import { usePost } from './hooks';
 import {
   parseDateStringIntoHHMM,
   parseDateStringIntoYYMMDD,
 } from '../../lib/dateStringParser';
 
 interface PostProps {
-  Id?: number;
-  title?: string;
-  content?: string;
-  userId?: number;
-  createdAt?: string;
-  views?: number;
-  statusCode?;
+  data?: {
+    Id?: number;
+    title?: string;
+    content?: string;
+    userId?: number;
+    createdAt?: string;
+    views?: number;
+    statusCode?: number;
+  };
+  rest?: Object;
 }
 
-const Post: NextPage<PostProps> = props => {
+const Post: NextPage<PostProps> = ({ data, rest }) => {
   let postObject = null;
-  let { Id, title, content, userId, createdAt, views } = props;
-  if (props.statusCode === 400) {
+  let { Id, title, content, userId, createdAt, views } = data;
+  if (data.statusCode === 400) {
     postObject = usePost().postObject;
   }
   if (postObject) {
@@ -125,10 +130,10 @@ const Post: NextPage<PostProps> = props => {
   );
 };
 
-Post.getInitialProps = async ({ query }) => {
+Post.getInitialProps = async ({ query, ...rest }) => {
   const res = await fetch(`http://localhost:4000/post/${query.postId}`);
   const data = await res.json();
-  return data;
+  return { data, ...rest };
 };
 
 export default Post;

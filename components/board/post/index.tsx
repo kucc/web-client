@@ -3,10 +3,9 @@ import Link from 'next/link';
 
 interface PostProps {
   post;
-  getPost;
 }
 
-const Post: React.FC<PostProps> = ({ post, getPost }) => {
+const Post: React.FC<PostProps> = ({ post }) => {
   return (
     <Link
       href={{ pathname: '/board/[id]', query: { postId: post.Id } }}

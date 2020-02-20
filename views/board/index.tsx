@@ -3,9 +3,17 @@ import Layout from '../../components/layout';
 import { Grid, Row, Col } from '../../components/grid/styles';
 import BoardNavigation from '../../components/board/board-navigation';
 import { NextPage } from 'next';
-import PostsPerPage from '../../components/board/posts';
+import Posts from '../../components/board/posts';
 import fetch from 'isomorphic-unfetch';
-const Board: NextPage = props => {
+
+interface BoardProps {
+  data?: Object;
+  rest?: Object;
+  isLoggedIn?: any;
+}
+
+const Board: NextPage<BoardProps> = ({ data, isLoggedIn, rest }) => {
+  console.log(data);
   return (
     <Layout>
       <S.Board>
@@ -32,7 +40,7 @@ const Board: NextPage = props => {
                     <S.BoardIndexDate>작성일</S.BoardIndexDate>
                     <S.BoardIndexViews>조회수</S.BoardIndexViews>
                   </S.BoardIndex>
-                  <PostsPerPage initialPosts={props} />
+                  <Posts initialPosts={data} />
                 </S.BoardContent>
               </Col>
             </S.BoardContainer>
@@ -44,9 +52,10 @@ const Board: NextPage = props => {
 };
 
 Board.getInitialProps = async ({ req, res, isLoggedIn, ...rest }) => {
-  res = await fetch(`http://localhost:4000/post?page=1`);
-  const data = await res.json();
-  return data;
+  console.log('initialprops');
+  const response = await fetch(`http://localhost:4000/post?page=1`);
+  const data = await response.json();
+  return { data, isLoggedIn, rest };
 };
 
 export default Board;

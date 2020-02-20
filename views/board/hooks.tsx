@@ -17,15 +17,9 @@ export const usePosts = () => {
       setPosts(returnedData.data);
     });
   };
-  const getPost = postId => {
-    const request = axios.get(`${baseURL}/${postId}`);
-    return request.then(response => {
-      return response.data;
-    });
-  };
+
   const postsPerPage =
-    posts &&
-    posts.map((post, i) => <Post getPost={getPost} post={post} key={i} />);
+    posts && posts.map((post, i) => <Post post={post} key={i} />);
   return {
     posts,
     totalPostsCount,

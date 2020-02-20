@@ -2,18 +2,14 @@ import Post from '../post';
 import Pagination from '../pagiation-bar';
 import usePosts from './hooks';
 
-interface PostsPerPageProps {
+interface PostsProps {
   initialPosts;
 }
 
-const PostsPerPage: React.FC<PostsPerPageProps> = ({ initialPosts }) => {
-  const { getPost, updatePage, posts, totalPostsCount } = usePosts(
-    initialPosts,
-  );
+const Posts: React.FC<PostsProps> = ({ initialPosts }) => {
+  const { updatePage, posts, totalPostsCount } = usePosts(initialPosts);
   const Posts = () => {
-    return posts.data.map((post, i) => (
-      <Post getPost={getPost} post={post} key={i} />
-    ));
+    return posts.data.map((post, i) => <Post post={post} key={i} />);
   };
   return (
     <>
@@ -23,4 +19,4 @@ const PostsPerPage: React.FC<PostsPerPageProps> = ({ initialPosts }) => {
   );
 };
 
-export default PostsPerPage;
+export default Posts;
