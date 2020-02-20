@@ -1,26 +1,26 @@
-const YYYYMMDDParser = (dateObj: Date) => {
-  const yyyy = dateObj.getFullYear().toString();
-  const mm = dateObj.getMonth().toString();
-  const dd = dateObj.getDate().toString();
+const parseDateIntoYYYYMMDD = (dateObj: Date) => {
+  const yyyy = dateObj.getFullYear();
+  const mm = dateObj.getMonth();
+  const dd = dateObj.getDate();
   return `${yyyy}. ${mm}. ${dd}`;
 };
 
-const HHMMParser = (dateObj: Date) => {
-  const hh = dateObj.getHours().toString();
-  const mm = dateObj.getMinutes().toString();
+const parseDateIntoHHMM = (dateObj: Date) => {
+  const hh = dateObj.getHours();
+  const mm = dateObj.getMinutes();
   return `${hh}:${mm}`;
 };
 
-const dateStringParserInYYYYMMDD = (dateString: string) => {
+const parseDateStringIntoYYMMDD = (dateString: string) => {
   const parsedDate = new Date(dateString);
-  const dateInYYYYMMDD = YYYYMMDDParser(parsedDate);
+  const dateInYYYYMMDD = parseDateIntoYYYYMMDD(parsedDate);
   return dateInYYYYMMDD;
 };
 
-const dateStringParserInHHMM = (dateString: string) => {
+const parseDateStringIntoHHMM = (dateString: string) => {
   const parsedDate = new Date(dateString);
-  const dateInHHMM = HHMMParser(parsedDate);
+  const dateInHHMM = parseDateIntoHHMM(parsedDate);
   return dateInHHMM;
 };
 
-export { dateStringParserInYYYYMMDD, dateStringParserInHHMM };
+export { parseDateStringIntoYYMMDD, parseDateStringIntoHHMM };

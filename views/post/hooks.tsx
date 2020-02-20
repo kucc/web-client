@@ -2,8 +2,8 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import {
-  dateStringParserInYYYYMMDD,
-  dateStringParserInHHMM,
+  parseDateStringIntoYYMMDD,
+  parseDateStringIntoHHMM,
 } from '../../lib/dateStringParser';
 
 const baseURL = 'http://localhost:4000/post';
@@ -29,8 +29,8 @@ export const usePost = () => {
   useEffect(() => {
     if (postObject) {
       setCreatedAtObject({
-        YYYYMMDD: dateStringParserInYYYYMMDD(postObject.createdAtObject),
-        HHMM: dateStringParserInHHMM(postObject.createdAtObject),
+        YYYYMMDD: parseDateStringIntoYYMMDD(postObject.createdAtObject),
+        HHMM: parseDateStringIntoHHMM(postObject.createdAtObject),
       });
     }
   }, [postObject]);

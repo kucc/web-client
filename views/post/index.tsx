@@ -13,8 +13,8 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import fetch from 'isomorphic-unfetch';
 import {
-  dateStringParserInYYYYMMDD,
-  dateStringParserInHHMM,
+  parseDateStringIntoHHMM,
+  parseDateStringIntoYYMMDD,
 } from '../../lib/dateStringParser';
 
 interface PostProps {
@@ -42,9 +42,9 @@ const Post: NextPage<PostProps> = props => {
     views = postObject.views;
   }
   const createdAtInYYYYMMDD = createdAt
-    ? dateStringParserInYYYYMMDD(createdAt)
+    ? parseDateStringIntoYYMMDD(createdAt)
     : null;
-  const createdAtInHHMM = createdAt ? dateStringParserInHHMM(createdAt) : null;
+  const createdAtInHHMM = createdAt ? parseDateStringIntoHHMM(createdAt) : null;
   return (
     // 개별 POST 페이지
     <Layout>
