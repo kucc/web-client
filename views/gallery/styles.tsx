@@ -71,6 +71,12 @@ export const GallerySearchButton = styled.button`
   color: #707070;
   height: 3.2rem;
   padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: #fff1f1;
+    border: 1px solid #c93333;
+    color: #a00b0b;
+  }
 `;
 
 export const GalleryNewPostButton = styled.button`
@@ -82,4 +88,9 @@ export const GalleryNewPostButton = styled.button`
   padding: 0.5rem 1rem;
   margin-top: 2rem;
   float: right;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: #a00b0b;
+    font-weight: bold;
+  }
 `;
