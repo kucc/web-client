@@ -12,7 +12,6 @@ export const Introduction = styled.div`
 
   display: flex;
   flex-direction: column;
-
   justify-content: flex-end;
 `;
 
@@ -28,14 +27,11 @@ export const IntroductionMessage = styled.div`
 `;
 
 export const IntroductionTitle = styled.div`
-  letter-spacing: 12.96px;
-  font-size: 5.4rem;
-
-  text-align: center;
-  letter-spacing: 12.96px;
   color: #ffffff;
   opacity: 1;
-
+  letter-spacing: 12.96px;
+  font-size: 5.4rem;
+  text-align: center;
   font-weight: bold;
 `;
 
@@ -64,7 +60,6 @@ export const LeftCircleContainer = styled.div`
   height: 6rem;
 
   display: flex;
-
   margin-left: auto;
 `;
 
@@ -73,62 +68,76 @@ export const RightCircleContainer = styled.div`
   height: 6rem;
 
   display: flex;
-
   margin-right: auto;
 `;
 
 export const Circle = styled.div`
   width: 6rem;
   height: 6rem;
+
   border-style: solid;
   border-width: 3px;
   border-color: #707070;
+  border-radius: 50%;
+
   background-color: #ffffff;
+
   display: flex;
   justify-content: center;
   align-items: center;
-
-  border-radius: 50%;
 `;
 
 export const CircleWords = styled.div`
-  display: flex;
-  text-align: center;
+  color: #707070;
   font-size: 1.2rem;
   letter-spacing: 0.36px;
-  color: #707070;
+  text-align: center;
+
+  display: flex;
 `;
 
 export const LineContainer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+
+  justify-content: flex-end;
 `;
 
-export const Line = styled.hr`
+export const Line = styled.div`
   width: 100%;
   border: 3px;
   border-style: solid;
   border-color: #707070;
-  margin-right: 3rem;
+
   display: flex;
-  margin-top: 3rem;
+  flex-direction: row;
+
+  justify-content: center;
+  align-items: center;
+
+  margin: 3rem 0rem;
 `;
 
 export const ArrowContainer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+
+  justify-content: flex-end;
 `;
 
-export const Arrow = styled.hr`
+export const Arrow = styled.div`
   width: 100%;
   border: 3px;
   border-style: solid;
   border-color: #707070;
-  margin-right: 3rem;
+
   display: flex;
-  margin-top: 3rem;
+  flex-direction: row;
+
+  justify-content: center;
+  align-items: center;
+
+  margin: 3rem 0rem;
 `;
 
 export const TitleContainer = styled.div`
@@ -183,53 +192,123 @@ export const PresidentComment = styled.div`
   margin-top: 3rem;
 `;
 
-export const ExecutivesContainer = styled.div`
-  width: 100%;
-  height: 50rem;
+export const ExecutivesPicture = styled.img`
+  width: 53rem;
+  height: 36rem;
+  margin-right: 1rem;
   display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
-export const ExecutivesPicture = styled.img`
-  width: 100%;
-  height: 36rem;
-  display: flex;
-`;
 export const ExecutivesTitle = styled.div`
   font-size: 3rem;
   color: #c93333;
   font-weight: bold;
   letter-spacing: 3px;
-  margin-bottom: 6rem;
+
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
+
+  margin-right: 10rem;
+  margin-bottom: 6rem;
 `;
+
+export const ExecutivesColor = styled.div`
+  background: #eab1b1;
+
+  margin-left: 3rem;
+  width: 11.9rem;
+  height: 36rem;
+`;
+
 export const ExecutivesCommentContainer = styled.div`
   height: 3rem;
   font-size: 1.8rem;
   letter-spacing: 0.72px;
   color: #707070;
+
   display: flex;
-
-  justify-content: center;
   align-items: center;
-
+  justify-content: center;
+  margin-right: 10rem;
   margin-bottom: 3rem;
 
   .content {
-    display: flex;
+    width: 20rem;
   }
 
   .name {
     width: 18rem;
+
     text-align: right;
   }
 `;
 
-export const RowContainer = styled.div`
-  margin-bottom: 270px;
+export const RowContainer4 = styled.div`
+  height: 39rem;
 `;
 
-export const RowContainerSmall = styled.div`
-  margin-bottom: 99px;
+export const KeyWord = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const KeyWordPic = styled.div`
+  width: 35rem;
+  height: 24rem;
+
+  position: relative;
+
+  color: white;
+  font-size: 2.4rem;
+  flex-direction: column;
+
+  justify-content: flex-end;
+  display: flex;
+  align-items: center;
+
+  background: url('/images/About-KeyWord1-Big.png');
+`;
+
+export const KeyWordTitle = styled.div`
+  color: white;
+  font-size: 2.4rem;
+  display: flex;
+  flex-direction: row;
+  margin: 3rem 0rem;
+`;
+
+export const KeyWordExpl = styled.div``;
+
+export const RowContainer0 = styled.div`
+  margin-bottom: 27rem;
+`;
+
+export const RowContainer1 = styled.div`
+  height: 24rem;
+
+  background-color: #f3f3f3;
+
+  margin-bottom: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+`;
+
+export const RowContainer2 = styled.div`
+  margin-bottom: 10rem;
+`;
+
+export const RowContainer3 = styled.div`
+  height: 50rem;
+
+  background-color: #f3f3f3;
+
+  margin-bottom: 27rem;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
 `;
