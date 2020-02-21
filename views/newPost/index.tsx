@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { NextPage } from 'next';
+import Editor from '../../components/editor';
 import * as S from './styles';
 import Layout from '../../components/layout';
 import BoardNavigation from '../../components/board/board-navigation';
@@ -28,6 +29,7 @@ const newPost: NextPage = () => {
                   <S.NewPostTitleLabel>제목</S.NewPostTitleLabel>
                   <S.NewPostTitleInput placeholder="제목을 입력해주세요" />
                 </S.NewPostTitleContainer>
+                <Editor />
               </Col>
             </S.BoardContainer>
           </Row>

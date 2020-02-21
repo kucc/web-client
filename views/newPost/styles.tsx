@@ -48,6 +48,7 @@ export const NewPostTitleContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-bottom: 2rem;
 `;
 export const NewPostTitleLabel = styled.label`
   margin-right: 1rem;
