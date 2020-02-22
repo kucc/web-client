@@ -1,5 +1,7 @@
 import * as S from './styles';
 import { NextPage } from 'next';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 import { redirect } from '../../lib/auth';
 import { useFlip, useLogin } from './hooks';
@@ -62,40 +64,23 @@ const Login: NextPage = () => {
                 </S.FormButtonContainer>
               </S.LoginFormContainer>
             </S.LoginFormFlipContainer>
-            <S.SignUpFormFlipContainer flip={flip}>
-              <S.SignUpFormContainer>
-                <S.SignUpTitleContainer>
+            <S.PasswordChangeFormFlipContainer flip={flip}>
+              <S.PasswordChangeFormContainer>
+                <S.PasswordChangeTitleContainer>
                   <div className="title">비밀번호 찾기</div>
-                </S.SignUpTitleContainer>
+                  <button onClick={handleFlip}>
+                    <FontAwesomeIcon icon={faChevronLeft} />
+                  </button>
+                </S.PasswordChangeTitleContainer>
                 <S.FormInputContainer>
                   <S.FormInput
                     autoComplete="off"
                     name="name"
                     placeholder="이름"
                   />
-                  <S.FormInput
-                    autoComplete="off"
-                    name="email"
-                    placeholder="이메일"
-                  />
-                  <S.FormInput
-                    autoComplete="off"
-                    name="password"
-                    placeholder="비밀번호"
-                  />
-                  <S.FormInput
-                    name="check-password"
-                    autoComplete="off"
-                    placeholder="비밀번호 확인"
-                  />
-                  <S.FormCheckInputContainer>
-                    <input type="checkbox" id="check" />
-                    <span>(필수) 개인정보 수집 이용동의</span>
-                  </S.FormCheckInputContainer>
                 </S.FormInputContainer>
-                <S.SignUpFormSendButton disabled>변경</S.SignUpFormSendButton>
-              </S.SignUpFormContainer>
-            </S.SignUpFormFlipContainer>
+              </S.PasswordChangeFormContainer>
+            </S.PasswordChangeFormFlipContainer>
           </S.FormContainer>
         </S.LoginContainer>
       </S.Login>
