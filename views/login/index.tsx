@@ -69,7 +69,7 @@ const Login: NextPage = () => {
                 <S.PasswordChangeTitleContainer>
                   <div className="title">비밀번호 찾기</div>
                   <button onClick={handleFlip}>
-                    <FontAwesomeIcon icon={faChevronLeft} />
+                    <FontAwesomeIcon icon={faChevronLeft} size="2x" />
                   </button>
                 </S.PasswordChangeTitleContainer>
                 <S.FormInputContainer>
