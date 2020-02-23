@@ -85,7 +85,8 @@ const Board: NextPage<BoardProps> = ({ data, rest }) => {
 };
 
 Board.getInitialProps = async ({ req, res, isLoggedIn, ...rest }) => {
-  const response = await fetch(`http://localhost:4000/post?page=1`);
+  console.log('Board initialProps!!');
+  const response = await fetch(`http://localhost:4000/post?type=FREE&page=1`);
   const data = await response.json();
   // if (!isLoggedIn) {
   //   redirect(res, '/');

@@ -9,7 +9,7 @@ const usePosts = initialPosts => {
   const [totalPostsCount, setTotalPostsCount] = useState(initialPosts.count);
 
   const getPage = page => {
-    const request = axios.get(`${baseURL}?page=${page}`);
+    const request = axios.get(`${baseURL}?type=FREE&page=${page}`);
     return request.then(response => response);
   };
 
