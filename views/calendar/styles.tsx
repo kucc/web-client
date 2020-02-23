@@ -13,7 +13,7 @@ export const CalendarTitleContainer = styled.div`
   margin: 0 auto;
 `;
 
-export const CalendarContainer = styled.div`
+export const CalendarFormatContainer = styled.div`
   width: 100%;
   max-width: 136.6rem;
   min-width: 96rem;
@@ -57,3 +57,13 @@ export const ScheduleTitle = styled.div`
 `;
 
 export const Schedules = styled.div``;
+
+export const CalendarContainer = styled.div`
+  width: 100%;
+`;
+
+export const CalendarHeader = styled.div``;
+export const ChangeMonthButton = styled.button``;
+export const MonthTitle = styled.div``;
+export const DaysOfTheWeek = styled.div``;
+export const CalendarTable = styled.div``;
