@@ -3,6 +3,7 @@ import styled from 'styled-components';
 interface ColPropsType {
   span?: number;
   offset?: number;
+  pad?: number;
 }
 
 interface RowPropsType {
@@ -40,5 +41,5 @@ export const Col = styled.div`
     props.span ? getWidthString(props.span) : 'width:100%;'};
   ${(props: ColPropsType) =>
     props.offset ? getOffsetString(props.offset) : null};
-  padding: 0 1rem;
+  padding: ${(props: ColPropsType) => (props.pad ? `0 ${props.pad}rem` : 0)};
 `;
