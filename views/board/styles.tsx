@@ -77,3 +77,57 @@ export const BoardPost = styled.div`
   font-size: 1.2rem;
   border-bottom: 1px solid #d6d6d6;
 `;
+
+export const BoardSearchContainer = styled.div`
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+`;
+export const BoardSearchInputContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #d6d6d6;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  width: 80%;
+`;
+
+export const BoardSearchInput = styled.input`
+  border: none;
+  font-size: 1.2rem;
+  margin-left: 1rem;
+  width: 100%;
+`;
+
+export const BoardSearchButton = styled.button`
+  border: 1px solid #d6d6d6;
+  border-radius: 2rem;
+  color: #707070;
+  height: 3.2rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: #fff1f1;
+    border: 1px solid #c93333;
+    color: #a00b0b;
+  }
+`;
+
+export const BoardNewPostButton = styled.button`
+  border: 1px solid #d6d6d6;
+  border-radius: 2rem;
+  background-color: #c93333;
+  color: #ffffff;
+  height: 3.2rem;
+  padding: 0.5rem 1rem;
+  margin-top: 2rem;
+  float: right;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: #a00b0b;
+    font-weight: bold;
+  }
+`;

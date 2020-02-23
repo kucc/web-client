@@ -1,5 +1,9 @@
 import { NextPage } from 'next';
 import fetch from 'isomorphic-unfetch';
+import { faSearch, faPen } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useState } from 'react';
+import Link from 'next/link';
 
 import * as S from './styles';
 import Layout from '../../components/layout';
@@ -14,6 +18,10 @@ interface BoardProps {
 }
 
 const Board: NextPage<BoardProps> = ({ data, rest }) => {
+  const [searchField, setSearchField] = useState('');
+  const handleChange = e => {
+    setSearchField(e.target.value);
+  };
   return (
     <Layout>
       <S.Board>
@@ -45,6 +53,31 @@ const Board: NextPage<BoardProps> = ({ data, rest }) => {
               </Col>
             </S.BoardContainer>
           </Row>
+          <Row>
+            <Col span={4} offset={4}>
+              <S.BoardSearchContainer>
+                <S.BoardSearchInputContainer>
+                  <FontAwesomeIcon icon={faSearch} size="2x" />
+                  <S.BoardSearchInput
+                    placeholder="검색어를 입력해주세요"
+                    onChange={handleChange}
+                    value={searchField}
+                  />
+                </S.BoardSearchInputContainer>
+                <S.BoardSearchButton>Search</S.BoardSearchButton>
+              </S.BoardSearchContainer>
+            </Col>
+            <Col span={2} offset={2}>
+              <Link href={{ pathname: '/board/newPost' }} as={`/board/newPost`}>
+                <S.BoardNewPostButton>
+                  <span style={{ marginRight: '1rem' }}>
+                    <FontAwesomeIcon icon={faPen} />
+                  </span>
+                  새 글 쓰기
+                </S.BoardNewPostButton>
+              </Link>
+            </Col>
+          </Row>
         </Grid>
       </S.Board>
     </Layout>
@@ -52,7 +85,8 @@ const Board: NextPage<BoardProps> = ({ data, rest }) => {
 };
 
 Board.getInitialProps = async ({ req, res, isLoggedIn, ...rest }) => {
-  const response = await fetch(`http://localhost:4000/post?page=1`);
+  console.log('Board initialProps!!');
+  const response = await fetch(`http://localhost:4000/post?type=FREE&page=1`);
   const data = await response.json();
   // if (!isLoggedIn) {
   //   redirect(res, '/');

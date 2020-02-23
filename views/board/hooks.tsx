@@ -5,7 +5,7 @@ import Post from '../../components/board/post';
 
 const baseURL = 'http://localhost:4000/post';
 const getPage = page => {
-  const request = axios.get(`${baseURL}?page=${page}`);
+  const request = axios.get(`${baseURL}?type=FREE&page=${page}`);
   return request.then(response => response.data);
 };
 
