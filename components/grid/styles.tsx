@@ -41,5 +41,6 @@ export const Col = styled.div`
     props.span ? getWidthString(props.span) : 'width:100%;'};
   ${(props: ColPropsType) =>
     props.offset ? getOffsetString(props.offset) : null};
-  padding: ${(props: ColPropsType) => (props.pad ? `0 ${props.pad}rem` : 0)};
+  padding: ${(props: ColPropsType) =>
+    props.pad ? `0 ${props.pad}rem` : `0 1rem`};
 `;
