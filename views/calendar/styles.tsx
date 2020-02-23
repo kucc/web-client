@@ -6,12 +6,19 @@ export const Calendar = styled.div`
   align-items: center;
 `;
 
+export const CalendarTitleContainer = styled.div`
+  width: 100%;
+  max-width: 136.6rem;
+  min-width: 96rem;
+  margin: 0 auto;
+`;
+
 export const CalendarContainer = styled.div`
   width: 100%;
   max-width: 136.6rem;
   min-width: 96rem;
   margin: 0 auto;
-  min-height: 45rem;
+  min-height: 46rem;
 `;
 
 export const CalendarMenu = styled.div`
@@ -32,3 +39,21 @@ export const CalendarMenuHistory = styled.div`
   margin-left: auto;
   margin-right: 1rem;
 `;
+
+export const ScheduleContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ScheduleTitle = styled.div`
+  height: 8rem;
+  font-size: 1.4rem;
+  letter-spacing: 0.42px;
+  color: #707070;
+  text-align: left;
+  display: flex;
+  align-items: center;
+`;
+
+export const Schedules = styled.div``;
