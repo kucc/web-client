@@ -130,10 +130,10 @@ const Post: NextPage<PostProps> = ({ data, rest }) => {
   );
 };
 
-Post.getInitialProps = async ({ query, ...rest }) => {
-  const res = await fetch(`http://localhost:4000/post/${query.postId}`);
-  const data = await res.json();
-  return { data, ...rest };
+Post.getInitialProps = async ({ query, res, req, ...rest }) => {
+  const response = await fetch(`http://localhost:4000/post/${query.postId}`);
+  const data = await response.json();
+  return { data, rest };
 };
 
 export default Post;
