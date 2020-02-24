@@ -21,6 +21,13 @@ const Board: NextPage<BoardProps> = ({ data, postTypeId, rest }) => {
   const handleChange = e => {
     setSearchField(e.target.value);
   };
+  const postTypeObject = {
+    FREE: '자유게시판',
+    NOTICE: '공지',
+    ALUMNI: '교우게시판',
+  };
+
+  const postTypeTitle = postTypeObject[postTypeId];
   return (
     <Layout>
       <S.Board>
@@ -34,9 +41,9 @@ const Board: NextPage<BoardProps> = ({ data, postTypeId, rest }) => {
               </Col>
               <Col span={10}>
                 <S.BoardMenu>
-                  <S.BoardMenuTitle>공지</S.BoardMenuTitle>
+                  <S.BoardMenuTitle>{postTypeTitle}</S.BoardMenuTitle>
                   <S.BoardMenuHistory>
-                    Home > Board > NoticeBoard
+                    Home > Board > {postTypeTitle}
                   </S.BoardMenuHistory>
                 </S.BoardMenu>
                 <S.BoardContent>
