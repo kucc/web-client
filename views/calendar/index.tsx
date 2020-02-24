@@ -1,6 +1,12 @@
 import { NextPage } from 'next';
+import {
+  faChevronLeft,
+  faChevronRight,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import * as S from './styles';
+import { useCalendar } from './hooks';
 import Layout from '../../components/layout';
 import Schedule from '../../components/schedule';
 import { Grid, Row, Col } from '../../components/grid/styles';
@@ -33,6 +39,8 @@ const DummyData = [
 ];
 
 const Calendar: NextPage = () => {
+  const { now, handleIncreaseMonth, handleDecreaseMonth } = useCalendar();
+
   return (
     <Layout>
       <S.Calendar>
@@ -65,7 +73,15 @@ const Calendar: NextPage = () => {
               </Col>
               <Col span={8} offset={1}>
                 <S.CalendarContainer>
-                  <S.CalendarHeader></S.CalendarHeader>
+                  <S.CalendarHeader>
+                    <S.ChangeMonthButton onClick={handleDecreaseMonth}>
+                      <FontAwesomeIcon icon={faChevronLeft} size="2x" />
+                    </S.ChangeMonthButton>
+                    <S.MonthTitle>{now.toString()}</S.MonthTitle>
+                    <S.ChangeMonthButton onClick={handleIncreaseMonth}>
+                      <FontAwesomeIcon icon={faChevronRight} size="2x" />
+                    </S.ChangeMonthButton>
+                  </S.CalendarHeader>
                 </S.CalendarContainer>
               </Col>
             </S.CalendarFormatContainer>

@@ -1,6 +1,6 @@
 export const getMonthOfThisMoment = () => {
-  return new Date().getFullYear();
+  return new Date().getMonth();
 };
 export const getYearOfThisMoment = () => {
-  return new Date().getMonth();
+  return new Date().getFullYear();
 };
