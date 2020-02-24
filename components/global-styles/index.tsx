@@ -31,6 +31,7 @@ const GlobalStyles = createGlobalStyle`
 
   button {
     cursor: pointer;
+    background-color: none;
   }
 
   input[type=password] {
