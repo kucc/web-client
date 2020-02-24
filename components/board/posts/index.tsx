@@ -8,23 +8,18 @@ interface PostsProps {
 }
 
 const Posts: React.FC<PostsProps> = ({ initialPosts, postTypeId }) => {
-  const { updatePage, posts, totalPostsCount } = usePosts({
+  const { updatePage, updatedPosts, totalPostsCount } = usePosts({
     initialPosts,
     postTypeId,
   });
   const Posts = () => {
-    return posts
-      ? posts.data.map((post, i) => <Post post={post} key={i} />)
+    return updatedPosts
+      ? updatedPosts.data.map((post, i) => <Post post={post} key={i} />)
       : null;
   };
   return (
     <>
       <Posts />
-      <Pagination
-        numberOfPosts={totalPostsCount}
-        updatePage={updatePage}
-        postTypeId={postTypeId}
-      />
     </>
   );
 };
