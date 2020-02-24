@@ -79,7 +79,7 @@ export const LoginFormFlipContainer = styled.div<FlipProps>`
   align-items: center;
 `;
 
-export const SignUpFormFlipContainer = styled.div<FlipProps>`
+export const PasswordChangeFormFlipContainer = styled.div<FlipProps>`
   width: 33rem;
   height: 41rem;
   position: absolute;
@@ -103,7 +103,7 @@ export const LoginFormContainer = styled.div`
   color: white;
 `;
 
-export const SignUpFormContainer = styled.div`
+export const PasswordChangeFormContainer = styled.div`
   width: 26rem;
   height: 34rem;
 `;
@@ -128,11 +128,12 @@ export const FormTitleContainer = styled.div`
   }
 `;
 
-export const SignUpTitleContainer = styled.div`
+export const PasswordChangeTitleContainer = styled.div`
   height: 5rem;
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-size: 2.4rem;
   font-weight: bold;
 
@@ -142,9 +143,14 @@ export const SignUpTitleContainer = styled.div`
     margin-left: 1rem;
     color: black;
   }
-`;
 
-export const FormExitButton = styled.button``;
+  button {
+    width: 4rem;
+    height: 4rem;
+    border: none;
+    background-color: inherit;
+  }
+`;
 
 export const FormInputContainer = styled.div``;
 
@@ -200,7 +206,7 @@ export const FormSendButton = styled.button`
   }
 `;
 
-export const SignUpFormSendButton = styled.button`
+export const PasswordChangeFormSendButton = styled.button`
   width: 26rem;
   height: 3.3rem;
   background-color: #c93333;
@@ -236,6 +242,8 @@ export const FormButtonContainer = styled.div`
 export const FormButton = styled.div`
   width: 9rem;
   height: 5rem;
+  margin-top: 1px; /* 경계 부분이 자꾸 가려져서 추가함 (리팩토링 필요) */
+
   text-align: center;
   color: #707070;
   background-color: #e1e1e1;
