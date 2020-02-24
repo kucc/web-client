@@ -60,10 +60,35 @@ export const Schedules = styled.div``;
 
 export const CalendarContainer = styled.div`
   width: 100%;
+
+  padding: 0rem 3rem;
 `;
 
-export const CalendarHeader = styled.div``;
-export const ChangeMonthButton = styled.button``;
-export const MonthTitle = styled.div``;
+export const CalendarHeader = styled.div`
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const ChangeMonthButton = styled.button`
+  width: 3.8rem;
+  height: 3.8rem;
+
+  background-color: white;
+  border: 0.2px solid #707070;
+`;
+
+export const MonthTitle = styled.div`
+  font-size: 1.8rem;
+  font-weight: bold;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  letter-spacing: 0.54px;
+  color: #1a1311;
+`;
 export const DaysOfTheWeek = styled.div``;
 export const CalendarTable = styled.div``;
