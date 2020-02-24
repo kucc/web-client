@@ -4,20 +4,19 @@ import { faSearch, faPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import Link from 'next/link';
-
 import * as S from './styles';
 import Layout from '../../components/layout';
 import { Grid, Row, Col } from '../../components/grid/styles';
 import BoardNavigation from '../../components/board/board-navigation';
 import Posts from '../../components/board/posts';
 import { redirect } from '../../lib/auth';
-
 interface BoardProps {
-  data?: Object;
-  rest?: Object;
+  data;
+  rest;
+  postTypeId;
 }
 
-const Board: NextPage<BoardProps> = ({ data, rest }) => {
+const Board: NextPage<BoardProps> = ({ data, postTypeId, rest }) => {
   const [searchField, setSearchField] = useState('');
   const handleChange = e => {
     setSearchField(e.target.value);
@@ -48,13 +47,13 @@ const Board: NextPage<BoardProps> = ({ data, rest }) => {
                     <S.BoardIndexDate>작성일</S.BoardIndexDate>
                     <S.BoardIndexViews>조회수</S.BoardIndexViews>
                   </S.BoardIndex>
-                  <Posts initialPosts={data} />
+                  <Posts initialPosts={data} postTypeId={postTypeId} />
                 </S.BoardContent>
               </Col>
             </S.BoardContainer>
           </Row>
           <Row>
-            <Col span={4} offset={4}>
+            <Col span={4} offset={4} pad={3}>
               <S.BoardSearchContainer>
                 <S.BoardSearchInputContainer>
                   <FontAwesomeIcon icon={faSearch} size="2x" />
@@ -84,14 +83,16 @@ const Board: NextPage<BoardProps> = ({ data, rest }) => {
   );
 };
 
-Board.getInitialProps = async ({ req, res, isLoggedIn, ...rest }) => {
-  console.log('Board initialProps!!');
-  const response = await fetch(`http://localhost:4000/post?type=FREE&page=1`);
+Board.getInitialProps = async ({ req, res, query, isLoggedIn, ...rest }) => {
+  const postTypeId = query.postTypeId ? query.postTypeId : 'NOTICE';
+  const response = await fetch(
+    `http://localhost:4000/post?type=${postTypeId}&page=1`,
+  );
   const data = await response.json();
   // if (!isLoggedIn) {
   //   redirect(res, '/');
   // }
-  return { data, rest };
+  return { data, postTypeId, rest };
 };
 
 export default Board;

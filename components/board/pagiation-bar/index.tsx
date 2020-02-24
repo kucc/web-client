@@ -4,11 +4,13 @@ import { useState, useEffect } from 'react';
 interface PaginationProps {
   numberOfPosts: number;
   updatePage;
+  postTypeId;
 }
 
 const Pagination: React.FC<PaginationProps> = ({
   numberOfPosts,
   updatePage,
+  postTypeId,
 }) => {
   const pagesArray = Array();
   const numberOfPages = Math.ceil(numberOfPosts / 10);
@@ -41,6 +43,12 @@ const Pagination: React.FC<PaginationProps> = ({
   useEffect(() => {
     updatePage(page.current);
   }, [page.current]);
+  useEffect(() => {
+    setPage({
+      ...page,
+      current: 1,
+    });
+  }, [postTypeId]);
   return (
     <S.PaginationBar>
       <S.PageButton

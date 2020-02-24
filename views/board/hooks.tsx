@@ -4,26 +4,13 @@ import { useState } from 'react';
 import Post from '../../components/board/post';
 
 const baseURL = 'http://localhost:4000/post';
-const getPage = page => {
-  const request = axios.get(`${baseURL}?type=FREE&page=${page}`);
+const getPage = () => {
+  const request = axios.get(`${baseURL}?type=NOTICE&page=1`);
   return request.then(response => response.data);
 };
-
 export const usePosts = () => {
-  const [posts, setPosts] = useState(null);
+  const initialPosts = getPage();
+  const [posts, setPosts] = useState(initialPosts);
   const [totalPostsCount, setTotalPostsCount] = useState(null);
-  const updatePage = id => {
-    getPage(id).then(returnedData => {
-      setPosts(returnedData.data);
-    });
-  };
-
-  const postsPerPage =
-    posts && posts.map((post, i) => <Post post={post} key={i} />);
-  return {
-    posts,
-    totalPostsCount,
-    updatePage,
-    postsPerPage,
-  };
+  return posts;
 };

@@ -4,11 +4,14 @@ import usePosts from './hooks';
 
 interface PostsProps {
   initialPosts;
+  postTypeId;
 }
 
-const Posts: React.FC<PostsProps> = ({ initialPosts }) => {
-  console.log('Posts initialPost!!', initialPosts);
-  const { updatePage, posts, totalPostsCount } = usePosts(initialPosts);
+const Posts: React.FC<PostsProps> = ({ initialPosts, postTypeId }) => {
+  const { updatePage, posts, totalPostsCount } = usePosts({
+    initialPosts,
+    postTypeId,
+  });
   const Posts = () => {
     return posts
       ? posts.data.map((post, i) => <Post post={post} key={i} />)
@@ -17,7 +20,11 @@ const Posts: React.FC<PostsProps> = ({ initialPosts }) => {
   return (
     <>
       <Posts />
-      <Pagination numberOfPosts={totalPostsCount} updatePage={updatePage} />
+      <Pagination
+        numberOfPosts={totalPostsCount}
+        updatePage={updatePage}
+        postTypeId={postTypeId}
+      />
     </>
   );
 };
