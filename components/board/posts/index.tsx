@@ -1,21 +1,12 @@
 import Post from '../post';
-import Pagination from '../pagiation-bar';
-import usePosts from './hooks';
 
 interface PostsProps {
-  initialPosts;
-  postTypeId;
+  posts;
 }
 
-const Posts: React.FC<PostsProps> = ({ initialPosts, postTypeId }) => {
-  const { updatePage, updatedPosts, totalPostsCount } = usePosts({
-    initialPosts,
-    postTypeId,
-  });
+const Posts: React.FC<PostsProps> = ({ posts }) => {
   const Posts = () => {
-    return updatedPosts
-      ? updatedPosts.data.map((post, i) => <Post post={post} key={i} />)
-      : null;
+    return posts ? posts.map((post, i) => <Post post={post} key={i} />) : null;
   };
   return (
     <>

@@ -5,6 +5,7 @@ export const PaginationBar = styled.div`
   margin: 2rem 0;
   font-size: 1.4rem;
   justify-content: center;
+  transition: 0.3s ease;
 `;
 
 export const PageButton = styled.button`

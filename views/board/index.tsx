@@ -2,17 +2,16 @@ import { NextPage } from 'next';
 import fetch from 'isomorphic-unfetch';
 import { faSearch, faPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import * as S from './styles';
 
+import * as S from './styles';
 import Layout from '../../components/layout';
 import { Grid, Row, Col } from '../../components/grid/styles';
 import BoardNavigation from '../../components/board/board-navigation';
-import Posts from '../../components/board/posts';
 import { redirect } from '../../lib/auth';
-import usePosts from '../../components/board/posts/hooks';
+import { useSearchInput, usePosts } from './hooks';
 import Pagination from '../../components/board/pagiation-bar';
+import Posts from '../../components/board/posts';
 
 interface BoardProps {
   initialPosts;
@@ -21,23 +20,23 @@ interface BoardProps {
 }
 
 const Board: NextPage<BoardProps> = ({ initialPosts, postTypeId, rest }) => {
-  const [searchField, setSearchField] = useState('');
-  const [posts, setPosts] = useState(initialPosts);
-  const handleChange = e => {
-    setSearchField(e.target.value);
-  };
   const postTypeObject = {
     FREE: '자유게시판',
     NOTICE: '공지',
     ALUMNI: '교우게시판',
   };
-  const { updatePage, updatedPosts, totalPostsCount } = usePosts({
+  const { searchField, handleChange } = useSearchInput();
+  const {
+    posts,
+    page,
+    setCurrentPage,
+    increasePageHandler,
+    decreasePageHandler,
+  } = usePosts({
     initialPosts,
     postTypeId,
   });
-  useEffect(() => {
-    setPosts(updatedPosts);
-  }, [updatedPosts]);
+
   const postTypeTitle = postTypeObject[postTypeId];
   return (
     <Layout>
@@ -65,7 +64,7 @@ const Board: NextPage<BoardProps> = ({ initialPosts, postTypeId, rest }) => {
                     <S.BoardIndexDate>작성일</S.BoardIndexDate>
                     <S.BoardIndexViews>조회수</S.BoardIndexViews>
                   </S.BoardIndex>
-                  <Posts initialPosts={posts} postTypeId={postTypeId} />
+                  <Posts posts={posts} />
                 </S.BoardContent>
               </Col>
             </S.BoardContainer>
@@ -98,9 +97,10 @@ const Board: NextPage<BoardProps> = ({ initialPosts, postTypeId, rest }) => {
           <Row>
             <Col span={10} offset={2}>
               <Pagination
-                numberOfPosts={totalPostsCount}
-                updatePage={updatePage}
-                postTypeId={postTypeId}
+                page={page}
+                setCurrentPage={setCurrentPage}
+                increasePageHandler={increasePageHandler}
+                decreasePageHandler={decreasePageHandler}
               />
             </Col>
           </Row>

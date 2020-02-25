@@ -14,6 +14,7 @@ import BoardNavigation from '../../components/board/board-navigation';
 import { Grid, Row, Col } from '../../components/grid/styles';
 
 import { usePost } from './hooks';
+
 import {
   parseDateStringIntoHHMM,
   parseDateStringIntoYYMMDD,
@@ -34,11 +35,13 @@ interface PostProps {
 }
 
 const Post: NextPage<PostProps> = ({ data, rest }) => {
-  let postObject = null;
+  let { postObject } = usePost();
   let { Id, title, content, userId, type, createdAt, views } = data;
+
   if (data.statusCode === 400) {
     postObject = usePost().postObject;
   }
+
   if (postObject) {
     Id = postObject.Id;
     title = postObject.title;
@@ -48,11 +51,13 @@ const Post: NextPage<PostProps> = ({ data, rest }) => {
     createdAt = postObject.createdAt;
     views = postObject.views;
   }
+
   const createdAtInYYYYMMDD = createdAt
     ? parseDateStringIntoYYMMDD(createdAt)
     : null;
+
   const createdAtInHHMM = createdAt ? parseDateStringIntoHHMM(createdAt) : null;
-  console.log(data);
+
   return (
     // 개별 POST 페이지
     <Layout>
@@ -103,7 +108,9 @@ const Post: NextPage<PostProps> = ({ data, rest }) => {
                       }}
                       as="/board"
                     >
-                      <S.BackButton>목록으로</S.BackButton>
+                      <S.BackButton onClick={() => console.log('hey!')}>
+                        목록으로
+                      </S.BackButton>
                     </Link>
                   </S.PostNavigation>
                   <S.PostInfo>
