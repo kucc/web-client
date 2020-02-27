@@ -1,10 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import {
-  parseDateStringIntoYYMMDD,
-  parseDateStringIntoHHMM,
-} from '../../lib/dateStringParser';
 
 const baseURL = 'http://localhost:4000/post';
 
@@ -22,6 +18,7 @@ export const usePost = () => {
     getPost(id).then(returnedData => {
       setPostObject(returnedData);
     });
-  }, []);
+  }, [id]);
+  // issue
   return { postObject };
 };

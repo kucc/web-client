@@ -36,36 +36,34 @@ export const usePosts = ({ initialPosts, postTypeId }) => {
     if (page.end === numberOfPages && page.current === page.end)
       return alert('다음 페이지가 존재하지 않습니다');
     if (page.current < page.end) {
-      setPage({
+      return setPage({
         ...page,
         current: page.current + 1,
-      });
-    } else {
-      setPage({
-        ...page,
-        start: page.start + 1,
-        current: page.current + 1,
-        end: page.end + 1,
       });
     }
+    setPage({
+      ...page,
+      start: page.start + 1,
+      current: page.current + 1,
+      end: page.end + 1,
+    });
   };
 
   const decreasePageHandler = () => {
     if (page.start === 1 && page.current === 1)
       return alert('이전 페이지가 존재하지 않습니다');
     if (page.current > page.start) {
-      setPage({
+      return setPage({
         ...page,
         current: page.current - 1,
-      });
-    } else {
-      setPage({
-        ...page,
-        start: page.start - 1,
-        current: page.current - 1,
-        end: page.end - 1,
       });
     }
+    setPage({
+      ...page,
+      start: page.start - 1,
+      current: page.current - 1,
+      end: page.end - 1,
+    });
   };
 
   useEffect(() => {
@@ -84,7 +82,7 @@ export const usePosts = ({ initialPosts, postTypeId }) => {
 };
 
 export const useSearchInput = () => {
-  let [searchField, setSearchField] = useState('');
+  const [searchField, setSearchField] = useState('');
   const handleChange = e => {
     setSearchField(e.target.value);
   };

@@ -12,9 +12,7 @@ import * as S from './styles';
 import Layout from '../../components/layout';
 import BoardNavigation from '../../components/board/board-navigation';
 import { Grid, Row, Col } from '../../components/grid/styles';
-
 import { usePost } from './hooks';
-
 import {
   parseDateStringIntoHHMM,
   parseDateStringIntoYYMMDD,
@@ -57,9 +55,7 @@ const Post: NextPage<PostProps> = ({ data, rest }) => {
     : null;
 
   const createdAtInHHMM = createdAt ? parseDateStringIntoHHMM(createdAt) : null;
-
   return (
-    // 개별 POST 페이지
     <Layout>
       <S.Board>
         <Grid>
