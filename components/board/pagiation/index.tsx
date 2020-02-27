@@ -34,11 +34,11 @@ const Pagination: React.FC<PaginationProps> = ({
   ));
 
   return (
-    <S.PaginationBar>
+    <S.Pagination>
       <S.PageButton onClick={decreasePageHandler}>{'<'}</S.PageButton>
       {PageButtons}
       <S.PageButton onClick={increasePageHandler}>{'>'}</S.PageButton>
-    </S.PaginationBar>
+    </S.Pagination>
   );
 };
 

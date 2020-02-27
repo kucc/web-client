@@ -10,8 +10,8 @@ import { Grid, Row, Col } from '../../components/grid/styles';
 import BoardNavigation from '../../components/board/board-navigation';
 import { redirect } from '../../lib/auth';
 import { useSearchInput, usePosts } from './hooks';
-import Pagination from '../../components/board/pagiation-bar';
-import Posts from '../../components/board/posts';
+import Pagination from '../../components/board/pagiation';
+import Post from '../../components/board/post';
 
 interface BoardProps {
   initialPosts;
@@ -27,8 +27,8 @@ const Board: NextPage<BoardProps> = ({ initialPosts, postTypeId, rest }) => {
   };
   const { searchField, handleChange } = useSearchInput();
   const {
-    posts,
     page,
+    posts,
     setCurrentPage,
     increasePageHandler,
     decreasePageHandler,
@@ -36,7 +36,6 @@ const Board: NextPage<BoardProps> = ({ initialPosts, postTypeId, rest }) => {
     initialPosts,
     postTypeId,
   });
-
   const postTypeTitle = postTypeObject[postTypeId];
   return (
     <Layout>
@@ -64,7 +63,9 @@ const Board: NextPage<BoardProps> = ({ initialPosts, postTypeId, rest }) => {
                     <S.BoardIndexDate>작성일</S.BoardIndexDate>
                     <S.BoardIndexViews>조회수</S.BoardIndexViews>
                   </S.BoardIndex>
-                  <Posts posts={posts} />
+                  {posts.map((post, i) => (
+                    <Post post={post} key={i} />
+                  ))}
                 </S.BoardContent>
               </Col>
             </S.BoardContainer>
@@ -116,7 +117,11 @@ Board.getInitialProps = async ({ req, res, query, isLoggedIn, ...rest }) => {
     `http://localhost:4000/post?type=${postTypeId}&page=1`,
   );
   const initialPosts = await response.json();
-  // if (!isLoggedIn) {
+  // if (
+  //   !isLoggedIn &&
+  //   (query.postTypeId === 'ALUMNI' || query.postTypeId === 'FREE')
+  // ) {
+  //   alert('로그인이 필요한 페이지입니다!');
   //   redirect(res, '/');
   // }
   return { initialPosts, postTypeId, rest };

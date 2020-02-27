@@ -108,9 +108,7 @@ const Post: NextPage<PostProps> = ({ data, rest }) => {
                       }}
                       as="/board"
                     >
-                      <S.BackButton onClick={() => console.log('hey!')}>
-                        목록으로
-                      </S.BackButton>
+                      <S.BackButton>목록으로</S.BackButton>
                     </Link>
                   </S.PostNavigation>
                   <S.PostInfo>

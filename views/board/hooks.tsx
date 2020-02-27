@@ -4,37 +4,28 @@ import { useState, useEffect } from 'react';
 
 const baseURL = 'http://localhost:4000/post';
 
-const getPage = (postTypeId, pageId) => {
-  const request = axios.get(`${baseURL}?type=${postTypeId}&page=${pageId}`);
-  const returnedData = request.then(response => response.data);
-  return returnedData;
-};
-
-const calculatedPages = numberOfPosts => {
-  return Math.ceil(numberOfPosts / 10);
-};
-
 export const usePosts = ({ initialPosts, postTypeId }) => {
-  const { count, data } = initialPosts;
-  const [posts, setPosts] = useState(data);
-  const [numberOfPages, setNumberOfPages] = useState(calculatedPages(count));
+  const calculateNumberOfPage = numberOfPosts => {
+    return Math.ceil(numberOfPosts / 10);
+  };
+  const numberOfPages = calculateNumberOfPage(initialPosts.count);
   const [page, setPage] = useState({
     start: 1,
     current: 1,
-    end: numberOfPages < 5 ? numberOfPages : 5,
+    end: numberOfPages,
   });
+  const [posts, setPosts] = useState(initialPosts.data);
 
-  const updatePaginationBarButton = () => {
-    setPage({
-      start: 1,
-      current: 1,
-      end: numberOfPages < 5 ? numberOfPages : 5,
-    });
-  };
+  if (numberOfPages !== page.end) {
+    setPage({ ...page, start: 1, current: 1, end: numberOfPages });
+  }
 
-  const updateCurrentPage = async pageId => {
-    const returnedData = await getPage(postTypeId, pageId);
-    setPosts(returnedData.data);
+  const getPosts = async (postTypeId, pageId) => {
+    const response = await axios.get(
+      `${baseURL}?type=${postTypeId}&page=${pageId}`,
+    );
+    const returnedPosts = response.data;
+    return returnedPosts;
   };
 
   const setCurrentPage = button => {
@@ -78,21 +69,14 @@ export const usePosts = ({ initialPosts, postTypeId }) => {
   };
 
   useEffect(() => {
-    setPosts(data);
-    setNumberOfPages(calculatedPages(count));
-  }, [initialPosts]);
-
-  useEffect(() => {
-    updatePaginationBarButton();
-  }, [numberOfPages]);
-
-  useEffect(() => {
-    updateCurrentPage(page.current);
-  }, [page.current]);
+    getPosts(postTypeId, page.current).then(returnedPosts =>
+      setPosts(returnedPosts.data),
+    );
+  }, [initialPosts, page]);
 
   return {
-    posts,
     page,
+    posts,
     setCurrentPage,
     increasePageHandler,
     decreasePageHandler,
@@ -104,6 +88,5 @@ export const useSearchInput = () => {
   const handleChange = e => {
     setSearchField(e.target.value);
   };
-
   return { searchField, handleChange };
 };

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const PaginationBar = styled.div`
+export const Pagination = styled.div`
   display: flex;
   margin: 2rem 0;
   font-size: 1.4rem;
