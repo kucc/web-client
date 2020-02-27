@@ -7,7 +7,7 @@ const About: React.FC = () => {
   return (
     <Layout>
       <Grid>
-        <S.RowContainer0>
+        <S.IntroductionSection>
           <Row>
             <Col span={10} offset={1}>
               <S.Introduction>
@@ -16,20 +16,21 @@ const About: React.FC = () => {
                   <S.IntroductionContentContainer>
                     <S.IntroductionContent>
                       코드만 꼭 짜는건 아니고
-                      <br /> 술도 많이 먹고 게임도 좋아합니다
-                      <br />
-                      어서 지원하세요
-                      <br /> ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+                      <br /> <br />
+                      술도 많이 먹고 게임도 좋아합니다
+                      <br /> <br />
+                      공부할 땐 열심히 공부해요!
+                      <br /> <br /> 나이 성별 학과 무관 다 환영!
                     </S.IntroductionContent>
                   </S.IntroductionContentContainer>
                 </S.IntroductionMessage>
               </S.Introduction>
             </Col>
           </Row>
-        </S.RowContainer0>
+        </S.IntroductionSection>
         {/**소개 */}
 
-        <S.RowContainer1>
+        <S.KuccSection>
           <Row>
             <Col span={2}>
               <S.LeftCircleContainer>
@@ -49,7 +50,7 @@ const About: React.FC = () => {
             </Col>
             <Col span={4}>
               <S.TitleContainer>
-                <S.Title>XX's KUCC</S.Title>
+                <S.Title>고려대's KUCC</S.Title>
               </S.TitleContainer>
             </Col>
             <Col span={2}>
@@ -69,13 +70,13 @@ const About: React.FC = () => {
           <Row>
             <Col span={4} offset={4}>
               <S.TextContainer>
-                <S.Text>We Code Together;(예시)</S.Text>
+                <S.Text>우리는 함께 코딩한다</S.Text>
               </S.TextContainer>
             </Col>
           </Row>
           {/*WeCodeTogether */}
-        </S.RowContainer1>
-        <S.RowContainer2>
+        </S.KuccSection>
+        <S.PresidentSection>
           <Row>
             <Col span={5} offset={1}>
               <S.PresidentPicture src="images/About-President'sComment-Big.png"></S.PresidentPicture>
@@ -85,39 +86,43 @@ const About: React.FC = () => {
                 President's Comment
               </S.PresidentCommentTitle>
               <S.PresidentCommentContainer>
-                <S.PresidentComment>"KUCC는 초심자 분들이</S.PresidentComment>
-                <S.PresidentComment>"KUCC는 초심자 분들이</S.PresidentComment>
+                <S.PresidentComment>
+                  "쿠씨씨는 인큐베이터이다(Incubator)"
+                </S.PresidentComment>
+                <S.PresidentComment>
+                  "서로 뭉쳐서 돕고 성장하는 동아리"
+                </S.PresidentComment>
               </S.PresidentCommentContainer>
             </Col>
           </Row>
-        </S.RowContainer2>
+        </S.PresidentSection>
         {/*President's Comment */}
-        <S.RowContainer3>
+        <S.ExecutiveSection>
           <Row>
             <Col span={5} offset={1}>
               <S.ExecutivesTitle>Executive's</S.ExecutivesTitle>
               <Row>
                 <S.ExecutivesCommentContainer>
-                  <div className="content">"KUCC는 초심자 분들이"</div>
-                  <div className="name">000</div>
+                  <div className="content">"강화된 스터디와 세션!"</div>
+                  <div className="name">기술교육부 부서장</div>
                 </S.ExecutivesCommentContainer>
               </Row>
               <Row>
                 <S.ExecutivesCommentContainer>
-                  <div className="content">"KUCC는 초심자 분들이"</div>
-                  <div className="name">000</div>
+                  <div className="content">"투명한 재정관리!"</div>
+                  <div className="name">운영부 부서장</div>
                 </S.ExecutivesCommentContainer>
               </Row>
               <Row>
                 <S.ExecutivesCommentContainer>
-                  <div className="content">"KUCC는 초심자 분들이"</div>
-                  <div className="name">000</div>
+                  <div className="content">"하나로 뭉친 KUCC!"</div>
+                  <div className="name">친목부 부서장</div>
                 </S.ExecutivesCommentContainer>
               </Row>
               <Row>
                 <S.ExecutivesCommentContainer>
-                  <div className="content">"KUCC는 초심자 분들이"</div>
-                  <div className="name">000</div>
+                  <div className="content">"어서 지원하세요!"</div>
+                  <div className="name">홍보부 부서장</div>
                 </S.ExecutivesCommentContainer>
               </Row>
             </Col>
@@ -130,36 +135,82 @@ const About: React.FC = () => {
           </Row>
 
           {/*Executives */}
-        </S.RowContainer3>
+        </S.ExecutiveSection>
 
-        <S.RowContainer4>
+        <S.KeywordSection>
           <Row>
             <Col span={4}>
               <S.KeyWord>
-                <S.KeyWordPic>
-                  <S.KeyWordTitle>Keyword_1</S.KeyWordTitle>
-                </S.KeyWordPic>
-                <S.KeyWordExpl></S.KeyWordExpl>
+                <S.KeyWordPic1>
+                  <S.KeyWordTitle>Build</S.KeyWordTitle>
+                </S.KeyWordPic1>
               </S.KeyWord>
             </Col>
             <Col span={4}>
               <S.KeyWord>
-                <S.KeyWordPic>
-                  <S.KeyWordTitle>Keyword_2</S.KeyWordTitle>
-                </S.KeyWordPic>
-                <S.KeyWordExpl></S.KeyWordExpl>
+                <S.KeyWordPic2>
+                  <S.KeyWordTitle>Connect</S.KeyWordTitle>
+                </S.KeyWordPic2>
               </S.KeyWord>
             </Col>
             <Col span={4}>
               <S.KeyWord>
-                <S.KeyWordPic>
-                  <S.KeyWordTitle>Keyword_3</S.KeyWordTitle>
-                </S.KeyWordPic>
-                <S.KeyWordExpl></S.KeyWordExpl>
+                <S.KeyWordPic3>
+                  <S.KeyWordTitle>Grow</S.KeyWordTitle>
+                </S.KeyWordPic3>
               </S.KeyWord>
             </Col>
           </Row>
-        </S.RowContainer4>
+
+          <Row>
+            <Col span={4}>
+              <S.KeyWord>
+                <S.KeyWordExpl>모여서 함께 코딩해나가는 동아리</S.KeyWordExpl>
+              </S.KeyWord>
+            </Col>
+            <Col span={4}>
+              <S.KeyWord>
+                <S.KeyWordExpl>
+                  다양한 사람들이 섞여서 소통하는 동아리
+                </S.KeyWordExpl>
+              </S.KeyWord>
+            </Col>
+            <Col span={4}>
+              <S.KeyWord>
+                <S.KeyWordExpl>함께 고민하고 배워나가는 동아리</S.KeyWordExpl>
+              </S.KeyWord>
+            </Col>
+          </Row>
+        </S.KeywordSection>
+
+        <S.ContactSection>
+          <Row>
+            <Col span={6}>
+              <S.ContactInfoContainer>
+                <S.ContactTitle>Contact</S.ContactTitle>
+                <S.ContactInfo>
+                  <div className="title">찾아오시는 길</div>
+                  <div className="content">고려대 학생회관 314호</div>
+                </S.ContactInfo>
+                <S.ContactInfo>
+                  <div className="title">문의처</div>
+                  <div className="content">
+                    박지수 / 010. 0000. 0000
+                    <br />
+                    <br />
+                    김현채 / 010. 0000. 0000
+                  </div>
+                </S.ContactInfo>
+              </S.ContactInfoContainer>
+            </Col>
+            <Col span={6}>
+              <S.ContactMapContainer>
+                <S.ContactMap></S.ContactMap>
+                <S.RedBox></S.RedBox>
+              </S.ContactMapContainer>
+            </Col>
+          </Row>
+        </S.ContactSection>
       </Grid>
     </Layout>
   );
