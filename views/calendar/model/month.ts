@@ -8,7 +8,7 @@ export default class Month {
   ) {}
 
   public static now() {
-    return new Month(getYearOfThisMoment(), getMonthOfThisMoment());
+    return new Month(getYearOfThisMoment(), getMonthOfThisMoment() + 1);
   }
 
   public toString() {
