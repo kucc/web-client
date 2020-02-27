@@ -2,6 +2,7 @@ import { useState, useEffect, Dispatch, SetStateAction } from 'react';
 
 import Event from './model/event';
 import Month from './model/month';
+import EventResponse from './interface/event-response';
 
 export const useCalendar = () => {
   const [now, setNow] = useState(Month.now());
@@ -18,9 +19,11 @@ export const useCalendar = () => {
         },
       );
 
-      const { data }: { count: number; data: Event[] } = await response.json();
+      const {
+        data,
+      }: { count: number; data: EventResponse[] } = await response.json();
 
-      setEvents(data);
+      setEvents(data.map(eventResponse => new Event(eventResponse)));
     };
 
     getEventsOfMonth();
