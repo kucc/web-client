@@ -1,4 +1,5 @@
 import * as S from './styles';
+import makeArray from '../../../lib/nLengthArrayMaker';
 
 interface PaginationProps {
   page;
@@ -13,11 +14,7 @@ const Pagination: React.FC<PaginationProps> = ({
   increasePageHandler,
   decreasePageHandler,
 }) => {
-  const pagesArray = Array();
-
-  for (let i = page.start; i < page.end + 1; i++) {
-    pagesArray.push(i);
-  }
+  const pagesArray = makeArray(page.end);
 
   const PageButtons = pagesArray.map((button, i) => (
     <S.PageButton
