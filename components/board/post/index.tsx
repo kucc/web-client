@@ -2,7 +2,7 @@ import * as S from './styles';
 import Link from 'next/link';
 
 interface PostProps {
-  post;
+  post?;
 }
 
 const Post: React.FC<PostProps> = ({ post }) => {

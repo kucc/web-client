@@ -79,7 +79,6 @@ export const BoardPost = styled.div`
 `;
 
 export const BoardSearchContainer = styled.div`
-  margin-top: 2rem;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -123,7 +122,6 @@ export const BoardNewPostButton = styled.button`
   color: #ffffff;
   height: 3.2rem;
   padding: 0.5rem 1rem;
-  margin-top: 2rem;
   float: right;
   transition: all 0.3s ease;
   &:hover {

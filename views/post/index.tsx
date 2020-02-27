@@ -12,7 +12,6 @@ import * as S from './styles';
 import Layout from '../../components/layout';
 import BoardNavigation from '../../components/board/board-navigation';
 import { Grid, Row, Col } from '../../components/grid/styles';
-
 import { usePost } from './hooks';
 import {
   parseDateStringIntoHHMM,
@@ -21,37 +20,42 @@ import {
 
 interface PostProps {
   data?: {
-    Id?: number;
-    title?: string;
-    content?: string;
-    userId?: number;
-    createdAt?: string;
-    views?: number;
+    Id: number;
+    title: string;
+    content: string;
+    userId: number;
+    type: string;
+    createdAt: string;
+    views: number;
     statusCode?: number;
   };
   rest?: Object;
 }
 
 const Post: NextPage<PostProps> = ({ data, rest }) => {
-  let postObject = null;
-  let { Id, title, content, userId, createdAt, views } = data;
+  let { postObject } = usePost();
+  let { Id, title, content, userId, type, createdAt, views } = data;
+
   if (data.statusCode === 400) {
     postObject = usePost().postObject;
   }
+
   if (postObject) {
     Id = postObject.Id;
     title = postObject.title;
     content = postObject.content;
     userId = postObject.userId;
+    type = postObject.type;
     createdAt = postObject.createdAt;
     views = postObject.views;
   }
+
   const createdAtInYYYYMMDD = createdAt
     ? parseDateStringIntoYYMMDD(createdAt)
     : null;
+
   const createdAtInHHMM = createdAt ? parseDateStringIntoHHMM(createdAt) : null;
   return (
-    // 개별 POST 페이지
     <Layout>
       <S.Board>
         <Grid>
@@ -93,7 +97,13 @@ const Post: NextPage<PostProps> = ({ data, rest }) => {
                         다음글
                       </S.PostNavigationButton>
                     </Link>
-                    <Link href="/board">
+                    <Link
+                      href={{
+                        pathname: '/board',
+                        query: { postTypeId: type },
+                      }}
+                      as="/board"
+                    >
                       <S.BackButton>목록으로</S.BackButton>
                     </Link>
                   </S.PostNavigation>

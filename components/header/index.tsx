@@ -30,7 +30,10 @@ const Header: React.FC = () => {
                 <Link href="/recruit">
                   <S.MenuItem>Recruit</S.MenuItem>
                 </Link>
-                <Link href="/board">
+                <Link
+                  href={{ pathname: '/board', query: { postTypeId: 'NOTICE' } }}
+                  as="/board"
+                >
                   <S.MenuItem>Board</S.MenuItem>
                 </Link>
                 <Link href="/gallery">

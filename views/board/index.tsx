@@ -2,26 +2,41 @@ import { NextPage } from 'next';
 import fetch from 'isomorphic-unfetch';
 import { faSearch, faPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
 import Link from 'next/link';
 
 import * as S from './styles';
 import Layout from '../../components/layout';
 import { Grid, Row, Col } from '../../components/grid/styles';
 import BoardNavigation from '../../components/board/board-navigation';
-import Posts from '../../components/board/posts';
 import { redirect } from '../../lib/auth';
+import { useSearchInput, usePosts } from './hooks';
+import Pagination from '../../components/board/pagiation';
+import Post from '../../components/board/post';
 
 interface BoardProps {
-  data?: Object;
-  rest?: Object;
+  initialPosts;
+  rest;
+  postTypeId;
 }
 
-const Board: NextPage<BoardProps> = ({ data, rest }) => {
-  const [searchField, setSearchField] = useState('');
-  const handleChange = e => {
-    setSearchField(e.target.value);
+const Board: NextPage<BoardProps> = ({ initialPosts, postTypeId, rest }) => {
+  const postTypeObject = {
+    FREE: '자유게시판',
+    NOTICE: '공지',
+    ALUMNI: '교우게시판',
   };
+  const { searchField, handleChange } = useSearchInput();
+  const {
+    page,
+    posts,
+    setCurrentPage,
+    increasePageHandler,
+    decreasePageHandler,
+  } = usePosts({
+    initialPosts,
+    postTypeId,
+  });
+  const postTypeTitle = postTypeObject[postTypeId];
   return (
     <Layout>
       <S.Board>
@@ -35,9 +50,9 @@ const Board: NextPage<BoardProps> = ({ data, rest }) => {
               </Col>
               <Col span={10}>
                 <S.BoardMenu>
-                  <S.BoardMenuTitle>공지</S.BoardMenuTitle>
+                  <S.BoardMenuTitle>{postTypeTitle}</S.BoardMenuTitle>
                   <S.BoardMenuHistory>
-                    Home > Board > NoticeBoard
+                    Home > Board > {postTypeTitle}
                   </S.BoardMenuHistory>
                 </S.BoardMenu>
                 <S.BoardContent>
@@ -48,13 +63,15 @@ const Board: NextPage<BoardProps> = ({ data, rest }) => {
                     <S.BoardIndexDate>작성일</S.BoardIndexDate>
                     <S.BoardIndexViews>조회수</S.BoardIndexViews>
                   </S.BoardIndex>
-                  <Posts initialPosts={data} />
+                  {posts.map((post, i) => (
+                    <Post post={post} key={i} />
+                  ))}
                 </S.BoardContent>
               </Col>
             </S.BoardContainer>
           </Row>
           <Row>
-            <Col span={4} offset={4}>
+            <Col span={4} offset={5}>
               <S.BoardSearchContainer>
                 <S.BoardSearchInputContainer>
                   <FontAwesomeIcon icon={faSearch} size="2x" />
@@ -67,7 +84,7 @@ const Board: NextPage<BoardProps> = ({ data, rest }) => {
                 <S.BoardSearchButton>Search</S.BoardSearchButton>
               </S.BoardSearchContainer>
             </Col>
-            <Col span={2} offset={2}>
+            <Col span={2} offset={1}>
               <Link href={{ pathname: '/board/newPost' }} as={`/board/newPost`}>
                 <S.BoardNewPostButton>
                   <span style={{ marginRight: '1rem' }}>
@@ -78,20 +95,36 @@ const Board: NextPage<BoardProps> = ({ data, rest }) => {
               </Link>
             </Col>
           </Row>
+          <Row>
+            <Col span={10} offset={2}>
+              <Pagination
+                page={page}
+                setCurrentPage={setCurrentPage}
+                increasePageHandler={increasePageHandler}
+                decreasePageHandler={decreasePageHandler}
+              />
+            </Col>
+          </Row>
         </Grid>
       </S.Board>
     </Layout>
   );
 };
 
-Board.getInitialProps = async ({ req, res, isLoggedIn, ...rest }) => {
-  console.log('Board initialProps!!');
-  const response = await fetch(`http://localhost:4000/post?type=FREE&page=1`);
-  const data = await response.json();
-  // if (!isLoggedIn) {
+Board.getInitialProps = async ({ req, res, query, isLoggedIn, ...rest }) => {
+  const postTypeId = query.postTypeId ? query.postTypeId : 'NOTICE';
+  const response = await fetch(
+    `http://localhost:4000/post?type=${postTypeId}&page=1`,
+  );
+  const initialPosts = await response.json();
+  // if (
+  //   !isLoggedIn &&
+  //   (query.postTypeId === 'ALUMNI' || query.postTypeId === 'FREE')
+  // ) {
+  //   alert('로그인이 필요한 페이지입니다!');
   //   redirect(res, '/');
   // }
-  return { data, rest };
+  return { initialPosts, postTypeId, rest };
 };
 
 export default Board;
