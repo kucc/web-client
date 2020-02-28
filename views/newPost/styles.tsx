@@ -58,3 +58,18 @@ export const NewPostTitleInput = styled.input`
   line-height: 3rem;
   padding: 0 1rem;
 `;
+
+export const NewPostTypeContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 2rem;
+`;
+export const NewPostTypeLabel = styled.label`
+  margin-right: 1rem;
+`;
+export const NewPostTypeInput = styled.input`
+  width: 80%;
+  line-height: 3rem;
+  padding: 0 1rem;
+`;

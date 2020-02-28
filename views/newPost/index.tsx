@@ -21,14 +21,18 @@ const newPost: NextPage = () => {
               <Col span={10}>
                 <S.BoardMenu>
                   <S.BoardMenuHistory>
-                    Home > Board > NoticeBoard >{' '}
-                    <span style={{ fontWeight: 'bold' }}>New</span>
+                    Home > Board >{' '}
+                    <span style={{ fontWeight: 'bold' }}>NewPost</span>
                   </S.BoardMenuHistory>
                 </S.BoardMenu>
                 <S.NewPostTitleContainer>
                   <S.NewPostTitleLabel>제목</S.NewPostTitleLabel>
                   <S.NewPostTitleInput placeholder="제목을 입력해주세요" />
                 </S.NewPostTitleContainer>
+                <S.NewPostTypeContainer>
+                  <S.NewPostTypeLabel>게시판 종류</S.NewPostTypeLabel>
+                  <S.NewPostTypeInput placeholder="게시판 종류를 입력해주세요" />
+                </S.NewPostTypeContainer>
                 <Editor />
               </Col>
             </S.BoardContainer>
