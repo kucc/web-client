@@ -118,6 +118,8 @@ export const CalendarDayMeta = styled.th`
   width: 14.3%;
   font-size: 1.2rem;
   padding: 0.4rem 0rem;
+
+  color: black;
 `;
 
 export const CalendarDay = styled.td`
@@ -129,7 +131,8 @@ export const CalendarDay = styled.td`
 `;
 
 interface DayProps {
-  isHoliday?: boolean;
+  isThisMonth?: boolean;
+  isSunday?: boolean;
   isSaturday?: boolean;
 }
 
@@ -141,11 +144,18 @@ export const Day = styled.div<DayProps>`
   font-weight: bold;
 
   color: ${props =>
-    props.isHoliday ? 'red' : props.isSaturday ? 'blue' : 'black'};
+    !props.isThisMonth
+      ? 'gray'
+      : props.isSunday
+      ? 'red'
+      : props.isSaturday
+      ? 'blue'
+      : 'black'};
 `;
 
 interface EventBarProps {
   position?: number;
+  color?: string;
 }
 
 export const EventBar = styled.div<EventBarProps>`
@@ -155,5 +165,5 @@ export const EventBar = styled.div<EventBarProps>`
   height: 20%;
 
   top: ${prop => (prop.position ? `${100 - prop.position * 20}%` : `0%`)};
-  background-color: #ed9c9c;
+  background-color: ${prop => (prop.color ? prop.color : 'gray')};
 `;

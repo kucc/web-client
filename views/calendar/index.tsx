@@ -5,47 +5,24 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import Day from './model/day';
 import * as S from './styles';
 import { useCalendar } from './hooks';
+import { chunkArray } from '../../lib';
 import Layout from '../../components/layout';
 import Schedule from '../../components/schedule';
 import { Grid, Row, Col } from '../../components/grid/styles';
-
-const DummyData = [
-  {
-    name: '일정1',
-    startAt: new Date(2020, 0, 10),
-    endAt: new Date(2020, 1, 15),
-    color: '#ED9C9C',
-  },
-  {
-    name: '일정2',
-    startAt: new Date(2020, 1, 10),
-    endAt: new Date(2020, 1, 13),
-    color: '#EAD88B',
-  },
-  {
-    name: '일정3',
-    startAt: new Date(2020, 1, 11),
-    endAt: new Date(2020, 1, 22),
-    color: '#ACB7E5',
-  },
-  {
-    name: '일정4',
-    startAt: new Date(2020, 1, 4),
-    endAt: new Date(2020, 1, 6),
-    color: '#A1DEAD',
-  },
-];
 
 const Calendar: NextPage = () => {
   const {
     now,
     events,
+    matchedDays,
     handleIncreaseMonth,
     handleDecreaseMonth,
   } = useCalendar();
-  console.log(events);
+
+  const chunkedMatchedDays = chunkArray(matchedDays, 7);
 
   return (
     <Layout>
@@ -69,16 +46,6 @@ const Calendar: NextPage = () => {
                   <S.Schedules>
                     <Grid>
                       {events.map((event, idx) => (
-                        <Row key={idx}>
-                          <Schedule
-                            name={event.name}
-                            color={event.color}
-                            startAt={event.startAt}
-                            endAt={event.endAt}
-                          ></Schedule>
-                        </Row>
-                      ))}
-                      {DummyData.map((event, idx) => (
                         <Row key={idx}>
                           <Schedule
                             name={event.name}
@@ -114,126 +81,36 @@ const Calendar: NextPage = () => {
                         <S.CalendarDayMeta>WED</S.CalendarDayMeta>
                         <S.CalendarDayMeta>THU</S.CalendarDayMeta>
                         <S.CalendarDayMeta>FRI</S.CalendarDayMeta>
-                        <S.CalendarDayMeta>SAT</S.CalendarDayMeta>
+                        <S.CalendarDayMeta style={{ color: 'blue' }}>
+                          SAT
+                        </S.CalendarDayMeta>
                       </S.CalendarWeek>
                     </S.CalendarTableHeader>
                     <S.CalendarTableBody>
-                      <S.CalendarWeek>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                          <S.EventBar position={1}></S.EventBar>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                      </S.CalendarWeek>
-                      <S.CalendarWeek>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                      </S.CalendarWeek>
-                      <S.CalendarWeek>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                      </S.CalendarWeek>
-                      <S.CalendarWeek>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                      </S.CalendarWeek>
-                      <S.CalendarWeek>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                        <S.CalendarDay>
-                          <S.Day>1</S.Day>
-                        </S.CalendarDay>
-                      </S.CalendarWeek>
+                      {chunkedMatchedDays.map((week: Day[], idx: number) => (
+                        <S.CalendarWeek key={idx}>
+                          {week.map((day: Day, idx: number) => (
+                            <S.CalendarDay key={idx}>
+                              <S.Day
+                                isSaturday={day.isSaturday}
+                                isSunday={day.isSunday}
+                                isThisMonth={day.isThisMonth}
+                              >
+                                {day.day.getDate()}
+                              </S.Day>
+                              <>
+                                {day.events.map((event, idx) => (
+                                  <S.EventBar
+                                    key={idx}
+                                    position={idx + 1}
+                                    color={event.color}
+                                  ></S.EventBar>
+                                ))}
+                              </>
+                            </S.CalendarDay>
+                          ))}
+                        </S.CalendarWeek>
+                      ))}
                     </S.CalendarTableBody>
                   </S.CalendarTable>
                 </S.CalendarContainer>
