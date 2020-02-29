@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 
 import * as S from './styles';
+import Link from 'next/link';
 import { Grid, Row, Col } from '../../components/grid/styles';
 import Layout from '../../components/layout';
 
@@ -170,7 +171,9 @@ const Main: NextPage = () => (
         <S.RowSpace />
         <S.Section>
           <S.ButtonContainer>
-            <S.JoinButton>Join Us!</S.JoinButton>
+            <Link href="/recruit">
+              <S.JoinButton>Join Us!</S.JoinButton>
+            </Link>
           </S.ButtonContainer>
         </S.Section>
       </Grid>
