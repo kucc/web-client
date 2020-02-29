@@ -51,7 +51,6 @@ export const Slider = styled(AwesomeSlider)``;
 export const SliderContentWrapper = styled.div``;
 
 interface SliderContentProps {
-  backgroundImage?: string;
   backgroundColor?: string;
   color?: string;
 }
