@@ -69,6 +69,8 @@ export const CalendarHeader = styled.div`
 
   display: flex;
   justify-content: space-between;
+
+  margin-bottom: 1.2rem;
 `;
 
 export const ChangeMonthButton = styled.button`
@@ -90,5 +92,78 @@ export const MonthTitle = styled.div`
   letter-spacing: 0.54px;
   color: #1a1311;
 `;
+
 export const DaysOfTheWeek = styled.div``;
-export const CalendarTable = styled.div``;
+
+export const CalendarTable = styled.table`
+  border: 1px solid #707070;
+  width: 100%;
+
+  border-collapse: collapse;
+`;
+
+export const CalendarTableHeader = styled.thead`
+  width: 100%;
+`;
+
+export const CalendarTableBody = styled.tbody`
+  width: 100%;
+`;
+
+export const CalendarWeek = styled.tr`
+  width: 100%;
+`;
+
+export const CalendarDayMeta = styled.th`
+  width: 14.3%;
+  font-size: 1.2rem;
+  padding: 0.4rem 0rem;
+
+  color: black;
+`;
+
+export const CalendarDay = styled.td`
+  position: relative;
+  width: 14.3%;
+  height: 8rem;
+
+  border: 1px solid #707070;
+`;
+
+interface DayProps {
+  isThisMonth?: boolean;
+  isSunday?: boolean;
+  isSaturday?: boolean;
+}
+
+export const Day = styled.div<DayProps>`
+  z-index: 200;
+  position: absolute;
+  left: 10%;
+  top: 10%;
+  font-weight: bold;
+
+  color: ${props =>
+    !props.isThisMonth
+      ? 'gray'
+      : props.isSunday
+      ? 'red'
+      : props.isSaturday
+      ? 'blue'
+      : 'black'};
+`;
+
+interface EventBarProps {
+  position?: number;
+  color?: string;
+}
+
+export const EventBar = styled.div<EventBarProps>`
+  z-index: 100;
+  position: absolute;
+  width: 100%;
+  height: 20%;
+
+  top: ${prop => (prop.position ? `${100 - prop.position * 20}%` : `0%`)};
+  background-color: ${prop => (prop.color ? prop.color : 'gray')};
+`;

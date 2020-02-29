@@ -5,41 +5,24 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import Day from './model/day';
 import * as S from './styles';
 import { useCalendar } from './hooks';
+import { chunkArray } from '../../lib';
 import Layout from '../../components/layout';
 import Schedule from '../../components/schedule';
 import { Grid, Row, Col } from '../../components/grid/styles';
 
-const DummyData = [
-  {
-    name: '일정1',
-    startAt: new Date(),
-    endAt: new Date(),
-    color: '#ED9C9C',
-  },
-  {
-    name: '일정2',
-    startAt: new Date(),
-    endAt: new Date(),
-    color: '#EAD88B',
-  },
-  {
-    name: '일정3',
-    startAt: new Date(),
-    endAt: new Date(),
-    color: '#ACB7E5',
-  },
-  {
-    name: '일정4',
-    startAt: new Date(),
-    endAt: new Date(),
-    color: '#A1DEAD',
-  },
-];
-
 const Calendar: NextPage = () => {
-  const { now, handleIncreaseMonth, handleDecreaseMonth } = useCalendar();
+  const {
+    now,
+    events,
+    matchedDays,
+    handleIncreaseMonth,
+    handleDecreaseMonth,
+  } = useCalendar();
+
+  const chunkedMatchedDays = chunkArray(matchedDays, 7);
 
   return (
     <Layout>
@@ -62,16 +45,21 @@ const Calendar: NextPage = () => {
                   <S.ScheduleTitle>이 달의 일정</S.ScheduleTitle>
                   <S.Schedules>
                     <Grid>
-                      {DummyData.map((data, idx) => (
+                      {events.map((event, idx) => (
                         <Row key={idx}>
-                          <Schedule color={data.color}></Schedule>
+                          <Schedule
+                            name={event.name}
+                            color={event.color}
+                            startAt={event.startAt}
+                            endAt={event.endAt}
+                          ></Schedule>
                         </Row>
                       ))}
                     </Grid>
                   </S.Schedules>
                 </S.ScheduleContainer>
               </Col>
-              <Col span={8} offset={1}>
+              <Col span={9}>
                 <S.CalendarContainer>
                   <S.CalendarHeader>
                     <S.ChangeMonthButton onClick={handleDecreaseMonth}>
@@ -82,6 +70,49 @@ const Calendar: NextPage = () => {
                       <FontAwesomeIcon icon={faChevronRight} size="2x" />
                     </S.ChangeMonthButton>
                   </S.CalendarHeader>
+                  <S.CalendarTable>
+                    <S.CalendarTableHeader>
+                      <S.CalendarWeek>
+                        <S.CalendarDayMeta style={{ color: 'red' }}>
+                          SUN
+                        </S.CalendarDayMeta>
+                        <S.CalendarDayMeta>MON</S.CalendarDayMeta>
+                        <S.CalendarDayMeta>TUE</S.CalendarDayMeta>
+                        <S.CalendarDayMeta>WED</S.CalendarDayMeta>
+                        <S.CalendarDayMeta>THU</S.CalendarDayMeta>
+                        <S.CalendarDayMeta>FRI</S.CalendarDayMeta>
+                        <S.CalendarDayMeta style={{ color: 'blue' }}>
+                          SAT
+                        </S.CalendarDayMeta>
+                      </S.CalendarWeek>
+                    </S.CalendarTableHeader>
+                    <S.CalendarTableBody>
+                      {chunkedMatchedDays.map((week: Day[], idx: number) => (
+                        <S.CalendarWeek key={idx}>
+                          {week.map((day: Day, idx: number) => (
+                            <S.CalendarDay key={idx}>
+                              <S.Day
+                                isSaturday={day.isSaturday}
+                                isSunday={day.isSunday}
+                                isThisMonth={day.isThisMonth}
+                              >
+                                {day.day.getDate()}
+                              </S.Day>
+                              <>
+                                {day.events.map((event, idx) => (
+                                  <S.EventBar
+                                    key={idx}
+                                    position={idx + 1}
+                                    color={event.color}
+                                  ></S.EventBar>
+                                ))}
+                              </>
+                            </S.CalendarDay>
+                          ))}
+                        </S.CalendarWeek>
+                      ))}
+                    </S.CalendarTableBody>
+                  </S.CalendarTable>
                 </S.CalendarContainer>
               </Col>
             </S.CalendarFormatContainer>
