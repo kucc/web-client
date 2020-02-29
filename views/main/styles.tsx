@@ -6,15 +6,11 @@ export const Main = styled.div`
   align-items: center;
 `;
 
-export const Section1 = styled.div``;
+export const Section = styled.div``;
 
-export const Section2 = styled.div``;
-
-export const Section3 = styled.div`
+export const SectionGray = styled.div`
   background: #f3f3f3;
 `;
-
-export const Section4 = styled.div``;
 
 export const MiniFeature = styled.div`
   border: 1px solid #1a1311;
@@ -60,7 +56,7 @@ export const TitleContent = styled.div`
 `;
 
 export const Image = styled.img`
-  box-shadow: 0px 5px 5px;
+  box-shadow: 0px 5px 10px;
   width: 100%;
 `;
 
@@ -70,14 +66,14 @@ export const ImageGrid = styled.img`
 `;
 
 export const RowSpace = styled.div`
-  height: 20rem;
+  height: 15rem;
 `;
 
 export const Message = styled.div`
   color: #c93333;
   font-size: 5rem;
   font-weight: 700;
-  letter-spacing: 1.2rem;
+  letter-spacing: 0.5rem;
   margin-left: 10rem;
   line-height: 7rem;
 `;
@@ -88,4 +84,74 @@ export const Content = styled.div`
   margin-left: 20rem;
   margin-top: 1rem;
   line-height: 2.5rem;
+`;
+
+export const KeywordSectionContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 0rem auto;
+`;
+
+export const KeywordContainer = styled.div`
+  position: relative;
+  width: 25rem;
+  height: 25rem;
+  background: #f3f3f3;
+  border-radius: 50%;
+  text-align: center;
+  margin: 0rem 5rem;
+`;
+
+export const KeywordIcon = styled.img`
+  display: block;
+  position: absolute;
+  z-index: 100;
+  width: 10rem;
+  top: 5rem;
+  left: 0rem;
+  right: 0rem;
+  margin: auto;
+`;
+
+export const Keyword = styled.div`
+  display: block;
+  position: absolute;
+  z-index: 100;
+  top: 17rem;
+  left: 0rem;
+  right: 0rem;
+  margin: auto;
+  color: #1a1311;
+  font-size: 2.5rem;
+  font-weight: 700;
+`;
+
+export const KeywordCaption = styled.div`
+  display: block;
+  position: absolute;
+  z-index: 100;
+  top: 27rem;
+  left: 0rem;
+  right: 0rem;
+  margin: auto;
+  font-size: 1.8rem;
+  font-weight: 300;
+  line-height: 2.5rem;
+`;
+
+export const ButtonContainer = styled.div`
+  position: relative;
+  padding: 0rem 50rem;
+`;
+
+export const JoinButton = styled.button`
+  width: 30rem;
+  height: 6rem;
+  background-color: #c93333;
+  border-radius: 3rem;
+  border: 0;
+  color: white;
+  font-size: 3rem;
+  letter-spacing: 0.3rem;
+  font-weight: 700;
 `;
