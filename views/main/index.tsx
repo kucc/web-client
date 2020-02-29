@@ -48,26 +48,57 @@ const Main: NextPage = () => (
         </S.Section>
         <S.RowSpace />
         <S.Section>
+          <S.Decoration1 />
+          <S.Decoration2 />
+          <S.Decoration3 />
+          <S.Decoration4 />
+          <S.Decoration5 />
           <Row>
             <Col>
-              <Grid>
-                <Row>
-                  <Col>
-                    <S.ImageGrid src="https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849822_960_720.jpg" />
-                  </Col>
-                  <Col>
-                    <S.ImageGrid src="https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849822_960_720.jpg" />
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <S.ImageGrid src="https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849822_960_720.jpg" />
-                  </Col>
-                  <Col>
-                    <S.ImageGrid src="https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849822_960_720.jpg" />
-                  </Col>
-                </Row>
-              </Grid>
+              <S.Gallery>
+                <Grid>
+                  <Row>
+                    <Col>
+                      <S.ImageGridContainer>
+                        <S.ImageGrid src="/images/Landing-footage-1.jpg" />
+                        <S.ImageGridCaption>
+                          <S.CaptionTitle>Image_1</S.CaptionTitle>
+                          <S.Caption>2020.xx.xx</S.Caption>
+                        </S.ImageGridCaption>
+                      </S.ImageGridContainer>
+                    </Col>
+                    <Col>
+                      <S.ImageGridContainer>
+                        <S.ImageGrid src="/images/Landing-footage-2.jpg" />
+                        <S.ImageGridCaption>
+                          <S.CaptionTitle>Image_2</S.CaptionTitle>
+                          <S.Caption>2020.xx.xx</S.Caption>
+                        </S.ImageGridCaption>
+                      </S.ImageGridContainer>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <S.ImageGridContainer>
+                        <S.ImageGrid src="/images/Landing-footage-3.jpg" />
+                        <S.ImageGridCaption>
+                          <S.CaptionTitle>Image_3</S.CaptionTitle>
+                          <S.Caption>2020.xx.xx</S.Caption>
+                        </S.ImageGridCaption>
+                      </S.ImageGridContainer>
+                    </Col>
+                    <Col>
+                      <S.ImageGridContainer>
+                        <S.ImageGrid src="/images/Landing-footage-4.jpg" />
+                        <S.ImageGridCaption>
+                          <S.CaptionTitle>Image_4</S.CaptionTitle>
+                          <S.Caption>2020.xx.xx</S.Caption>
+                        </S.ImageGridCaption>
+                      </S.ImageGridContainer>
+                    </Col>
+                  </Row>
+                </Grid>
+              </S.Gallery>
             </Col>
             <Col>
               <Row>
@@ -103,9 +134,7 @@ const Main: NextPage = () => (
               </Row>
             </Col>
             <Col>
-              <S.ImgContainer>
-                <S.Image src="https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849822_960_720.jpg" />
-              </S.ImgContainer>
+              <div style={{ height: '50rem' }}>carousel</div>
             </Col>
           </Row>
         </S.SectionGray>

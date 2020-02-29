@@ -6,10 +6,13 @@ export const Main = styled.div`
   align-items: center;
 `;
 
-export const Section = styled.div``;
+export const Section = styled.div`
+  position: relative;
+`;
 
 export const SectionGray = styled.div`
   background: #f3f3f3;
+  position: relative;
 `;
 
 export const MiniFeature = styled.div`
@@ -60,9 +63,54 @@ export const Image = styled.img`
   width: 100%;
 `;
 
+export const Gallery = styled.div`
+  margin-left: 3rem;
+`;
+
+export const ImageGridContainer = styled.div`
+  position: relative;
+  margin-bottom: 2rem;
+`;
+
 export const ImageGrid = styled.img`
   width: 100%;
-  margin: 1rem;
+  transition: all 0.3s ease;
+`;
+
+export const ImageGridCaption = styled.div`
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: all 0.3s ease;
+  opacity: 0;
+  &:hover {
+    opacity: 1;
+    background-color: #c93333;
+  }
+`;
+
+export const CaptionTitle = styled.div`
+  position: absolute;
+  top: 9rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: 700;
+`;
+
+export const Caption = styled.div`
+  position: absolute;
+  top: 12.5rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 500;
 `;
 
 export const RowSpace = styled.div`
@@ -154,4 +202,57 @@ export const JoinButton = styled.button`
   font-size: 3rem;
   letter-spacing: 0.3rem;
   font-weight: 700;
+  transition: all 0.2s ease;
+  &:hover {
+    opacity: 1;
+    transform: scale(0.9);
+    background-color: #c9333380;
+  }
+`;
+
+export const Decoration1 = styled.div`
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  width: 3rem;
+  height: 43.7rem;
+  background: #eab1b1;
+`;
+
+export const Decoration2 = styled.div`
+  position: absolute;
+  top: -5rem;
+  left: 55rem;
+  width: 15rem;
+  height: 15rem;
+  background: #eab1b1;
+`;
+
+export const Decoration3 = styled.div`
+  position: absolute;
+  top: 38rem;
+  right: 0rem;
+  width: 12rem;
+  height: 16rem;
+  background: #c9333361;
+`;
+
+export const Decoration4 = styled.div`
+  position: absolute;
+  z-index: 1;
+  top: 58rem;
+  right: 15rem;
+  width: 6rem;
+  height: 6rem;
+  background: #c93333bf;
+`;
+
+export const Decoration5 = styled.div`
+  position: absolute;
+  z-index: 1;
+  top: 64rem;
+  right: 5rem;
+  width: 4rem;
+  height: 4rem;
+  background: #c93333;
 `;
