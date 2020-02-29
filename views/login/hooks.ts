@@ -40,7 +40,7 @@ export const useLogin = () => {
     });
 
     if (response.ok) {
-      router.reload();
+      window.location.replace('/');
       return;
     }
 
