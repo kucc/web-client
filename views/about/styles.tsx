@@ -241,53 +241,148 @@ export const ExecutivesCommentContainer = styled.div`
 
   .name {
     width: 18rem;
-
     text-align: right;
   }
 `;
 
-export const RowContainer4 = styled.div`
-  height: 39rem;
-`;
-
 export const KeyWord = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 `;
 
-export const KeyWordPic = styled.div`
-  width: 35rem;
-  height: 24rem;
-
+export const KeyWordPic1 = styled.div`
   position: relative;
 
   color: white;
   font-size: 2.4rem;
-  flex-direction: column;
 
+  flex-direction: column;
   justify-content: flex-end;
   display: flex;
   align-items: center;
 
+  width: 35rem;
+  height: 24rem;
   background: url('/images/About-KeyWord1-Big.png');
+  background-size: cover;
+`;
+
+export const KeyWordPic2 = styled.div`
+  position: relative;
+
+  color: white;
+  font-size: 2.4rem;
+
+  flex-direction: column;
+  justify-content: flex-end;
+  display: flex;
+  align-items: center;
+
+  width: 35rem;
+  height: 24rem;
+  background: url('/images/About-KeyWord2-Big.png');
+  background-size: cover;
+`;
+
+export const KeyWordPic3 = styled.div`
+  position: relative;
+
+  color: white;
+  font-size: 2.4rem;
+
+  flex-direction: column;
+  justify-content: flex-end;
+  display: flex;
+  align-items: center;
+
+  width: 35rem;
+  height: 24rem;
+  background: url('/images/About-KeyWord3-Big.png');
+  background-size: cover;
+`;
+
+export const KeyWordExpl = styled.div`
+  color: black;
+  font-size: 1.8rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 35rem;
+  height: 12rem;
+  text-align: center;
+
+  margin-top: 3rem;
 `;
 
 export const KeyWordTitle = styled.div`
   color: white;
   font-size: 2.4rem;
+
   display: flex;
   flex-direction: row;
   margin: 3rem 0rem;
 `;
 
-export const KeyWordExpl = styled.div``;
+export const ContactInfoContainer = styled.div`
+  width: 55rem;
+  align-items: flex-start;
+  flex-direction: row;
+`;
 
-export const RowContainer0 = styled.div`
+export const ContactTitle = styled.div`
+  color: #c93333;
+  font-size: 5.4rem;
+  font-weight: bold;
+  letter-spacing: 5.4px;
+
+  text-align: left;
+`;
+
+export const ContactInfo = styled.div`
+  color: #707070;
+  font-size: 18px;
+  letter-spacing: 0.54px;
+  height: 20px;
+  display: flex;
+
+  margin: 3rem 0rem;
+
+  .title {
+    width: 18rem;
+    margin-left: 9rem;
+  }
+  .content {
+    width: 28rem;
+  }
+`;
+
+export const ContactMap = styled.div`
+  width: 444px;
+  height: 303px;
+  border: 1px;
+  border-style: solid;
+  border-color: #707070;
+`;
+
+export const ContactMapContainer = styled.div`
+  display: flex;
+`;
+
+export const RedBox = styled.div`
+  width: 92px;
+  height: 303px;
+  background: #c93333;
+  margin-left: 1.6rem;
+`;
+
+export const IntroductionSection = styled.div`
   margin-bottom: 27rem;
 `;
 
-export const RowContainer1 = styled.div`
+export const KuccSection = styled.div`
   height: 24rem;
 
   background-color: #f3f3f3;
@@ -298,11 +393,11 @@ export const RowContainer1 = styled.div`
   justify-content: flex-end;
 `;
 
-export const RowContainer2 = styled.div`
+export const PresidentSection = styled.div`
   margin-bottom: 10rem;
 `;
 
-export const RowContainer3 = styled.div`
+export const ExecutiveSection = styled.div`
   height: 50rem;
 
   background-color: #f3f3f3;
@@ -310,5 +405,17 @@ export const RowContainer3 = styled.div`
   margin-bottom: 27rem;
   display: flex;
   flex-direction: row-reverse;
+  justify-content: flex-end;
+`;
+
+export const KeywordSection = styled.div`
+  height: 39rem;
+  margin-bottom: 15rem;
+`;
+
+export const ContactSection = styled.div`
+  margin-bottom: 12rem;
+  height: 30rem;
+  display: flex;
   justify-content: flex-end;
 `;
