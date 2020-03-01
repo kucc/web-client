@@ -240,7 +240,6 @@ export const FormButtonContainer = styled.div`
 `;
 
 export const FormButton = styled.div`
-  height: 5rem;
   margin-top: 1px; /* 경계 부분이 자꾸 가려져서 추가함 (리팩토링 필요) */
 
   text-align: center;
