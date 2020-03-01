@@ -140,6 +140,7 @@ export const Content = styled.div`
   margin-left: 20rem;
   margin-top: 1rem;
   line-height: 2.5rem;
+  color: black;
 `;
 
 export const LeafCarouselContainer = styled.div`
@@ -191,6 +192,7 @@ export const Keyword = styled.div`
 
 export const KeywordCaption = styled.div`
   display: block;
+  color: black;
   position: absolute;
   z-index: 100;
   top: 27rem;
@@ -204,7 +206,8 @@ export const KeywordCaption = styled.div`
 
 export const ButtonContainer = styled.div`
   position: relative;
-  padding: 0rem 50rem;
+  display: flex;
+  justify-content: center;
 `;
 
 export const JoinButton = styled.button`
