@@ -4,6 +4,16 @@ import * as S from './styles';
 import Link from 'next/link';
 import { Grid, Row, Col } from '../../components/grid/styles';
 import Layout from '../../components/layout';
+import {
+  MDBCarousel,
+  MDBCarouselInner,
+  MDBCarouselItem,
+  MDBView,
+  MDBContainer,
+} from 'mdbreact';
+import Carousel, { Dots } from '@brainhubeu/react-carousel';
+
+const handleOnDragStart = e => e.preventDefault();
 
 const Main: NextPage = () => (
   <Layout>
@@ -12,37 +22,81 @@ const Main: NextPage = () => (
         <S.Section>
           <Row>
             <Col>
-              <Row>
-                <S.MiniFeatureContainer>
-                  <S.MiniFeature>Assemble</S.MiniFeature>
-                  <S.MiniFeature>Scrum</S.MiniFeature>
-                  <S.MiniFeature>Develop</S.MiniFeature>
-                  <S.MiniFeature>Further</S.MiniFeature>
-                </S.MiniFeatureContainer>
-              </Row>
-              <Row>
-                <S.TitleMessage>
-                  We Code;
-                  <br />
-                  Together
-                </S.TitleMessage>
-              </Row>
-              <Row>
-                <S.TitleContent>
-                  고려대학교 중앙 컴퓨터 동아리 KUCC는
-                  <br />
-                  컴퓨터에 관심이 있고, 더 알고 싶고,
-                  <br />
-                  다른 이들과 나누고 싶어하는 사람들이 모인 동아리입니다!(예시)
-                </S.TitleContent>
-              </Row>
+              <S.SectionText>
+                <Row>
+                  <S.MiniFeatureContainer>
+                    <S.MiniFeature>Assemble</S.MiniFeature>
+                    <S.MiniFeature>Scrum</S.MiniFeature>
+                    <S.MiniFeature>Develop</S.MiniFeature>
+                    <S.MiniFeature>Further</S.MiniFeature>
+                  </S.MiniFeatureContainer>
+                </Row>
+                <Row>
+                  <S.TitleMessage>
+                    We Code;
+                    <br />
+                    Together
+                  </S.TitleMessage>
+                </Row>
+                <Row>
+                  <S.TitleContent>
+                    고려대학교 중앙 컴퓨터 동아리 KUCC는
+                    <br />
+                    컴퓨터에 관심이 있고, 더 알고 싶고,
+                    <br />
+                    다른 이들과 나누고 싶어하는 사람들이 모인
+                    동아리입니다!(예시)
+                  </S.TitleContent>
+                </Row>
+              </S.SectionText>
             </Col>
             <Col>
               {
-                <S.ImgContainer>
-                  <div style={{ height: '50rem' }}>carousel</div>
+                <S.CarouselContainer>
+                  <MDBContainer>
+                    <MDBCarousel
+                      activeItem={1}
+                      length={3}
+                      showControls={true}
+                      showIndicators={true}
+                      slide
+                      interval={3000}
+                      style={{ boxShadow: '10px 10px 5px' }}
+                    >
+                      <MDBCarouselInner>
+                        <MDBCarouselItem itemId="1">
+                          <MDBView>
+                            <img
+                              className="d-block w-100"
+                              src="/images/Landing-main-1.jpg"
+                              alt="First slide"
+                            />
+                          </MDBView>
+                        </MDBCarouselItem>
+                        <MDBCarouselItem itemId="2">
+                          <MDBView>
+                            <img
+                              className="d-block w-100"
+                              src="/images/Landing-main-1.jpg"
+                              alt="Second slide"
+                            />
+                          </MDBView>
+                        </MDBCarouselItem>
+                        <MDBCarouselItem itemId="3">
+                          <MDBView>
+                            <img
+                              className="d-block w-100"
+                              src="/images/Landing-main-1.jpg"
+                              alt="Third slide"
+                            />
+                          </MDBView>
+                        </MDBCarouselItem>
+                      </MDBCarouselInner>
+                    </MDBCarousel>
+                  </MDBContainer>
+                  {/* <div style={{ height: '50rem' }}>carousel</div> */}
                   {/* <S.Image src="https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849822_960_720.jpg" /> */}
-                </S.ImgContainer>
+                </S.CarouselContainer>
               }
             </Col>
           </Row>
@@ -136,7 +190,23 @@ const Main: NextPage = () => (
               </Row>
             </Col>
             <Col>
-              <div style={{ height: '50rem' }}>carousel</div>
+              <S.LeafCarouselContainer>
+                <Carousel
+                  clickToChange
+                  slidesPerPage={2.5}
+                  infinite
+                  /* stopAutoPlayOnHover */
+                  autoPlay={3000}
+                >
+                  <S.Image src="/images/Landing-feature-1.jpg" />
+                  <S.Image src="/images/Landing-feature-2.jpg" />
+                  <S.Image src="/images/Landing-feature-3.jpg" />
+                  <S.Image src="/images/Landing-feature-4.jpg" />
+                  <S.Image src="/images/Landing-feature-5.jpg" />
+                  <S.Image src="/images/Landing-feature-6.jpg" />
+                </Carousel>
+              </S.LeafCarouselContainer>
+              {/* <div style={{ height: '50rem' }}>carousel</div> */}
             </Col>
           </Row>
         </S.SectionGray>
@@ -146,7 +216,10 @@ const Main: NextPage = () => (
             <Row>
               <Col>
                 <S.KeywordContainer>
-                  <S.KeywordIcon src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Square_definition.svg/1200px-Square_definition.svg.png" />
+                  <S.KeywordIcon
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Square_definition.svg/1200px-Square_definition.svg.png"
+                    onDragStart={handleOnDragStart}
+                  />
                   <S.Keyword>Keyword_1</S.Keyword>
                   <S.KeywordCaption>
                     Lorem ipsum dolor sit amet,
@@ -163,7 +236,10 @@ const Main: NextPage = () => (
               </Col>
               <Col>
                 <S.KeywordContainer>
-                  <S.KeywordIcon src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Square_definition.svg/1200px-Square_definition.svg.png" />
+                  <S.KeywordIcon
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Square_definition.svg/1200px-Square_definition.svg.png"
+                    onDragStart={handleOnDragStart}
+                  />
                   <S.Keyword>Keyword_2</S.Keyword>
                   <S.KeywordCaption>
                     Lorem ipsum dolor sit amet,
@@ -180,7 +256,10 @@ const Main: NextPage = () => (
               </Col>
               <Col>
                 <S.KeywordContainer>
-                  <S.KeywordIcon src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Square_definition.svg/1200px-Square_definition.svg.png" />
+                  <S.KeywordIcon
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Square_definition.svg/1200px-Square_definition.svg.png"
+                    onDragStart={handleOnDragStart}
+                  />
                   <S.Keyword>Keyword_3</S.Keyword>
                   <S.KeywordCaption>
                     Lorem ipsum dolor sit amet,

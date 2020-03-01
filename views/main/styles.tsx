@@ -1,18 +1,26 @@
 import styled from 'styled-components';
 
 export const Main = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
 export const Section = styled.div`
+  margin: 0rem -4rem;
   position: relative;
 `;
 
 export const SectionGray = styled.div`
+  margin: 0rem -4rem;
   background: #f3f3f3;
   position: relative;
+  height: 50rem;
+`;
+
+export const SectionText = styled.div`
+  margin-left: 5rem;
 `;
 
 export const MiniFeature = styled.div`
@@ -33,11 +41,8 @@ export const MiniFeatureContainer = styled.div`
   padding-right: 25rem;
 `;
 
-export const ImgContainer = styled.div`
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  justify-content: center;
+export const CarouselContainer = styled.div`
+  margin: 0rem -3rem;
 `;
 
 export const TitleMessage = styled.div`
@@ -59,8 +64,10 @@ export const TitleContent = styled.div`
 `;
 
 export const Image = styled.img`
-  box-shadow: 5px 5px 10px;
-  width: 100%;
+  width: 24rem;
+  &:hover {
+    cursor: default;
+  }
 `;
 
 export const Gallery = styled.div`
@@ -132,6 +139,13 @@ export const Content = styled.div`
   margin-left: 20rem;
   margin-top: 1rem;
   line-height: 2.5rem;
+`;
+
+export const LeafCarouselContainer = styled.div`
+  width: 75rem;
+  height: 35rem;
+  margin-top: 15rem;
+  margin-right: -1rem;
 `;
 
 export const KeywordSectionContainer = styled.div`
@@ -215,7 +229,7 @@ export const Decoration1 = styled.div`
   top: 0rem;
   left: 0rem;
   width: 3rem;
-  height: 43.7rem;
+  height: 46.7rem;
   background: #eab1b1;
 `;
 
@@ -230,7 +244,7 @@ export const Decoration2 = styled.div`
 
 export const Decoration3 = styled.div`
   position: absolute;
-  top: 38rem;
+  top: 40rem;
   right: 0rem;
   width: 12rem;
   height: 16rem;
@@ -240,7 +254,7 @@ export const Decoration3 = styled.div`
 export const Decoration4 = styled.div`
   position: absolute;
   z-index: 1;
-  top: 58rem;
+  top: 60rem;
   right: 15rem;
   width: 6rem;
   height: 6rem;
@@ -250,7 +264,7 @@ export const Decoration4 = styled.div`
 export const Decoration5 = styled.div`
   position: absolute;
   z-index: 1;
-  top: 64rem;
+  top: 66rem;
   right: 5rem;
   width: 4rem;
   height: 4rem;

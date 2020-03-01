@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@brainhubeu/react-carousel": "^1.12.9-alpha",
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "@fortawesome/react-fontawesome": "^0.1.8",
@@ -23,11 +24,11 @@
     "dotenv": "^8.2.0",
     "isomorphic-unfetch": "^3.0.0",
     "jsonwebtoken": "^8.5.1",
+    "mdbreact": "^4.25.2",
     "next": "^9.2.0",
     "react": "^16.12.0",
     "react-awesome-slider": "^4.1.0",
     "react-dom": "^16.12.0",
-    "react-multi-carousel": "^2.5.2",
     "styled-components": "^5.0.0",
     "styled-reset": "^4.1.0",
     "universal-cookie": "^4.0.3"
