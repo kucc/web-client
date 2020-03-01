@@ -59,7 +59,7 @@ export const TitleContent = styled.div`
 `;
 
 export const Image = styled.img`
-  box-shadow: 0px 5px 10px;
+  box-shadow: 5px 5px 10px;
   width: 100%;
 `;
 
@@ -87,7 +87,7 @@ export const ImageGridCaption = styled.div`
   opacity: 0;
   &:hover {
     opacity: 1;
-    background-color: #c93333;
+    background-color: #c93333bf;
   }
 `;
 

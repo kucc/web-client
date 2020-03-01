@@ -40,12 +40,14 @@ const Main: NextPage = () => (
             <Col>
               {
                 <S.ImgContainer>
-                  <S.Image src="https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849822_960_720.jpg" />
+                  <div style={{ height: '50rem' }}>carousel</div>
+                  {/* <S.Image src="https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849822_960_720.jpg" /> */}
                 </S.ImgContainer>
               }
             </Col>
           </Row>
         </S.Section>
+        <S.RowSpace />
         <S.RowSpace />
         <S.Section>
           <S.Decoration1 />
