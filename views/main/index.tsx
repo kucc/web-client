@@ -60,7 +60,7 @@ const Main: NextPage = () => (
                     showIndicators={true}
                     slide
                     interval={3000}
-                    style={{ boxShadow: '10px 10px 5px' }}
+                    style={{ boxShadow: 'rgba(0,0,0,0.3) 10px 10px 5px' }}
                   >
                     <MDBCarouselInner>
                       <MDBCarouselItem itemId="1">
