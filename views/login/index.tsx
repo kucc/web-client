@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 import { redirect } from '../../lib/auth';
-import { useFlip, useLogin } from './hooks';
 import Layout from '../../components/layout';
+import { useFlip, useLogin, useFindPassword } from './hooks';
 
 const Login: NextPage = () => {
   const { flip, handleFlip } = useFlip();
@@ -15,6 +15,14 @@ const Login: NextPage = () => {
     handleLoginButton,
     isLoginButtonDisabled,
   } = useLogin();
+
+  const {
+    isFormSent,
+    findPasswordForm,
+    handleSendPasswordForm,
+    isFindPasswordButtonDisabled,
+    handleFindPasswordFormChange,
+  } = useFindPassword();
 
   return (
     <Layout>
@@ -77,8 +85,24 @@ const Login: NextPage = () => {
                     autoComplete="off"
                     name="name"
                     placeholder="이름"
+                    value={findPasswordForm.name}
+                    onChange={handleFindPasswordFormChange}
+                  />
+                  <S.FormInput
+                    autoComplete="off"
+                    name="email"
+                    placeholder="이메일"
+                    value={findPasswordForm.email}
+                    onChange={handleFindPasswordFormChange}
                   />
                 </S.FormInputContainer>
+                <S.FormSentContainer>보내졌음!</S.FormSentContainer>
+                <S.FormSendButton
+                  disabled={isFindPasswordButtonDisabled}
+                  onClick={handleSendPasswordForm}
+                >
+                  인증메일 전송
+                </S.FormSendButton>
               </S.PasswordChangeFormContainer>
             </S.PasswordChangeFormFlipContainer>
           </S.FormContainer>
