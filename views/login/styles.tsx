@@ -253,6 +253,7 @@ export const FormButton = styled.div`
   justify-content: center;
 
   button {
+    background-color: inherit;
     border: none;
     font-size: 1.4rem;
     letter-spacing: -0.42px;
@@ -267,4 +268,16 @@ export const FormButton = styled.div`
       background-color: #eeeeee;
     }
   }
+`;
+
+export const FormSentContainer = styled.div`
+  width: 100%;
+  height: 10rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: -3rem;
 `;
