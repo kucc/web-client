@@ -51,53 +51,51 @@ const Main: NextPage = () => (
               </S.SectionText>
             </Col>
             <Col>
-              {
-                <S.CarouselContainer>
-                  <MDBContainer>
-                    <MDBCarousel
-                      activeItem={1}
-                      length={3}
-                      showControls={true}
-                      showIndicators={true}
-                      slide
-                      interval={3000}
-                      style={{ boxShadow: '10px 10px 5px' }}
-                    >
-                      <MDBCarouselInner>
-                        <MDBCarouselItem itemId="1">
-                          <MDBView>
-                            <img
-                              className="d-block w-100"
-                              src="/images/Landing-main-1.jpg"
-                              alt="First slide"
-                            />
-                          </MDBView>
-                        </MDBCarouselItem>
-                        <MDBCarouselItem itemId="2">
-                          <MDBView>
-                            <img
-                              className="d-block w-100"
-                              src="/images/Landing-main-1.jpg"
-                              alt="Second slide"
-                            />
-                          </MDBView>
-                        </MDBCarouselItem>
-                        <MDBCarouselItem itemId="3">
-                          <MDBView>
-                            <img
-                              className="d-block w-100"
-                              src="/images/Landing-main-1.jpg"
-                              alt="Third slide"
-                            />
-                          </MDBView>
-                        </MDBCarouselItem>
-                      </MDBCarouselInner>
-                    </MDBCarousel>
-                  </MDBContainer>
-                  {/* <div style={{ height: '50rem' }}>carousel</div> */}
-                  {/* <S.Image src="https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849822_960_720.jpg" /> */}
-                </S.CarouselContainer>
-              }
+              <S.CarouselContainer>
+                <MDBContainer>
+                  <MDBCarousel
+                    activeItem={1}
+                    length={3}
+                    showControls={true}
+                    showIndicators={true}
+                    slide
+                    interval={3000}
+                    style={{ boxShadow: '10px 10px 5px' }}
+                  >
+                    <MDBCarouselInner>
+                      <MDBCarouselItem itemId="1">
+                        <MDBView>
+                          <img
+                            className="d-block w-100"
+                            src="/images/Landing-main-1.jpg"
+                            alt="First slide"
+                          />
+                        </MDBView>
+                      </MDBCarouselItem>
+                      <MDBCarouselItem itemId="2">
+                        <MDBView>
+                          <img
+                            className="d-block w-100"
+                            src="/images/Landing-main-1.jpg"
+                            alt="Second slide"
+                          />
+                        </MDBView>
+                      </MDBCarouselItem>
+                      <MDBCarouselItem itemId="3">
+                        <MDBView>
+                          <img
+                            className="d-block w-100"
+                            src="/images/Landing-main-1.jpg"
+                            alt="Third slide"
+                          />
+                        </MDBView>
+                      </MDBCarouselItem>
+                    </MDBCarouselInner>
+                  </MDBCarousel>
+                </MDBContainer>
+                {/* <div style={{ height: '50rem' }}>carousel</div> */}
+                {/* <S.Image src="https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849822_960_720.jpg" /> */}
+              </S.CarouselContainer>
             </Col>
           </Row>
         </S.Section>

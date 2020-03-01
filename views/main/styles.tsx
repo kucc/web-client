@@ -21,6 +21,8 @@ export const SectionGray = styled.div`
 
 export const SectionText = styled.div`
   margin-left: 5rem;
+  background: #f3f3f3;
+  position: relative;
 `;
 
 export const MiniFeature = styled.div`
