@@ -1,3 +1,4 @@
+import React from 'react';
 import * as S from './styles';
 import Header from '../header';
 import Footer from '../footer';
@@ -18,4 +19,4 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   );
 };
 
-export default Layout;
+export default React.memo(Layout);
