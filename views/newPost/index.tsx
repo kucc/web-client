@@ -1,7 +1,8 @@
 import { useRef } from 'react';
 import { NextPage } from 'next';
-import { faSearch, faPen } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import dynamic from 'next/dynamic';
+// import { faSearch, faPen } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import MyEditor from '../../components/editor';
 import * as S from './styles';
@@ -10,6 +11,9 @@ import BoardNavigation from '../../components/board/board-navigation';
 import { Grid, Row, Col } from '../../components/grid/styles';
 
 const newPost: NextPage = () => {
+  const Editor = dynamic(import('../../components/editor/index'), {
+    ssr: false,
+  });
   const editorRef = useRef(null);
   const handleClick = () => {
     console.log(editorRef.current.getInstance().getValue());
@@ -40,15 +44,8 @@ const newPost: NextPage = () => {
                   <S.NewPostTypeLabel>게시판 종류</S.NewPostTypeLabel>
                   <S.NewPostTypeInput placeholder="게시판 종류를 입력해주세요" />
                 </S.NewPostTypeContainer>
-                <MyEditor editorRef={editorRef} />
-                {/* <input
-                    type="submit"
-                    value="제출하다"
-                    onClick={() => handleClick()
-                    
-                    }
-                  /> */}
-                <button onClick={() => handleClick()}>제출</button>
+                <Editor editorRef={editorRef} />
+                <button onClick={() => handleClick()}>제출하기</button>
               </Col>
             </S.BoardContainer>
           </Row>
