@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 
 import * as S from './styles';
 import Layout from '../../components/layout';
@@ -19,6 +20,7 @@ import {
   parseDateStringIntoYYMMDD,
 } from '../../lib/dateStringParser';
 
+const Viewer = dynamic(import('../../components/viewer'), { ssr: false });
 interface PostProps {
   data;
   rest;
@@ -117,9 +119,7 @@ const Post: NextPage<PostProps> = ({ data, rest }) => {
                     </S.PostViews>
                   </S.PostSubInfo>
                   <S.PostContent>
-                    <p>{content}</p>
-                    {/* 이전글/다음글 기능 체크용 */}
-                    <h1 style={{ color: 'red' }}>ID: {Id}</h1>
+                    {content && <Viewer initialPost={content} />}
                   </S.PostContent>
                 </S.BoardContent>
               </Col>
