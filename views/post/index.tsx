@@ -7,6 +7,7 @@ import {
   faEye,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useRouter } from 'next/router';
 
 import * as S from './styles';
 import Layout from '../../components/layout';
@@ -19,42 +20,32 @@ import {
 } from '../../lib/dateStringParser';
 
 interface PostProps {
-  data?: {
-    Id: number;
-    title: string;
-    content: string;
-    userId: number;
-    type: string;
-    createdAt: string;
-    views: number;
-    statusCode?: number;
-  };
-  rest?: Object;
+  data;
+  rest;
 }
 
 const Post: NextPage<PostProps> = ({ data, rest }) => {
-  let { postObject } = usePost();
   let { Id, title, content, userId, type, createdAt, views } = data;
-
   if (data.statusCode === 400) {
-    postObject = usePost().postObject;
-  }
-
-  if (postObject) {
-    Id = postObject.Id;
-    title = postObject.title;
-    content = postObject.content;
-    userId = postObject.userId;
-    type = postObject.type;
-    createdAt = postObject.createdAt;
-    views = postObject.views;
+    const router = useRouter();
+    const { id } = router.query;
+    const { postObject } = usePost(id);
+    if (postObject) {
+      Id = postObject.Id;
+      title = postObject.title;
+      content = postObject.content;
+      userId = postObject.userId;
+      type = postObject.type;
+      createdAt = postObject.createdAt;
+      views = postObject.views;
+    }
   }
 
   const createdAtInYYYYMMDD = createdAt
     ? parseDateStringIntoYYMMDD(createdAt)
     : null;
-
   const createdAtInHHMM = createdAt ? parseDateStringIntoHHMM(createdAt) : null;
+
   return (
     <Layout>
       <S.Board>
@@ -141,9 +132,13 @@ const Post: NextPage<PostProps> = ({ data, rest }) => {
 };
 
 Post.getInitialProps = async ({ query, res, req, ...rest }) => {
-  const response = await fetch(`http://localhost:4000/post/${query.postId}`);
-  const data = await response.json();
-  return { data, rest };
+  try {
+    const response = await fetch(`http://localhost:4000/post/${query.postId}`);
+    const data = await response.json();
+    return { data, rest };
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export default Post;
