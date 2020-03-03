@@ -50,26 +50,76 @@ export const NewPostTitleContainer = styled.div`
   align-items: center;
   margin-bottom: 2rem;
 `;
+
 export const NewPostTitleLabel = styled.label`
   margin-right: 1rem;
+  font-weight: bold;
 `;
+
 export const NewPostTitleInput = styled.input`
   width: 80%;
-  line-height: 3rem;
-  padding: 0 1rem;
+  padding: 1rem;
 `;
 
 export const NewPostTypeContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 2rem;
 `;
+
 export const NewPostTypeLabel = styled.label`
   margin-right: 1rem;
+  font-weight: bold;
 `;
-export const NewPostTypeInput = styled.input`
-  width: 80%;
-  line-height: 3rem;
-  padding: 0 1rem;
+
+export const NewPostTypeListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const NewPostTypeSelected = styled.div`
+  background-color: #f2f2f2;
+  border: 1px solid #d2d2d2;
+  font-weight: bold;
+  padding: 1rem;
+  width: 10rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+export const NewPostTypeList = styled.ul`
+  border: 1px solid #d2d2d2;
+  border-top: none;
+  margin-left: 6.33rem;
+  width: 10rem;
+`;
+
+export const NewPostTypeListItem = styled.li`
+  padding: 1rem 0;
+  text-align: center;
+  &:hover {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+`;
+
+export const EditorContainer = styled.div`
+  margin: 2rem 0;
+`;
+
+export const NewPostSubmitButton = styled.button`
+  border: 1px solid #d6d6d6;
+  border-radius: 2rem;
+  background-color: #c93333;
+  color: #ffffff;
+  height: 3.2rem;
+  padding: 0.5rem 1rem;
+  float: right;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: #a00b0b;
+    font-weight: bold;
+  }
 `;

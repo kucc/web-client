@@ -1,8 +1,10 @@
 import { useRef, useState } from 'react';
 import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
-import axios from 'axios';
+
 import { useRouter } from 'next/router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretDown, faPen } from '@fortawesome/free-solid-svg-icons';
 
 import * as S from './styles';
 import Layout from '../../components/layout';
@@ -16,8 +18,16 @@ const newPost: NextPage = () => {
     ssr: false,
   });
   const editorRef = useRef(null);
+
   const [newPostTitle, setNewPostTitle] = useState('');
-  const [newPostType, setNewPostType] = useState('');
+  const [newPostType, setNewPostType] = useState('자유게시판');
+  const [showMenu, setShowMenu] = useState(false);
+
+  const postTypeName = {
+    공지: 'NOTICE',
+    자유게시판: 'FREE',
+    교우게시판: 'ALUMNI',
+  };
 
   const handleSubmit = async () => {
     if (confirm('게시글을 작성하시겠습니까?')) {
@@ -32,7 +42,7 @@ const newPost: NextPage = () => {
         body: JSON.stringify({
           title: newPostTitle,
           content: newPostContent,
-          type: newPostType,
+          type: postTypeName[newPostType],
         }),
       });
       if (response.status === 201) {
@@ -47,9 +57,15 @@ const newPost: NextPage = () => {
     setNewPostTitle(e.target.value);
   };
 
-  const handleTypeOnChange = e => {
-    e.preventDefault();
-    setNewPostType(e.target.value);
+  const openMenu = () => {
+    setShowMenu(true);
+    document.addEventListener('click', closeMenu);
+  };
+
+  const closeMenu = () => {
+    event.preventDefault();
+    setShowMenu(false);
+    document.removeEventListener('click', closeMenu);
   };
 
   return (
@@ -80,14 +96,58 @@ const newPost: NextPage = () => {
                 </S.NewPostTitleContainer>
                 <S.NewPostTypeContainer>
                   <S.NewPostTypeLabel>게시판 종류</S.NewPostTypeLabel>
-                  <S.NewPostTypeInput
-                    placeholder="게시판 종류를 입력해주세요"
-                    value={newPostType}
-                    onChange={handleTypeOnChange}
-                  />
+                  <S.NewPostTypeListContainer>
+                    <S.NewPostTypeSelected
+                      onClick={() => {
+                        showMenu ? closeMenu() : openMenu();
+                      }}
+                    >
+                      {newPostType}{' '}
+                      <FontAwesomeIcon
+                        icon={faCaretDown}
+                        style={{ color: '#c93333' }}
+                        size={'lg'}
+                      />
+                    </S.NewPostTypeSelected>
+                  </S.NewPostTypeListContainer>
                 </S.NewPostTypeContainer>
-                <Editor editorRef={editorRef} />
-                <button onClick={handleSubmit}>제출하기</button>
+                {showMenu && (
+                  <S.NewPostTypeList>
+                    <S.NewPostTypeListItem
+                      onClick={() => {
+                        setNewPostType('공지');
+                        closeMenu();
+                      }}
+                    >
+                      공지
+                    </S.NewPostTypeListItem>
+                    <S.NewPostTypeListItem
+                      onClick={() => {
+                        setNewPostType('자유게시판');
+                        closeMenu();
+                      }}
+                    >
+                      자유게시판
+                    </S.NewPostTypeListItem>
+                    <S.NewPostTypeListItem
+                      onClick={() => {
+                        setNewPostType('교우게시판');
+                        closeMenu();
+                      }}
+                    >
+                      교우게시판
+                    </S.NewPostTypeListItem>
+                  </S.NewPostTypeList>
+                )}
+                <S.EditorContainer>
+                  <Editor editorRef={editorRef} />
+                </S.EditorContainer>
+                <S.NewPostSubmitButton onClick={handleSubmit}>
+                  <span style={{ marginRight: '1rem' }}>
+                    <FontAwesomeIcon icon={faPen} />
+                  </span>
+                  제출하기
+                </S.NewPostSubmitButton>
               </Col>
             </S.BoardContainer>
           </Row>
