@@ -52,7 +52,10 @@ const Board: NextPage<BoardProps> = ({ initialPosts, postTypeId, rest }) => {
                 <S.BoardMenu>
                   <S.BoardMenuTitle>{postTypeTitle}</S.BoardMenuTitle>
                   <S.BoardMenuHistory>
-                    Home > Board > {postTypeTitle}
+                    Home > Board >{' '}
+                    <span style={{ fontWeight: 'bold', color: '#c93333' }}>
+                      {postTypeTitle}
+                    </span>
                   </S.BoardMenuHistory>
                 </S.BoardMenu>
                 <S.BoardContent>
