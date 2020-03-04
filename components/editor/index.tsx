@@ -9,4 +9,4 @@ const MyEditor: React.FC<MyEditorProps> = ({ editorRef }) => {
   return <Editor ref={editorRef} />;
 };
 
-export default MyEditor;
+export default React.memo(MyEditor);

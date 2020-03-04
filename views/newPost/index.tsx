@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 
@@ -10,29 +10,22 @@ import * as S from './styles';
 import Layout from '../../components/layout';
 import BoardNavigation from '../../components/board/board-navigation';
 import { Grid, Row, Col } from '../../components/grid/styles';
-import { useUser } from '../../context/user';
 
 const newPost: NextPage = () => {
   const router = useRouter();
   const Editor = dynamic(import('../../components/editor/index'), {
     ssr: false,
   });
+
+  const newPostTitleReferenece = useRef(null);
+  const newPostTypeReference = useRef(null);
   const editorRef = useRef(null);
-
-  const [newPostTitle, setNewPostTitle] = useState('');
-  const [newPostType, setNewPostType] = useState('자유게시판');
-  const [showMenu, setShowMenu] = useState(false);
-
-  const postTypeName = {
-    공지: 'NOTICE',
-    자유게시판: 'FREE',
-    교우게시판: 'ALUMNI',
-  };
 
   const handleSubmit = async () => {
     if (confirm('게시글을 작성하시겠습니까?')) {
+      const newPostTitle = newPostTitleReferenece.current.value;
+      const newPostType = newPostTypeReference.current.value;
       const newPostContent = editorRef.current.getInstance().getValue();
-
       const response = await fetch('http://localhost:4000/post', {
         method: 'POST',
         credentials: 'include',
@@ -41,8 +34,8 @@ const newPost: NextPage = () => {
         },
         body: JSON.stringify({
           title: newPostTitle,
+          type: newPostType,
           content: newPostContent,
-          type: postTypeName[newPostType],
         }),
       });
       if (response.status === 201) {
@@ -50,22 +43,6 @@ const newPost: NextPage = () => {
         router.push('/board');
       }
     }
-  };
-
-  const handleTitleOnChange = e => {
-    e.preventDefault();
-    setNewPostTitle(e.target.value);
-  };
-
-  const openMenu = () => {
-    setShowMenu(true);
-    document.addEventListener('click', closeMenu);
-  };
-
-  const closeMenu = () => {
-    event.preventDefault();
-    setShowMenu(false);
-    document.removeEventListener('click', closeMenu);
   };
 
   return (
@@ -83,62 +60,27 @@ const newPost: NextPage = () => {
                 <S.BoardMenu>
                   <S.BoardMenuHistory>
                     Home > Board >{' '}
-                    <span style={{ fontWeight: 'bold' }}>NewPost</span>
+                    <span style={{ fontWeight: 'bold', color: '#c93333' }}>
+                      새 글 쓰기
+                    </span>
                   </S.BoardMenuHistory>
                 </S.BoardMenu>
                 <S.NewPostTitleContainer>
                   <S.NewPostTitleLabel>제목</S.NewPostTitleLabel>
                   <S.NewPostTitleInput
                     placeholder="제목을 입력해주세요"
-                    value={newPostTitle}
-                    onChange={handleTitleOnChange}
+                    ref={newPostTitleReferenece}
                   />
                 </S.NewPostTitleContainer>
                 <S.NewPostTypeContainer>
                   <S.NewPostTypeLabel>게시판 종류</S.NewPostTypeLabel>
-                  <S.NewPostTypeListContainer>
-                    <S.NewPostTypeSelected
-                      onClick={() => {
-                        showMenu ? closeMenu() : openMenu();
-                      }}
-                    >
-                      {newPostType}{' '}
-                      <FontAwesomeIcon
-                        icon={faCaretDown}
-                        style={{ color: '#c93333' }}
-                        size={'lg'}
-                      />
-                    </S.NewPostTypeSelected>
-                  </S.NewPostTypeListContainer>
+                  <S.NewPostTypeListContainer></S.NewPostTypeListContainer>
+                  <S.NewPostTypeSelected ref={newPostTypeReference}>
+                    <option value="NOTICE">공지</option>
+                    <option value="FREE">자유게시판</option>
+                    <option value="ALUMNI">교우게시판</option>
+                  </S.NewPostTypeSelected>
                 </S.NewPostTypeContainer>
-                {showMenu && (
-                  <S.NewPostTypeList>
-                    <S.NewPostTypeListItem
-                      onClick={() => {
-                        setNewPostType('공지');
-                        closeMenu();
-                      }}
-                    >
-                      공지
-                    </S.NewPostTypeListItem>
-                    <S.NewPostTypeListItem
-                      onClick={() => {
-                        setNewPostType('자유게시판');
-                        closeMenu();
-                      }}
-                    >
-                      자유게시판
-                    </S.NewPostTypeListItem>
-                    <S.NewPostTypeListItem
-                      onClick={() => {
-                        setNewPostType('교우게시판');
-                        closeMenu();
-                      }}
-                    >
-                      교우게시판
-                    </S.NewPostTypeListItem>
-                  </S.NewPostTypeList>
-                )}
                 <S.EditorContainer>
                   <Editor editorRef={editorRef} />
                 </S.EditorContainer>

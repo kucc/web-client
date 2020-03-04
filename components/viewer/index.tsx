@@ -9,7 +9,6 @@ const MyViewer = ({ initialPost }) => {
       initialValue: initialPost,
       viewer: true,
     });
-    console.log(initialPost);
   }, [initialPost]);
 
   return <div id="editor-section"></div>;

@@ -77,23 +77,10 @@ export const NewPostTypeListContainer = styled.div`
   flex-direction: column;
 `;
 
-export const NewPostTypeSelected = styled.div`
+export const NewPostTypeSelected = styled.select`
   background-color: #f2f2f2;
   border: 1px solid #d2d2d2;
-  font-weight: bold;
-  padding: 1rem;
-  width: 10rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-`;
-
-export const NewPostTypeList = styled.ul`
-  border: 1px solid #d2d2d2;
-  border-top: none;
-  margin-left: 6.33rem;
-  width: 10rem;
+  height: 3rem;
 `;
 
 export const NewPostTypeListItem = styled.li`
