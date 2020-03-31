@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-const baseURL = 'http://localhost:4000/post';
+const baseURL = 'http://localhost:4000/api/post';
 
 export const usePosts = ({ initialPosts, postTypeId }) => {
   const calculateNumberOfPage = numberOfPosts => {

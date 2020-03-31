@@ -29,7 +29,7 @@ export const useCalendar = () => {
   useEffect(() => {
     const getEventsOfMonth = async () => {
       const response = await fetch(
-        `http://localhost:4000/event?year=${now.year}&month=${now.month}`,
+        `http://localhost:4000/api/event?year=${now.year}&month=${now.month}`,
         {
           method: 'GET',
           credentials: 'include',

@@ -133,7 +133,9 @@ const Post: NextPage<PostProps> = ({ data, rest }) => {
 
 Post.getInitialProps = async ({ query, res, req, ...rest }) => {
   try {
-    const response = await fetch(`http://localhost:4000/post/${query.postId}`);
+    const response = await fetch(
+      `http://localhost:4000/api/post/${query.postId}`,
+    );
     const data = await response.json();
     return { data, rest };
   } catch (error) {

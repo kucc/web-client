@@ -12,7 +12,7 @@ interface IPostObject {
   statusCode?: number;
 }
 
-const baseURL = 'http://localhost:4000/post';
+const baseURL = 'http://localhost:4000/api/post';
 
 export const usePost = id => {
   const [postObject, setPostObject] = useState<IPostObject | undefined>(

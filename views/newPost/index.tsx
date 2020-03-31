@@ -26,7 +26,7 @@ const newPost: NextPage = () => {
       const newPostTitle = newPostTitleReferenece.current.value;
       const newPostType = newPostTypeReference.current.value;
       const newPostContent = editorRef.current.getInstance().getValue();
-      const response = await fetch('http://localhost:4000/post', {
+      const response = await fetch('http://localhost:4000/api/post', {
         method: 'POST',
         credentials: 'include',
         headers: {

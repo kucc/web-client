@@ -117,7 +117,7 @@ const Board: NextPage<BoardProps> = ({ initialPosts, postTypeId, rest }) => {
 Board.getInitialProps = async ({ req, res, query, isLoggedIn, ...rest }) => {
   const postTypeId = query.postTypeId ? query.postTypeId : 'NOTICE';
   const response = await fetch(
-    `http://localhost:4000/post?type=${postTypeId}&page=1`,
+    `http://localhost:4000/api/post?type=${postTypeId}&page=1`,
   );
   const initialPosts = await response.json();
   // if (
