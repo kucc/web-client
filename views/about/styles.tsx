@@ -4,7 +4,7 @@ export const Introduction = styled.div`
   width: 100%;
   position: relative;
 
-  background: url('/images/About-WeCodeTogether-Big.png');
+  background: url('/images/About-WeCodeTogether-Big.jpg');
   background-size: cover;
   height: 60.8rem;
 
@@ -264,7 +264,7 @@ export const KeyWordPic1 = styled.div`
 
   width: 35rem;
   height: 24rem;
-  background: url('/images/About-KeyWord1-Big.png');
+  background: url('/images/About-KeyWord1-Big.jpg');
   background-size: cover;
 `;
 
@@ -281,7 +281,7 @@ export const KeyWordPic2 = styled.div`
 
   width: 35rem;
   height: 24rem;
-  background: url('/images/About-KeyWord2-Big.png');
+  background: url('/images/About-KeyWord2-Big.jpg');
   background-size: cover;
 `;
 
@@ -298,7 +298,7 @@ export const KeyWordPic3 = styled.div`
 
   width: 35rem;
   height: 24rem;
-  background: url('/images/About-KeyWord3-Big.png');
+  background: url('/images/About-KeyWord3-Big.jpg');
   background-size: cover;
 `;
 
@@ -365,6 +365,10 @@ export const ContactMap = styled.div`
   border: 1px;
   border-style: solid;
   border-color: #707070;
+  background: url
+    (
+      'https://naveropenapi.apigw.ntruss.com/map-static/v2/raster-cors?w=300&h=300&center=127.1054221,37.3591614&level=16&X-NCP-APIGW-API-KEY-ID={애플리케이션 등록 시 발급받은 client id값}'
+    );
 `;
 
 export const ContactMapContainer = styled.div`

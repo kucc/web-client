@@ -79,7 +79,7 @@ const About: React.FC = () => {
         <S.PresidentSection>
           <Row>
             <Col span={5} offset={1}>
-              <S.PresidentPicture src="images/About-President'sComment-Big.png"></S.PresidentPicture>
+              <S.PresidentPicture src="images/About-President'sComment-Big.jpg"></S.PresidentPicture>
             </Col>
             <Col span={5} offset={1}>
               <S.PresidentCommentTitle>
@@ -127,7 +127,7 @@ const About: React.FC = () => {
               </Row>
             </Col>
             <Col span={5}>
-              <S.ExecutivesPicture src="images/About-Executives-Big.png"></S.ExecutivesPicture>
+              <S.ExecutivesPicture src="./images/About-Executives-Big.jpg"></S.ExecutivesPicture>
             </Col>
             <Col span={1}>
               <S.ExecutivesColor></S.ExecutivesColor>
