@@ -163,14 +163,14 @@ export const KeywordContainer = styled.div`
   background: #f3f3f3;
   border-radius: 50%;
   text-align: center;
-  margin: 0rem 5rem;
+  margin: 0rem 7rem;
 `;
 
 export const KeywordIcon = styled.img`
   display: block;
   position: absolute;
   z-index: 100;
-  width: 10rem;
+  width: 12rem;
   top: 5rem;
   left: 0rem;
   right: 0rem;
@@ -181,13 +181,14 @@ export const Keyword = styled.div`
   display: block;
   position: absolute;
   z-index: 100;
-  top: 17rem;
+  top: 18rem;
   left: 0rem;
   right: 0rem;
   margin: auto;
   color: #1a1311;
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.2rem;
 `;
 
 export const KeywordCaption = styled.div`
