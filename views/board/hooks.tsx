@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-const baseURL = 'http://localhost:4000/post';
+const baseURL = 'http://localhost:4000/api/post';
 
 export const usePosts = ({ initialPosts, postTypeId }) => {
   const calculateNumberOfPage = numberOfPosts => {
@@ -12,13 +12,18 @@ export const usePosts = ({ initialPosts, postTypeId }) => {
   const [page, setPage] = useState({
     start: 1,
     current: 1,
-    end: numberOfPages,
+    end: numberOfPages < 5 ? numberOfPages : 5,
   });
   const [posts, setPosts] = useState(initialPosts.data);
 
-  if (numberOfPages !== page.end) {
-    setPage({ ...page, start: 1, current: 1, end: numberOfPages });
-  }
+  useEffect(() => {
+    setPage({
+      ...page,
+      start: 1,
+      current: 1,
+      end: numberOfPages < 5 ? numberOfPages : 5,
+    });
+  }, [postTypeId]);
 
   const getPosts = async (postTypeId, pageId) => {
     const response = await axios.get(

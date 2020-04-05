@@ -1,24 +1,30 @@
-import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import axios from 'axios';
 
-const baseURL = 'http://localhost:4000/post';
+interface IPostObject {
+  Id: number;
+  title: string;
+  content: string;
+  userId: number;
+  type: string;
+  createdAt: string;
+  views: number;
+  statusCode?: number;
+}
 
-const getPost = postId => {
-  const request = axios.get(`${baseURL}/${postId}`);
-  return request.then(response => response.data);
-};
+const baseURL = 'http://localhost:4000/api/post';
 
-export const usePost = () => {
-  const router = useRouter();
-  const { id } = router.query;
-  const [postObject, setPostObject] = useState(null);
-
+export const usePost = id => {
+  const [postObject, setPostObject] = useState<IPostObject | undefined>(
+    undefined,
+  );
+  const getPosts = async id => {
+    const response = await axios.get(`${baseURL}/${id}`);
+    const returnedPost = response.data;
+    setPostObject(returnedPost);
+  };
   useEffect(() => {
-    getPost(id).then(returnedData => {
-      setPostObject(returnedData);
-    });
+    getPosts(id);
   }, [id]);
-  // issue
   return { postObject };
 };

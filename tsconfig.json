@@ -20,6 +20,6 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "components/editor/index.js"
+    "components/editor/index.tsx"
   ]
 }

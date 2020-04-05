@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 
 import { LoginForm } from './model/login-form';
+import FindPasswordForm from './model/find-password-form';
 
 export const useFlip = () => {
   const [flip, setFlip] = useState(false);
@@ -22,15 +22,14 @@ export const useLogin = () => {
   const handleFormChange = e => {
     setLoginForm({
       ...loginForm,
-      [e.target.id]: e.target.value,
+      [e.target.id]: e.target.value.trim(),
     });
   };
 
   const isLoginButtonDisabled = !(loginForm.email && loginForm.password);
-  const router = useRouter();
 
   const handleLoginButton = async e => {
-    const response = await fetch('http://localhost:4000/auth/login', {
+    const response = await fetch('http://localhost:4000/api/auth/login', {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -40,7 +39,7 @@ export const useLogin = () => {
     });
 
     if (response.ok) {
-      router.reload();
+      window.location.replace('/');
       return;
     }
 
@@ -55,4 +54,32 @@ export const useLogin = () => {
   };
 };
 
-export const useFindPassword = () => {};
+export const useFindPassword = () => {
+  const [findPasswordForm, setFindPasswordForm] = useState(
+    new FindPasswordForm('', ''),
+  );
+
+  const [isFormSent, setIsFormSent] = useState(false);
+
+  const isFindPasswordButtonDisabled =
+    !findPasswordForm.email || !findPasswordForm.name || isFormSent;
+
+  const handleFindPasswordFormChange = e => {
+    setFindPasswordForm({
+      ...findPasswordForm,
+      [e.target.name]: e.target.value.trim(),
+    });
+  };
+
+  const handleSendPasswordForm = async e => {
+    setIsFormSent(true);
+  };
+
+  return {
+    isFormSent,
+    findPasswordForm,
+    handleSendPasswordForm,
+    isFindPasswordButtonDisabled,
+    handleFindPasswordFormChange,
+  };
+};

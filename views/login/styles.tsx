@@ -240,8 +240,6 @@ export const FormButtonContainer = styled.div`
 `;
 
 export const FormButton = styled.div`
-  width: 9rem;
-  height: 5rem;
   margin-top: 1px; /* 경계 부분이 자꾸 가려져서 추가함 (리팩토링 필요) */
 
   text-align: center;
@@ -255,6 +253,7 @@ export const FormButton = styled.div`
   justify-content: center;
 
   button {
+    background-color: inherit;
     border: none;
     font-size: 1.4rem;
     letter-spacing: -0.42px;
@@ -269,4 +268,16 @@ export const FormButton = styled.div`
       background-color: #eeeeee;
     }
   }
+`;
+
+export const FormSentContainer = styled.div`
+  width: 100%;
+  height: 10rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: -3rem;
 `;
