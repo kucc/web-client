@@ -26,7 +26,7 @@ const Portfolio: NextPage = () => {
                   </S.PortfolioMenuHistory>
                 </S.PortfolioMenu>
                 <S.PortfolioContent>
-                  <S.Slider bullets={false} animation="scaleOutAnimation">
+                  {/* <S.Slider bullets={false} animation="scaleOutAnimation">
                     <S.SliderContentWrapper>
                       <S.SliderContentBackground backgroundColor="#F7D9CD">
                         인생
@@ -43,7 +43,7 @@ const Portfolio: NextPage = () => {
                         이런느낌어때?
                       </S.SliderContentBackground>
                     </S.SliderContentWrapper>
-                  </S.Slider>
+                  </S.Slider> */}
                 </S.PortfolioContent>
               </Col>
             </S.PortfolioContainer>
