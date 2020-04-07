@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import AwesomeSlider from 'react-awesome-slider';
 
 export const Portfolio = styled.div``;
 
@@ -46,8 +45,6 @@ export const PortfolioContent = styled.div`
   overflow: hidden;
 `;
 
-export const Slider = styled(AwesomeSlider)``;
-
 export const SliderContentWrapper = styled.div``;
 
 interface SliderContentProps {
@@ -67,8 +64,8 @@ export const SliderContentBackground = styled.div<SliderContentProps>`
 
   font-size: 2rem;
   background-color: white;
-  color: ${props => (props.color ? props.color : 'black')};
+  color: ${(props) => (props.color ? props.color : 'black')};
 
-  background-color: ${props =>
+  background-color: ${(props) =>
     props.backgroundColor ? props.backgroundColor : 'white'};
 `;
