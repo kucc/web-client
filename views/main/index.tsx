@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Grid, Row, Col } from '../../components/grid/styles';
 import Layout from '../../components/layout';
 import {
+  MDBAnimation,
   MDBCarousel,
   MDBCarouselInner,
   MDBCarouselItem,
@@ -44,8 +45,7 @@ const Main: NextPage = () => (
                     <br />
                     컴퓨터에 관심이 있고, 더 알고 싶고,
                     <br />
-                    다른 이들과 나누고 싶어하는 사람들이 모인
-                    동아리입니다!(예시)
+                    다른 이들과 나누고 싶은 사람들이 모인 동아리입니다!
                   </S.TitleContent>
                 </Row>
               </S.SectionText>
@@ -76,7 +76,7 @@ const Main: NextPage = () => (
                         <MDBView>
                           <img
                             className="d-block w-100"
-                            src="/images/Landing-main-1.jpg"
+                            src="/images/Landing-main-2.jpg"
                             alt="Second slide"
                           />
                         </MDBView>
@@ -85,7 +85,7 @@ const Main: NextPage = () => (
                         <MDBView>
                           <img
                             className="d-block w-100"
-                            src="/images/Landing-main-1.jpg"
+                            src="/images/Landing-main-3.jpg"
                             alt="Third slide"
                           />
                         </MDBView>
@@ -116,8 +116,8 @@ const Main: NextPage = () => (
                       <S.ImageGridContainer>
                         <S.ImageGrid src="/images/Landing-footage-1.jpg" />
                         <S.ImageGridCaption>
-                          <S.CaptionTitle>Image_1</S.CaptionTitle>
-                          <S.Caption>2020.xx.xx</S.Caption>
+                          <S.CaptionTitle>홈페이지 제작 회의</S.CaptionTitle>
+                          <S.Caption>2020.02.15</S.Caption>
                         </S.ImageGridCaption>
                       </S.ImageGridContainer>
                     </Col>
@@ -125,8 +125,8 @@ const Main: NextPage = () => (
                       <S.ImageGridContainer>
                         <S.ImageGrid src="/images/Landing-footage-2.jpg" />
                         <S.ImageGridCaption>
-                          <S.CaptionTitle>Image_2</S.CaptionTitle>
-                          <S.Caption>2020.xx.xx</S.Caption>
+                          <S.CaptionTitle>20-1 운영진 회의</S.CaptionTitle>
+                          <S.Caption>2020.02.02</S.Caption>
                         </S.ImageGridCaption>
                       </S.ImageGridContainer>
                     </Col>
@@ -136,8 +136,8 @@ const Main: NextPage = () => (
                       <S.ImageGridContainer>
                         <S.ImageGrid src="/images/Landing-footage-3.jpg" />
                         <S.ImageGridCaption>
-                          <S.CaptionTitle>Image_3</S.CaptionTitle>
-                          <S.Caption>2020.xx.xx</S.Caption>
+                          <S.CaptionTitle>20-1 운영진 LT</S.CaptionTitle>
+                          <S.Caption>2020.02.01</S.Caption>
                         </S.ImageGridCaption>
                       </S.ImageGridContainer>
                     </Col>
@@ -145,8 +145,8 @@ const Main: NextPage = () => (
                       <S.ImageGridContainer>
                         <S.ImageGrid src="/images/Landing-footage-4.jpg" />
                         <S.ImageGridCaption>
-                          <S.CaptionTitle>Image_4</S.CaptionTitle>
-                          <S.Caption>2020.xx.xx</S.Caption>
+                          <S.CaptionTitle>동아리 로고 제작</S.CaptionTitle>
+                          <S.Caption>2020.02.08</S.Caption>
                         </S.ImageGridCaption>
                       </S.ImageGridContainer>
                     </Col>
@@ -155,16 +155,20 @@ const Main: NextPage = () => (
               </S.Gallery>
             </Col>
             <Col>
-              <Row>
-                <S.Message>Footage</S.Message>
-              </Row>
-              <Row>
-                <S.Content>
-                  KUCC는 초심자 분들이
-                  <br /> 프로그래밍에 진입하는 문턱을 <br />
-                  낮추기 위해 노력합니다.(예시)
-                </S.Content>
-              </Row>
+              <MDBAnimation type="fadeInRight" reveal>
+                <Row>
+                  <S.Message>Feature</S.Message>
+                </Row>
+                <Row>
+                  <S.Content>
+                    KUCC는 다양한 관심사를 가진 동아리원들과
+                    <br />
+                    자발적으로 모여 공부하고, 서로 가르치는 등
+                    <br />
+                    지식을 나누며 함께 성장하고 있습니다.
+                  </S.Content>
+                </Row>
+              </MDBAnimation>
             </Col>
           </Row>
         </S.Section>
@@ -172,20 +176,22 @@ const Main: NextPage = () => (
         <S.SectionGray>
           <Row>
             <Col>
-              <Row>
-                <S.Message>Features</S.Message>
-              </Row>
-              <Row>
-                <S.Content>
-                  심도 있는 학습/ 함께하는 개발 경험이
-                  <br />
-                  필요하신 분들께 같이 논의하거나
-                  <br />
-                  자습할 수 있는 환경을 만들어 드리기 위해
-                  <br />
-                  노력합니다.(예시)
-                </S.Content>
-              </Row>
+              <MDBAnimation type="fadeInLeft" reveal>
+                <Row>
+                  <S.Message>Activity</S.Message>
+                </Row>
+                <Row>
+                  <S.Content>
+                    KUCC는 개발경험이 있는 분들께는
+                    <br />
+                    더욱 심도있는 학습을 할 수 있는 기회를,
+                    <br />
+                    초심자분들께는 컴퓨터 분야에
+                    <br />
+                    쉽게 입문할 수 있도록 돕는 환경을 제공합니다.
+                  </S.Content>
+                </Row>
+              </MDBAnimation>
             </Col>
             <Col>
               <S.LeafCarouselContainer>
@@ -209,81 +215,65 @@ const Main: NextPage = () => (
           </Row>
         </S.SectionGray>
         <S.RowSpace />
-        <S.Section>
-          <S.KeywordSectionContainer>
-            <Row>
-              <Col>
-                <S.KeywordContainer>
-                  <S.KeywordIcon
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Square_definition.svg/1200px-Square_definition.svg.png"
-                    onDragStart={handleOnDragStart}
-                  />
-                  <S.Keyword>Keyword_1</S.Keyword>
-                  <S.KeywordCaption>
-                    Lorem ipsum dolor sit amet,
-                    <br />
-                    consectetuer adipiscing elit,
-                    <br />
-                    sed diam nonummy nibh
-                    <br />
-                    euismod tincidunt ut laoreet
-                    <br />
-                    dolore magna aliquam
-                  </S.KeywordCaption>
-                </S.KeywordContainer>
-              </Col>
-              <Col>
-                <S.KeywordContainer>
-                  <S.KeywordIcon
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Square_definition.svg/1200px-Square_definition.svg.png"
-                    onDragStart={handleOnDragStart}
-                  />
-                  <S.Keyword>Keyword_2</S.Keyword>
-                  <S.KeywordCaption>
-                    Lorem ipsum dolor sit amet,
-                    <br />
-                    consectetuer adipiscing elit,
-                    <br />
-                    sed diam nonummy nibh
-                    <br />
-                    euismod tincidunt ut laoreet
-                    <br />
-                    dolore magna aliquam
-                  </S.KeywordCaption>
-                </S.KeywordContainer>
-              </Col>
-              <Col>
-                <S.KeywordContainer>
-                  <S.KeywordIcon
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Square_definition.svg/1200px-Square_definition.svg.png"
-                    onDragStart={handleOnDragStart}
-                  />
-                  <S.Keyword>Keyword_3</S.Keyword>
-                  <S.KeywordCaption>
-                    Lorem ipsum dolor sit amet,
-                    <br />
-                    consectetuer adipiscing elit,
-                    <br />
-                    sed diam nonummy nibh
-                    <br />
-                    euismod tincidunt ut laoreet
-                    <br />
-                    dolore magna aliquam
-                  </S.KeywordCaption>
-                </S.KeywordContainer>
-              </Col>
-            </Row>
-          </S.KeywordSectionContainer>
-        </S.Section>
+        <MDBAnimation type="fadeInUp" reveal>
+          <S.Section>
+            <S.KeywordSectionContainer>
+              <Row>
+                <Col>
+                  <S.KeywordContainer>
+                    <S.KeywordIcon
+                      src="/images/Landing-Keyword1.png"
+                      onDragStart={handleOnDragStart}
+                    />
+                    <S.Keyword>Study</S.Keyword>
+                    <S.KeywordCaption>
+                      매 학기 20여개에 이르는 스터디와 세션을 통해 서로 가르치고
+                      배우며 여러 분야에 대한 지식을 넓힐 수 있습니다.
+                    </S.KeywordCaption>
+                  </S.KeywordContainer>
+                </Col>
+                <Col>
+                  <S.KeywordContainer>
+                    <S.KeywordIcon
+                      src="/images/Landing-Keyword2.png"
+                      onDragStart={handleOnDragStart}
+                    />
+                    <S.Keyword>Project</S.Keyword>
+                    <S.KeywordCaption>
+                      팀을 꾸려 대회에 나가거나, 프로젝트를 통해 결과물을
+                      만들어내는 활동이 활발하게 이어지고 있습니다.
+                    </S.KeywordCaption>
+                  </S.KeywordContainer>
+                </Col>
+                <Col>
+                  <S.KeywordContainer>
+                    <S.KeywordIcon
+                      src="/images/Landing-Keyword3.png"
+                      onDragStart={handleOnDragStart}
+                    />
+                    <S.Keyword>Social</S.Keyword>
+                    <S.KeywordCaption>
+                      컴퓨터라는 같은 관심사를 가진 사람들끼리 모여 소통하고,
+                      다양한 친목활동을 통해 화목한 동아리 생활을 즐길 수
+                      있습니다.
+                    </S.KeywordCaption>
+                  </S.KeywordContainer>
+                </Col>
+              </Row>
+            </S.KeywordSectionContainer>
+          </S.Section>
+        </MDBAnimation>
         <S.RowSpace />
         <S.RowSpace />
-        <S.Section>
-          <S.ButtonContainer>
-            <Link href="/recruit">
-              <S.JoinButton>Join Us!</S.JoinButton>
-            </Link>
-          </S.ButtonContainer>
-        </S.Section>
+        <MDBAnimation type="fadeInUp" reveal>
+          <S.Section>
+            <S.ButtonContainer>
+              <Link href="/recruit">
+                <S.JoinButton>Join Us!</S.JoinButton>
+              </Link>
+            </S.ButtonContainer>
+          </S.Section>
+        </MDBAnimation>
       </Grid>
       <S.RowSpace />
     </S.Main>
