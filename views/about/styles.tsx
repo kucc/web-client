@@ -258,15 +258,62 @@ export const KeyWordPic1 = styled.div`
   color: white;
   font-size: 2.4rem;
 
-  flex-direction: column;
-  justify-content: flex-end;
-  display: flex;
-  align-items: center;
+  .figure {
+    flex-direction: column;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
 
-  width: 35rem;
-  height: 24rem;
-  background: url('/images/About-KeyWord1-Big.jpg');
-  background-size: cover;
+    width: 35rem;
+    height: 24rem;
+    background: url('/images/About-KeyWord1-Big.jpg');
+    background-size: cover;
+  }
+  .figure::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    display: block;
+    content: '';
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 100%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+  }
+  .figure:hover::before {
+    -webkit-animation: circle 0.5s;
+    animation: circle 0.5s;
+  }
+  @-webkit-keyframes circle {
+    0% {
+      opacity: 1;
+    }
+    40% {
+      opacity: 1;
+    }
+    100% {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
+  }
+  @keyframes circle {
+    0% {
+      opacity: 1;
+    }
+    40% {
+      opacity: 1;
+    }
+    100% {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
+  }
 `;
 
 export const KeyWordPic2 = styled.div`
@@ -275,15 +322,62 @@ export const KeyWordPic2 = styled.div`
   color: white;
   font-size: 2.4rem;
 
-  flex-direction: column;
-  justify-content: flex-end;
-  display: flex;
-  align-items: center;
+  .figure {
+    flex-direction: column;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
 
-  width: 35rem;
-  height: 24rem;
-  background: url('/images/About-KeyWord2-Big.jpg');
-  background-size: cover;
+    width: 35rem;
+    height: 24rem;
+    background: url('/images/About-KeyWord2-Big.jpg');
+    background-size: cover;
+  }
+  .figure::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    display: block;
+    content: '';
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 100%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+  }
+  .figure:hover::before {
+    -webkit-animation: circle 0.5s;
+    animation: circle 0.5s;
+  }
+  @-webkit-keyframes circle {
+    0% {
+      opacity: 1;
+    }
+    40% {
+      opacity: 1;
+    }
+    100% {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
+  }
+  @keyframes circle {
+    0% {
+      opacity: 1;
+    }
+    40% {
+      opacity: 1;
+    }
+    100% {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
+  }
 `;
 
 export const KeyWordPic3 = styled.div`
@@ -292,15 +386,62 @@ export const KeyWordPic3 = styled.div`
   color: white;
   font-size: 2.4rem;
 
-  flex-direction: column;
-  justify-content: flex-end;
-  display: flex;
-  align-items: center;
+  .figure {
+    flex-direction: column;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
 
-  width: 35rem;
-  height: 24rem;
-  background: url('/images/About-KeyWord3-Big.jpg');
-  background-size: cover;
+    width: 35rem;
+    height: 24rem;
+    background: url('/images/About-KeyWord3-Big.jpg');
+    background-size: cover;
+  }
+  .figure::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    display: block;
+    content: '';
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 100%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+  }
+  .figure:hover::before {
+    -webkit-animation: circle 0.5s;
+    animation: circle 0.5s;
+  }
+  @-webkit-keyframes circle {
+    0% {
+      opacity: 1;
+    }
+    40% {
+      opacity: 1;
+    }
+    100% {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
+  }
+  @keyframes circle {
+    0% {
+      opacity: 1;
+    }
+    40% {
+      opacity: 1;
+    }
+    100% {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
+  }
 `;
 
 export const KeyWordExpl = styled.div`

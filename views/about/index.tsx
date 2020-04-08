@@ -144,21 +144,27 @@ const About: React.FC = () => {
             <Col span={4}>
               <S.KeyWord>
                 <S.KeyWordPic1>
-                  <S.KeyWordTitle>Build</S.KeyWordTitle>
+                  <div className="figure">
+                    <S.KeyWordTitle>Build</S.KeyWordTitle>
+                  </div>
                 </S.KeyWordPic1>
               </S.KeyWord>
             </Col>
             <Col span={4}>
               <S.KeyWord>
                 <S.KeyWordPic2>
-                  <S.KeyWordTitle>Connect</S.KeyWordTitle>
+                  <div className="figure">
+                    <S.KeyWordTitle>Connect</S.KeyWordTitle>
+                  </div>
                 </S.KeyWordPic2>
               </S.KeyWord>
             </Col>
             <Col span={4}>
               <S.KeyWord>
                 <S.KeyWordPic3>
-                  <S.KeyWordTitle>Grow</S.KeyWordTitle>
+                  <div className="figure">
+                    <S.KeyWordTitle>Grow</S.KeyWordTitle>
+                  </div>
                 </S.KeyWordPic3>
               </S.KeyWord>
             </Col>
