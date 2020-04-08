@@ -11,19 +11,21 @@ const About: React.FC = () => {
           <Row>
             <Col span={10} offset={1}>
               <S.Introduction>
-                <S.IntroductionMessage>
-                  <S.IntroductionTitle>We Code Together;</S.IntroductionTitle>
-                  <S.IntroductionContentContainer>
-                    <S.IntroductionContent>
-                      코드만 꼭 짜는건 아니고
-                      <br /> <br />
-                      술도 많이 먹고 게임도 좋아합니다
-                      <br /> <br />
-                      공부할 땐 열심히 공부해요!
-                      <br /> <br /> 나이 성별 학과 무관 다 환영!
-                    </S.IntroductionContent>
-                  </S.IntroductionContentContainer>
-                </S.IntroductionMessage>
+                <div className="figure">
+                  <S.IntroductionMessage>
+                    <S.IntroductionTitle>We Code Together;</S.IntroductionTitle>
+                    <S.IntroductionContentContainer>
+                      <S.IntroductionContent>
+                        코드만 꼭 짜는건 아니고
+                        <br /> <br />
+                        술도 많이 먹고 게임도 좋아합니다
+                        <br /> <br />
+                        공부할 땐 열심히 공부해요!
+                        <br /> <br /> 나이 성별 학과 무관 다 환영!
+                      </S.IntroductionContent>
+                    </S.IntroductionContentContainer>
+                  </S.IntroductionMessage>
+                </div>
               </S.Introduction>
             </Col>
           </Row>
